@@ -1,0 +1,38 @@
+python hs_sbert_luar_linear_training.py --config_file "/data/araghavan/persuasion-context-or-style/input/sbert_luar_config_v01_20250228.json"
+python hs_sbert_luar_linear_training.py --config_file "/data/araghavan/persuasion-context-or-style/input/luar_only_config_v01_20250228.json"
+
+## HS + Luar Only + Message Only
+python hs_linearlayer_training.py --config_file "/data/araghavan/persuasion-context-or-style/input/luar_only_config_v01_20250303.json"
+
+## HS + Luar Only + Prompt and Message
+python hs_linearlayer_training.py --config_file "/data/araghavan/persuasion-context-or-style/input/luar_only_config_v02_20250303.json"
+
+## Luar and SBERT + Message Only
+python sbertluar_ptemb_linearlayer_training.py --weight_decay 0.005 --min_delta 0.002 
+## Luar and SBERT + Prompt and Message
+python sbertluar_ptemb_linearlayer_training.py --weight_decay 0.005 --min_delta 0.002 --include_prompt 
+
+
+## Luar Only + Message Only
+python sbertluar_ptemb_linearlayer_training.py --weight_decay 0.005 --min_delta 0.002 --only_luar
+## Luar Only + Prompt and Message
+python sbertluar_ptemb_linearlayer_training.py --weight_decay 0.005 --min_delta 0.002 --include_prompt --only_luar
+
+python hs_linearlayer_training.py --config_file "/data/araghavan/persuasion-context-or-style/input/test1.json"
+python hs_linearlayer_training.py --config_file "/data/araghavan/persuasion-context-or-style/input/test2.json"
+
+no prompt: g2irgbio - 0.71705
+wi prompt: jiw5z76n - 0.6
+
+
+## No Prompt:
+python hs_linearlayer_training.py --config_file "/data/araghavan/persuasion-context-or-style/input/luar_only_config_v01_20250304.json"
+
+
+Notes:
+All this was with average of embeddings from luar and sbert
+    Partial Prompt + Full Message in text - poor performance for LUAR+SBERT and LUAR
+    Prompt Emb concat with Message Emb - same performance of LUAR vs LUAR + SBERT
+
+Now with concat of luar and sbert embeddings
+    

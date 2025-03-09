@@ -1,0 +1,4 @@
+pip install pandas
+pip install sentence-transformers
+pip install wandb
+pip install datasets

@@ -1,0 +1,29 @@
+{
+  "method": "grid",
+  "metric": {
+    "name": "eval_acc",
+    "goal": "maximize"
+  },
+  "parameters": {
+    "lr": {
+      "values": [0.005, 0.008]
+    },
+    "weight_decay": {
+      "values": [0, 0.001, 0.0005, 0.1, 0.5, 1, 10]
+    },
+    "only_luar": {
+      "value": false
+    },
+    "min_delta": {
+      "values": [0.002]
+    },
+    "patience": {
+      "values": [5]
+    },
+    "sbert_model_name": {
+      "values": [
+        "all-MiniLM-L6-v2"
+      ]
+    }
+  }
+}

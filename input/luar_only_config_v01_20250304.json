@@ -1,0 +1,26 @@
+{
+  "method": "grid",
+  "metric": {
+    "name": "eval_acc",
+    "goal": "maximize"
+  },
+  "parameters": {
+    "lr": {
+      "values": [0.001, 0.01, 0.05, 0.1]
+    },
+    "weight_decay": {
+      "values": [0.005]
+    },
+    "min_delta": {
+      "values": [0.002]
+    },
+    "only_luar": {
+      "value": true
+    },
+    "sbert_model_name": {
+      "values": [
+       "None" 
+      ]
+    }
+  }
+}

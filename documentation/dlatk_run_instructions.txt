@@ -1,0 +1,22 @@
+## Stratify Whole Dataset Into Train, Test Splits on claim group and outcome label
+python stratifygroup_wholedataset_gen_kfolds.py --input_file "../../data/dpo_random_neg_op_comment_v003_to_per_con_v_styl_v001.json" --output_train_file "../../data/dpo_random_neg_op_comment_v003_to_per_con_v_styl_v001_train_grpstrat_80pct.jsonl" --output_held_out_test_file "../../data/dpo_random_neg_op_comment_v003_to_per_con_v_styl_v001_test_grpstrat_20pct.jsonl" --old_label_col_name "outcome_label" --new_label_col_name "persuaded"
+
+## Train Feat Embeddings
+python generate_embeddings_for_dlatk.py --input_file "../../data/dpo_random_neg_op_comment_v003_to_per_con_v_styl_v001_train_grpstrat_80pct.jsonl" --output_file "../../data/per_con_v_styl_v001_luar_feat_message_train.csv" --model_type "luar" --model_name "rrivera1849/LUAR-MUD" --tokenizer_name "rrivera1849/LUAR-MUD" --text_col_name "message" --embeddings_group_id_col "message_id"
+python generate_embeddings_for_dlatk.py --input_file "../../data/dpo_random_neg_op_comment_v003_to_per_con_v_styl_v001_train_grpstrat_80pct.jsonl" --output_file "../../data/per_con_v_styl_v001_sbert_feat_message_train.csv" --model_type "sbert" --model_name "all-distilroberta-v1" --text_col_name "message" --embeddings_group_id_col "message_id"
+
+python generate_embeddings_for_dlatk.py --input_file "../../data/dpo_random_neg_op_comment_v003_to_per_con_v_styl_v001_train_grpstrat_80pct.jsonl" --output_file "../../data/per_con_v_styl_v001_luar_feat_claim_train.csv" --model_type "luar" --model_name "rrivera1849/LUAR-MUD" --tokenizer_name "rrivera1849/LUAR-MUD" --text_col_name "prompt" --embeddings_group_id_col "message_id"
+python generate_embeddings_for_dlatk.py --input_file "../../data/dpo_random_neg_op_comment_v003_to_per_con_v_styl_v001_train_grpstrat_80pct.jsonl" --output_file "../../data/per_con_v_styl_v001_sbert_feat_claim_train.csv" --model_type "sbert" --model_name "all-distilroberta-v1" --text_col_name "prompt" --embeddings_group_id_col "message_id"
+
+## Test Feat Embeddings
+python generate_embeddings_for_dlatk.py --input_file "../../data/dpo_random_neg_op_comment_v003_to_per_con_v_styl_v001_test_grpstrat_20pct.jsonl" --output_file "../../data/per_con_v_styl_v001_luar_feat_message_test.csv" --model_type "luar" --model_name "rrivera1849/LUAR-MUD" --tokenizer_name "rrivera1849/LUAR-MUD" --text_col_name "message" --embeddings_group_id_col "message_id"
+python generate_embeddings_for_dlatk.py --input_file "../../data/dpo_random_neg_op_comment_v003_to_per_con_v_styl_v001_test_grpstrat_20pct.jsonl" --output_file "../../data/per_con_v_styl_v001_sbert_feat_message_test.csv" --model_type "sbert" --model_name "all-distilroberta-v1" --text_col_name "message" --embeddings_group_id_col "message_id"
+
+python generate_embeddings_for_dlatk.py --input_file "../../data/dpo_random_neg_op_comment_v003_to_per_con_v_styl_v001_test_grpstrat_20pct.jsonl" --output_file "../../data/per_con_v_styl_v001_luar_feat_claim_test.csv" --model_type "luar" --model_name "rrivera1849/LUAR-MUD" --tokenizer_name "rrivera1849/LUAR-MUD" --text_col_name "prompt" --embeddings_group_id_col "message_id"
+python generate_embeddings_for_dlatk.py --input_file "../../data/dpo_random_neg_op_comment_v003_to_per_con_v_styl_v001_test_grpstrat_20pct.jsonl" --output_file "../../data/per_con_v_styl_v001_sbert_feat_claim_test.csv" --model_type "sbert" --model_name "all-distilroberta-v1" --text_col_name "prompt" --embeddings_group_id_col "message_id"
+
+
+### SQL Commands to create feat tables
+## 
+## Train Claims Embeddings
+dlatkInterface.py -d persuasion -t per_con_v_sty_v001 -g message_id -f 'feat$LUARmsgs$per_con_v_sty_v001$message_id' 'feat$LUARclaims$per_con_v_sty_v001$message_id' 'feat$SBERTmsgs$per_con_v_sty_v001$message_id' 'feat$SBERTclaims$per_con_v_sty_v001$message_id' --outcome_table per_con_v_sty_v001 --outcomes persuaded --nfold_test_classifiers --model lr --folds 5

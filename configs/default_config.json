@@ -1,0 +1,22 @@
+{
+    "project_data_dir": "../data/",
+    "data_file": "dpo_random_neg_op_comment_v003_to_per_con_v_styl_v001.json",
+    "seed": 42,
+    "lr": 0.001,
+    "batch_size": 64,
+    "epochs": 30,
+    "luar_max_length": 512,
+    "combine_method": "average",
+    "include_prompt": false,
+    "weight_decay": 0.0,
+    "wandb_project": "thesis_per_con_v_sty_sbert_luar_lin_clf",
+    "output_dir": "../output/",
+    "only_luar": false,
+    "classifier_output_dim": 2,
+    "sbert_model_name": "all-distilroberta-v1",
+    "luar_model_name": "rrivera1849/LUAR-MUD",
+    "patience": 3,
+    "min_delta": 0.0,
+    "load_best_model": true
+  }
+  

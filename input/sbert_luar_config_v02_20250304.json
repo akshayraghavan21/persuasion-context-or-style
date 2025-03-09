@@ -1,0 +1,30 @@
+{
+  "method": "grid",
+  "metric": {
+    "name": "eval_acc",
+    "goal": "maximize"
+  },
+  "parameters": {
+    "lr": {
+      "values": [0.001, 0.01, 0.005, 0.1]
+    },
+    "weight_decay": {
+      "values": [0, 0.005]
+    },
+    "only_luar": {
+      "value": false
+    },
+    "min_delta": {
+      "values": [0.002]
+    },
+    "patience": {
+      "values": [5]
+    },
+    "sbert_model_name": {
+      "values": [
+        "all-distilroberta-v1",
+        "all-MiniLM-L6-v2"
+      ]
+    }
+  }
+}
