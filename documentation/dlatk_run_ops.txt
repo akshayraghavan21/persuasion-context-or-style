@@ -1,0 +1,3180 @@
+## DLATK: luar+sbert with claims
+(/cronus_data/conda_envs/dlatk_py36) araghavan@cronus:/chronos_data/araghavan/dlatk$ 
+./dlatkInterface.py -d persuasion -t per_con_v_sty_train_v001 -g message_id -f 'feat$LUARmsgstrain$per_con_v_sty_train_v001$message_id' 'feat$LUARclaimstrain$per_con_v_sty_train_v001$message_id' 'feat$SBERTmsgstrain$per_con_v_sty_train_v001$message_id' 'feat$SBERTclaimstrain$per_con_v_sty_train_v001$message_id' --outcome_table per_con_v_sty_train_v001 --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 0 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_sbert_w_claim_lr.metrics --csv
+[TEST COMPLETE]
+
+Wrote to: <_io.TextIOWrapper name='/chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_sbert_w_claim_lr.metrics.accuracy_data.csv' mode='w' encoding='UTF-8'>
+{'persuaded': {(): {1: {'acc': 0.6491355967506769,
+                        'auc': 0.7032795274850961,
+                        'auc_cntl_comb2': 0.0,
+                        'auc_cntl_comb2_p': 1.0,
+                        'auc_cntl_comb2_t': 0.0,
+                        'auc_p': 0.0,
+                        'auc_p_v_cntrls': 1.0,
+                        'f1': 0.6491335836102513,
+                        'f1_weighted': 0.6491335836102512,
+                        'folds_acc': 0.6488904984313666,
+                        'folds_auc': 0.7030000155863751,
+                        'folds_f1': 0.6488740240589007,
+                        'folds_mfclass_acc': 0.5,
+                        'folds_precision': 0.6489167990613225,
+                        'folds_recall': 0.6488904984313667,
+                        'folds_rho': 0.2978072954579224,
+                        'folds_rho-p': 4.264601325538486e-31,
+                        'folds_se_acc': 0.004190698394508359,
+                        'folds_se_auc': 0.004034071628285515,
+                        'folds_se_f1': 0.004195884608999869,
+                        'folds_se_mfclass_acc': 0.0,
+                        'folds_se_precision': 0.004183794020712839,
+                        'folds_se_recall': 0.004190698394508341,
+                        'folds_se_rho': 0.008374490841945937,
+                        'folds_se_rho-p': 3.814375373091357e-31,
+                        'matt_ccoef': 0.2982746162976391,
+                        'mfclass': '0',
+                        'mfclass_acc': 0.5,
+                        'num_classes': '2',
+                        'num_features': 2560,
+                        'precision': 0.6491390195666012,
+                        'recall': 0.6491355967506769,
+                        'recall_micro': 0.6491355967506769,
+                        'recall_sensitivity': 0.6467402624453239,
+                        'recall_specificity': 0.65153093105603,
+                        'test_size': 1852,
+                        'train_size': 7750,
+                        '{modelFS_desc}': 'None',
+                        '{model_desc}': 'LogisticRegression(C=0.01, '
+                                        'class_weight=None, dual=False, '
+                                        'fit_intercept=True,          '
+                                        'intercept_scaling=1, l1_ratio=None, '
+                                        'max_iter=100,          '
+                                        "multi_class='auto', n_jobs=None, "
+                                        "penalty='l2',          "
+                                        "random_state=42, solver='lbfgs', "
+                                        'tol=0.0001, verbose=0,          '
+                                        'warm_start=False)'}}}}
+
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.649, f1: 0.649, auc: 0.703 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.500)
+-------
+Settings:
+
+Database - persuasion
+Corpus - per_con_v_sty_train_v001
+Group ID - message_id
+Feature table(s) - ['feat$LUARmsgstrain$per_con_v_sty_train_v001$message_id', 'feat$LUARclaimstrain$per_con_v_sty_train_v001$message_id', 'feat$SBERTmsgstrain$per_con_v_sty_train_v001$message_id', 'feat$SBERTclaimstrain$per_con_v_sty_train_v001$message_id']
+Outcome table - per_con_v_sty_train_v001
+Outcome(s) - persuaded
+-------
+Interface Runtime: 204.24 seconds
+DLATK exits with success! A good day indeed  ¯\_(ツ)_/¯.
+
+
+## DLATK: luar+sbert without claims
+./dlatkInterface.py -d persuasion -t per_con_v_sty_train_v001 -g message_id -f 'feat$LUARmsgstrain$per_con_v_sty_train_v001$message_id' 'feat$SBERTmsgstrain$per_con_v_sty_train_v001$message_id' --outcome_table per_con_v_sty_train_v001 --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 0 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_sbert_lr.metrics --csv
+[TEST COMPLETE]
+
+Wrote to: <_io.TextIOWrapper name='/chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_sbert_lr.metrics.accuracy_data.csv' mode='w' encoding='UTF-8'>
+{'persuaded': {(): {1: {'acc': 0.6525723807540096,
+                        'auc': 0.70873628137858,
+                        'auc_cntl_comb2': 0.0,
+                        'auc_cntl_comb2_p': 1.0,
+                        'auc_cntl_comb2_t': 0.0,
+                        'auc_p': 0.0,
+                        'auc_p_v_cntrls': 1.0,
+                        'f1': 0.6525657334150139,
+                        'f1_weighted': 0.6525657334150139,
+                        'folds_acc': 0.6525204630664188,
+                        'folds_auc': 0.7084936012767403,
+                        'folds_f1': 0.6524879093609638,
+                        'folds_mfclass_acc': 0.5,
+                        'folds_precision': 0.6525769402631909,
+                        'folds_recall': 0.6525204630664188,
+                        'folds_rho': 0.3050973922011827,
+                        'folds_rho-p': 6.469299142471831e-38,
+                        'folds_se_acc': 0.002378051242044788,
+                        'folds_se_auc': 0.0038914354182692738,
+                        'folds_se_f1': 0.0023818236076093846,
+                        'folds_se_mfclass_acc': 0.0,
+                        'folds_se_precision': 0.0023722982366374077,
+                        'folds_se_recall': 0.002378051242044788,
+                        'folds_se_rho': 0.004750277887321262,
+                        'folds_se_rho-p': 5.785699200033438e-38,
+                        'matt_ccoef': 0.3051564386354709,
+                        'mfclass': '0',
+                        'mfclass_acc': 0.5,
+                        'num_classes': '2',
+                        'num_features': 1280,
+                        'precision': 0.6525840581048885,
+                        'recall': 0.6525723807540096,
+                        'recall_micro': 0.6525723807540096,
+                        'recall_sensitivity': 0.6481982920224953,
+                        'recall_specificity': 0.6569464694855238,
+                        'test_size': 1852,
+                        'train_size': 7750,
+                        '{modelFS_desc}': 'None',
+                        '{model_desc}': 'LogisticRegression(C=0.01, '
+                                        'class_weight=None, dual=False, '
+                                        'fit_intercept=True,          '
+                                        'intercept_scaling=1, l1_ratio=None, '
+                                        'max_iter=100,          '
+                                        "multi_class='auto', n_jobs=None, "
+                                        "penalty='l2',          "
+                                        "random_state=42, solver='lbfgs', "
+                                        'tol=0.0001, verbose=0,          '
+                                        'warm_start=False)'}}}}
+
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.653, f1: 0.653, auc: 0.709 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.500)
+-------
+Settings:
+
+Database - persuasion
+Corpus - per_con_v_sty_train_v001
+Group ID - message_id
+Feature table(s) - ['feat$LUARmsgstrain$per_con_v_sty_train_v001$message_id', 'feat$SBERTmsgstrain$per_con_v_sty_train_v001$message_id']
+Outcome table - per_con_v_sty_train_v001
+Outcome(s) - persuaded
+-------
+Interface Runtime: 120.96 seconds
+DLATK exits with success! A good day indeed  ¯\_(ツ)_/¯.
+
+
+
+## DLATK: luar only with claims
+./dlatkInterface.py -d persuasion -t per_con_v_sty_train_v001 -g message_id -f 'feat$LUARmsgstrain$per_con_v_sty_train_v001$message_id' 'feat$LUARclaimstrain$per_con_v_sty_train_v001$message_id' --outcome_table per_con_v_sty_train_v001 --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 0 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_w_claim_lr.metrics --csv
+[TEST COMPLETE]
+
+Wrote to: <_io.TextIOWrapper name='/chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_w_claim_lr.metrics.accuracy_data.csv' mode='w' encoding='UTF-8'>
+{'persuaded': {(): {1: {'acc': 0.6562174546969382,
+                        'auc': 0.7152182157079423,
+                        'auc_cntl_comb2': 0.0,
+                        'auc_cntl_comb2_p': 1.0,
+                        'auc_cntl_comb2_t': 0.0,
+                        'auc_p': 0.0,
+                        'auc_p_v_cntrls': 1.0,
+                        'f1': 0.656215482189801,
+                        'f1_weighted': 0.656215482189801,
+                        'folds_acc': 0.6562663488206193,
+                        'folds_auc': 0.715435334895985,
+                        'folds_f1': 0.6562494924441491,
+                        'folds_mfclass_acc': 0.5,
+                        'folds_precision': 0.6562960105171163,
+                        'folds_recall': 0.6562663488206193,
+                        'folds_rho': 0.31256235745420513,
+                        'folds_rho-p': 9.325762640644511e-39,
+                        'folds_se_acc': 0.002921684931498507,
+                        'folds_se_auc': 0.00342867372904509,
+                        'folds_se_f1': 0.002925861497846943,
+                        'folds_se_mfclass_acc': 0.0,
+                        'folds_se_precision': 0.0029149400943025315,
+                        'folds_se_recall': 0.0029216849314985106,
+                        'folds_se_rho': 0.00583662510435738,
+                        'folds_se_rho-p': 8.341168679561377e-39,
+                        'matt_ccoef': 0.3124384947251806,
+                        'mfclass': '0',
+                        'mfclass_acc': 0.5,
+                        'num_classes': '2',
+                        'num_features': 1024,
+                        'precision': 0.6562210400488141,
+                        'recall': 0.6562174546969382,
+                        'recall_micro': 0.6562174546969382,
+                        'recall_sensitivity': 0.6586127890022911,
+                        'recall_specificity': 0.653822120391585,
+                        'test_size': 1852,
+                        'train_size': 7750,
+                        '{modelFS_desc}': 'None',
+                        '{model_desc}': 'LogisticRegression(C=0.01, '
+                                        'class_weight=None, dual=False, '
+                                        'fit_intercept=True,          '
+                                        'intercept_scaling=1, l1_ratio=None, '
+                                        'max_iter=100,          '
+                                        "multi_class='auto', n_jobs=None, "
+                                        "penalty='l2',          "
+                                        "random_state=42, solver='lbfgs', "
+                                        'tol=0.0001, verbose=0,          '
+                                        'warm_start=False)'}}}}
+
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.656, f1: 0.656, auc: 0.715 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.500)
+-------
+Settings:
+
+Database - persuasion
+Corpus - per_con_v_sty_train_v001
+Group ID - message_id
+Feature table(s) - ['feat$LUARmsgstrain$per_con_v_sty_train_v001$message_id', 'feat$LUARclaimstrain$per_con_v_sty_train_v001$message_id']
+Outcome table - per_con_v_sty_train_v001
+Outcome(s) - persuaded
+-------
+Interface Runtime: 99.88 seconds
+DLATK exits with success! A good day indeed  ¯\_(ツ)_/¯.
+
+
+## DLATK: luar only without claims
+./dlatkInterface.py -d persuasion -t per_con_v_sty_train_v001 -g message_id -f 'feat$LUARmsgstrain$per_con_v_sty_train_v001$message_id' --outcome_table per_con_v_sty_train_v001 --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 0 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_lr.metrics --csv
+[TEST COMPLETE]
+
+Wrote to: <_io.TextIOWrapper name='/chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_lr.metrics.accuracy_data.csv' mode='w' encoding='UTF-8'>
+{'persuaded': {(): {1: {'acc': 0.6588210789418871,
+                        'auc': 0.7166044436083732,
+                        'auc_cntl_comb2': 0.0,
+                        'auc_cntl_comb2_p': 1.0,
+                        'auc_cntl_comb2_t': 0.0,
+                        'auc_p': 0.0,
+                        'auc_p_v_cntrls': 1.0,
+                        'f1': 0.6588151580612274,
+                        'f1_weighted': 0.6588151580612274,
+                        'folds_acc': 0.6588823946186297,
+                        'folds_auc': 0.7169957191403793,
+                        'folds_f1': 0.6588214736879942,
+                        'folds_mfclass_acc': 0.5,
+                        'folds_precision': 0.6589911494546721,
+                        'folds_recall': 0.6588823946186297,
+                        'folds_rho': 0.31787351483640663,
+                        'folds_rho-p': 1.1320367453312374e-41,
+                        'folds_se_acc': 0.0028437659239540663,
+                        'folds_se_auc': 0.0032262740940536484,
+                        'folds_se_f1': 0.002864150561213815,
+                        'folds_se_mfclass_acc': 0.0,
+                        'folds_se_precision': 0.00280930815237267,
+                        'folds_se_recall': 0.0028437659239540663,
+                        'folds_se_rho': 0.005653086358213988,
+                        'folds_se_rho-p': 1.0083210649960633e-41,
+                        'matt_ccoef': 0.31765318310528023,
+                        'mfclass': '0',
+                        'mfclass_acc': 0.5,
+                        'num_classes': '2',
+                        'num_features': 512,
+                        'precision': 0.6588321043547334,
+                        'recall': 0.6588210789418871,
+                        'recall_micro': 0.6588210789418871,
+                        'recall_sensitivity': 0.6629868777338055,
+                        'recall_specificity': 0.6546552801499688,
+                        'test_size': 1852,
+                        'train_size': 7750,
+                        '{modelFS_desc}': 'None',
+                        '{model_desc}': 'LogisticRegression(C=0.01, '
+                                        'class_weight=None, dual=False, '
+                                        'fit_intercept=True,          '
+                                        'intercept_scaling=1, l1_ratio=None, '
+                                        'max_iter=100,          '
+                                        "multi_class='auto', n_jobs=None, "
+                                        "penalty='l2',          "
+                                        "random_state=42, solver='lbfgs', "
+                                        'tol=0.0001, verbose=0,          '
+                                        'warm_start=False)'}}}}
+
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.659, f1: 0.659, auc: 0.717 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.500)
+-------
+Settings:
+
+Database - persuasion
+Corpus - per_con_v_sty_train_v001
+Group ID - message_id
+Feature table(s) - feat$LUARmsgstrain$per_con_v_sty_train_v001$message_id
+Outcome table - per_con_v_sty_train_v001
+Outcome(s) - persuaded
+-------
+Interface Runtime: 64.42 seconds
+DLATK exits with success! A good day indeed  ¯\_(ツ)_/¯.
+
+
+
+
+
+## DLATK: luar+sbert with claims - etc model
+./dlatkInterface.py -d persuasion -t per_con_v_sty_train_v001 -g message_id -f 'feat$LUARmsgstrain$per_con_v_sty_train_v001$message_id' 'feat$LUARclaimstrain$per_con_v_sty_train_v001$message_id' 'feat$SBERTmsgstrain$per_con_v_sty_train_v001$message_id' 'feat$SBERTclaimstrain$per_con_v_sty_train_v001$message_id' --outcome_table per_con_v_sty_train_v001 --outcomes persuaded --nfold_test_classifiers --model etc --folds 5 --fold_column folds_col --group_freq_thresh 0 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_sbert_w_claim_etc.metrics --csv
+[TEST COMPLETE]
+
+Wrote to: <_io.TextIOWrapper name='/chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_sbert_w_claim_etc.metrics.accuracy_data.csv' mode='w' encoding='UTF-8'>
+{'persuaded': {(): {1: {'acc': 0.6420537388044157,
+                        'auc': 0.6916773309872046,
+                        'auc_cntl_comb2': 0.0,
+                        'auc_cntl_comb2_p': 1.0,
+                        'auc_cntl_comb2_t': 0.0,
+                        'auc_p': 0.0,
+                        'auc_p_v_cntrls': 1.0,
+                        'f1': 0.6419454312477261,
+                        'f1_weighted': 0.6419454312477261,
+                        'folds_acc': 0.6417313105819644,
+                        'folds_auc': 0.6915941493981956,
+                        'folds_f1': 0.6415433399645242,
+                        'folds_mfclass_acc': 0.5,
+                        'folds_precision': 0.6420280515998729,
+                        'folds_recall': 0.6417313105819644,
+                        'folds_rho': 0.28375909587820325,
+                        'folds_rho-p': 1.9538656222103265e-31,
+                        'folds_se_acc': 0.004733438398009824,
+                        'folds_se_auc': 0.004675455430989643,
+                        'folds_se_f1': 0.0047409253829892575,
+                        'folds_se_mfclass_acc': 0.0,
+                        'folds_se_precision': 0.004739645324387772,
+                        'folds_se_recall': 0.004733438398009818,
+                        'folds_se_rho': 0.009472457981379358,
+                        'folds_se_rho-p': 1.7447888383685829e-31,
+                        'matt_ccoef': 0.28427951249547784,
+                        'mfclass': '0',
+                        'mfclass_acc': 0.5,
+                        'num_classes': '2',
+                        'num_features': 2560,
+                        'precision': 0.6422258257769883,
+                        'recall': 0.6420537388044157,
+                        'recall_micro': 0.6420537388044157,
+                        'recall_sensitivity': 0.6246615288481566,
+                        'recall_specificity': 0.6594459487606749,
+                        'test_size': 1852,
+                        'train_size': 7750,
+                        '{modelFS_desc}': 'None',
+                        '{model_desc}': 'ExtraTreesClassifier(bootstrap=False, '
+                                        'ccp_alpha=0.0, '
+                                        'class_weight=None,           '
+                                        "criterion='gini', max_depth=None, "
+                                        "max_features='auto',           "
+                                        'max_leaf_nodes=None, '
+                                        'max_samples=None,           '
+                                        'min_impurity_decrease=0.0, '
+                                        'min_impurity_split=None,           '
+                                        'min_samples_leaf=1, '
+                                        'min_samples_split=2,           '
+                                        'min_weight_fraction_leaf=0.0, '
+                                        'n_estimators=1000, '
+                                        'n_jobs=10,           oob_score=False, '
+                                        'random_state=None, '
+                                        'verbose=0,           '
+                                        'warm_start=False)'}}}}
+
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.642, f1: 0.642, auc: 0.692 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.500)
+-------
+Settings:
+
+Database - persuasion
+Corpus - per_con_v_sty_train_v001
+Group ID - message_id
+Feature table(s) - ['feat$LUARmsgstrain$per_con_v_sty_train_v001$message_id', 'feat$LUARclaimstrain$per_con_v_sty_train_v001$message_id', 'feat$SBERTmsgstrain$per_con_v_sty_train_v001$message_id', 'feat$SBERTclaimstrain$per_con_v_sty_train_v001$message_id']
+Outcome table - per_con_v_sty_train_v001
+Outcome(s) - persuaded
+-------
+Interface Runtime: 256.17 seconds
+DLATK exits with success! A good day indeed  ¯\_(ツ)_/¯.
+
+
+## DLATK: luar+sbert without claims - etc model
+./dlatkInterface.py -d persuasion -t per_con_v_sty_train_v001 -g message_id -f 'feat$LUARmsgstrain$per_con_v_sty_train_v001$message_id' 'feat$SBERTmsgstrain$per_con_v_sty_train_v001$message_id' --outcome_table per_con_v_sty_train_v001 --outcomes persuaded --nfold_test_classifiers --model etc --folds 5 --fold_column folds_col --group_freq_thresh 0 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_sbert_etc.metrics --csv
+[TEST COMPLETE]
+
+Wrote to: <_io.TextIOWrapper name='/chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_sbert_etc.metrics.accuracy_data.csv' mode='w' encoding='UTF-8'>
+{'persuaded': {(): {1: {'acc': 0.646323682566132,
+                        'auc': 0.6963501667555981,
+                        'auc_cntl_comb2': 0.0,
+                        'auc_cntl_comb2_p': 1.0,
+                        'auc_cntl_comb2_t': 0.0,
+                        'auc_p': 0.0,
+                        'auc_p_v_cntrls': 1.0,
+                        'f1': 0.6461412848146431,
+                        'f1_weighted': 0.6461412848146432,
+                        'folds_acc': 0.6464477954742771,
+                        'folds_auc': 0.6966399667402976,
+                        'folds_f1': 0.6462230885932909,
+                        'folds_mfclass_acc': 0.5,
+                        'folds_precision': 0.6468310605420193,
+                        'folds_recall': 0.6464477954742771,
+                        'folds_rho': 0.2932784583694511,
+                        'folds_rho-p': 3.0465919672770417e-33,
+                        'folds_se_acc': 0.004315741906497737,
+                        'folds_se_auc': 0.003392115710859842,
+                        'folds_se_f1': 0.004289686435598134,
+                        'folds_se_mfclass_acc': 0.0,
+                        'folds_se_precision': 0.004370878608285604,
+                        'folds_se_recall': 0.004315741906497737,
+                        'folds_se_rho': 0.008685676636239493,
+                        'folds_se_rho-p': 2.7207481828873583e-33,
+                        'matt_ccoef': 0.2929495247409086,
+                        'mfclass': '0',
+                        'mfclass_acc': 0.5,
+                        'num_classes': '2',
+                        'num_features': 1280,
+                        'precision': 0.6466259981652962,
+                        'recall': 0.646323682566132,
+                        'recall_micro': 0.646323682566132,
+                        'recall_sensitivity': 0.623620079150177,
+                        'recall_specificity': 0.669027285982087,
+                        'test_size': 1852,
+                        'train_size': 7750,
+                        '{modelFS_desc}': 'None',
+                        '{model_desc}': 'ExtraTreesClassifier(bootstrap=False, '
+                                        'ccp_alpha=0.0, '
+                                        'class_weight=None,           '
+                                        "criterion='gini', max_depth=None, "
+                                        "max_features='auto',           "
+                                        'max_leaf_nodes=None, '
+                                        'max_samples=None,           '
+                                        'min_impurity_decrease=0.0, '
+                                        'min_impurity_split=None,           '
+                                        'min_samples_leaf=1, '
+                                        'min_samples_split=2,           '
+                                        'min_weight_fraction_leaf=0.0, '
+                                        'n_estimators=1000, '
+                                        'n_jobs=10,           oob_score=False, '
+                                        'random_state=None, '
+                                        'verbose=0,           '
+                                        'warm_start=False)'}}}}
+
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.646, f1: 0.646, auc: 0.696 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.500)
+-------
+Settings:
+
+Database - persuasion
+Corpus - per_con_v_sty_train_v001
+Group ID - message_id
+Feature table(s) - ['feat$LUARmsgstrain$per_con_v_sty_train_v001$message_id', 'feat$SBERTmsgstrain$per_con_v_sty_train_v001$message_id']
+Outcome table - per_con_v_sty_train_v001
+Outcome(s) - persuaded
+-------
+Interface Runtime: 153.83 seconds
+DLATK exits with success! A good day indeed  ¯\_(ツ)_/¯.
+
+
+## DLATK: luar only with claims - etc model
+./dlatkInterface.py -d persuasion -t per_con_v_sty_train_v001 -g message_id -f 'feat$LUARmsgstrain$per_con_v_sty_train_v001$message_id' 'feat$LUARclaimstrain$per_con_v_sty_train_v001$message_id' --outcome_table per_con_v_sty_train_v001 --outcomes persuaded --nfold_test_classifiers --model etc --folds 5 --fold_column folds_col --group_freq_thresh 0 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_w_claim_etc.metrics --csv
+[TEST COMPLETE]
+
+Wrote to: <_io.TextIOWrapper name='/chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_w_claim_etc.metrics.accuracy_data.csv' mode='w' encoding='UTF-8'>
+{'persuaded': {(): {1: {'acc': 0.6423661737138097,
+                        'auc': 0.6908108300876878,
+                        'auc_cntl_comb2': 0.0,
+                        'auc_cntl_comb2_p': 1.0,
+                        'auc_cntl_comb2_t': 0.0,
+                        'auc_p': 0.0,
+                        'auc_p_v_cntrls': 1.0,
+                        'f1': 0.6423242139711911,
+                        'f1_weighted': 0.642324213971191,
+                        'folds_acc': 0.6424068928343567,
+                        'folds_auc': 0.6909727294376425,
+                        'folds_f1': 0.642251094894619,
+                        'folds_mfclass_acc': 0.5,
+                        'folds_precision': 0.6426607169464489,
+                        'folds_recall': 0.6424068928343567,
+                        'folds_rho': 0.28506744297229886,
+                        'folds_rho-p': 3.7435331226000234e-33,
+                        'folds_se_acc': 0.003516151050517849,
+                        'folds_se_auc': 0.0034168855167102806,
+                        'folds_se_f1': 0.0034990625867184796,
+                        'folds_se_mfclass_acc': 0.0,
+                        'folds_se_precision': 0.003552224047753431,
+                        'folds_se_recall': 0.003516151050517831,
+                        'folds_se_rho': 0.007067955243928901,
+                        'folds_se_rho-p': 2.07007625998396e-33,
+                        'matt_ccoef': 0.2847991761189461,
+                        'mfclass': '0',
+                        'mfclass_acc': 0.5,
+                        'num_classes': '2',
+                        'num_features': 1024,
+                        'precision': 0.6424330102477193,
+                        'recall': 0.6423661737138096,
+                        'recall_micro': 0.6423661737138097,
+                        'recall_sensitivity': 0.6315350968548219,
+                        'recall_specificity': 0.6531972505727973,
+                        'test_size': 1852,
+                        'train_size': 7750,
+                        '{modelFS_desc}': 'None',
+                        '{model_desc}': 'ExtraTreesClassifier(bootstrap=False, '
+                                        'ccp_alpha=0.0, '
+                                        'class_weight=None,           '
+                                        "criterion='gini', max_depth=None, "
+                                        "max_features='auto',           "
+                                        'max_leaf_nodes=None, '
+                                        'max_samples=None,           '
+                                        'min_impurity_decrease=0.0, '
+                                        'min_impurity_split=None,           '
+                                        'min_samples_leaf=1, '
+                                        'min_samples_split=2,           '
+                                        'min_weight_fraction_leaf=0.0, '
+                                        'n_estimators=1000, '
+                                        'n_jobs=10,           oob_score=False, '
+                                        'random_state=None, '
+                                        'verbose=0,           '
+                                        'warm_start=False)'}}}}
+
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.642, f1: 0.642, auc: 0.691 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.500)
+-------
+Settings:
+
+Database - persuasion
+Corpus - per_con_v_sty_train_v001
+Group ID - message_id
+Feature table(s) - ['feat$LUARmsgstrain$per_con_v_sty_train_v001$message_id', 'feat$LUARclaimstrain$per_con_v_sty_train_v001$message_id']
+Outcome table - per_con_v_sty_train_v001
+Outcome(s) - persuaded
+-------
+Interface Runtime: 131.20 seconds
+DLATK exits with success! A good day indeed  ¯\_(ツ)_/¯.
+
+
+
+## DLATK: luar only without claims - etc model
+./dlatkInterface.py -d persuasion -t per_con_v_sty_train_v001 -g message_id -f 'feat$LUARmsgstrain$per_con_v_sty_train_v001$message_id' --outcome_table per_con_v_sty_train_v001 --outcomes persuaded --nfold_test_classifiers --model etc --folds 5 --fold_column folds_col --group_freq_thresh 0 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_etc.metrics --csv
+[TEST COMPLETE]
+
+Wrote to: <_io.TextIOWrapper name='/chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_etc.metrics.accuracy_data.csv' mode='w' encoding='UTF-8'>
+{'persuaded': {(): {1: {'acc': 0.6456988127473443,
+                        'auc': 0.694743414430471,
+                        'auc_cntl_comb2': 0.0,
+                        'auc_cntl_comb2_p': 1.0,
+                        'auc_cntl_comb2_t': 0.0,
+                        'auc_p': 0.0,
+                        'auc_p_v_cntrls': 1.0,
+                        'f1': 0.6456358409156145,
+                        'f1_weighted': 0.6456358409156147,
+                        'folds_acc': 0.6456706836650312,
+                        'folds_auc': 0.6949665950053365,
+                        'folds_f1': 0.6455444986543644,
+                        'folds_mfclass_acc': 0.5,
+                        'folds_precision': 0.6458838312948222,
+                        'folds_recall': 0.6456706836650312,
+                        'folds_rho': 0.2915543831601341,
+                        'folds_rho-p': 1.076340573997446e-34,
+                        'folds_se_acc': 0.0034497458612004935,
+                        'folds_se_auc': 0.0032453834908065,
+                        'folds_se_f1': 0.0034320158169118932,
+                        'folds_se_mfclass_acc': 0.0,
+                        'folds_se_precision': 0.003486286278695827,
+                        'folds_se_recall': 0.0034497458612004895,
+                        'folds_se_rho': 0.006935624883464494,
+                        'folds_se_rho-p': 9.005916262301863e-35,
+                        'matt_ccoef': 0.2915012456271017,
+                        'mfclass': '0',
+                        'mfclass_acc': 0.5,
+                        'num_classes': '2',
+                        'num_features': 512,
+                        'precision': 0.6458024513032634,
+                        'recall': 0.6456988127473443,
+                        'recall_micro': 0.6456988127473443,
+                        'recall_sensitivity': 0.6323682566132056,
+                        'recall_specificity': 0.659029368881483,
+                        'test_size': 1852,
+                        'train_size': 7750,
+                        '{modelFS_desc}': 'None',
+                        '{model_desc}': 'ExtraTreesClassifier(bootstrap=False, '
+                                        'ccp_alpha=0.0, '
+                                        'class_weight=None,           '
+                                        "criterion='gini', max_depth=None, "
+                                        "max_features='auto',           "
+                                        'max_leaf_nodes=None, '
+                                        'max_samples=None,           '
+                                        'min_impurity_decrease=0.0, '
+                                        'min_impurity_split=None,           '
+                                        'min_samples_leaf=1, '
+                                        'min_samples_split=2,           '
+                                        'min_weight_fraction_leaf=0.0, '
+                                        'n_estimators=1000, '
+                                        'n_jobs=10,           oob_score=False, '
+                                        'random_state=None, '
+                                        'verbose=0,           '
+                                        'warm_start=False)'}}}}
+
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.646, f1: 0.646, auc: 0.695 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.500)
+-------
+Settings:
+
+Database - persuasion
+Corpus - per_con_v_sty_train_v001
+Group ID - message_id
+Feature table(s) - feat$LUARmsgstrain$per_con_v_sty_train_v001$message_id
+Outcome table - per_con_v_sty_train_v001
+Outcome(s) - persuaded
+-------
+Interface Runtime: 88.13 seconds
+DLATK exits with success! A good day indeed  ¯\_(ツ)_/¯.
+
+
+
+
+
+#### Running lr with Group Freq Threshold 100
+## DLATK: luar+sbert with claims
+./dlatkInterface.py -d persuasion -t per_con_v_sty_train_v001 -g message_id -f 'feat$LUARmsgstrain$per_con_v_sty_train_v001$message_id' 'feat$LUARclaimstrain$per_con_v_sty_train_v001$message_id' 'feat$SBERTmsgstrain$per_con_v_sty_train_v001$message_id' 'feat$SBERTclaimstrain$per_con_v_sty_train_v001$message_id' --outcome_table per_con_v_sty_train_v001 --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_sbert_w_claim_lr_gft100.metrics --csv
+[TEST COMPLETE]
+
+Wrote to: <_io.TextIOWrapper name='/chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_sbert_w_claim_lr_gft100.metrics.accuracy_data.csv' mode='w' encoding='UTF-8'>
+{'persuaded': {(): {1: {'acc': 0.6218563415958024,
+                        'auc': 0.6267807265967904,
+                        'auc_cntl_comb2': 0.0,
+                        'auc_cntl_comb2_p': 1.0,
+                        'auc_cntl_comb2_t': 0.0,
+                        'auc_p': 0.0,
+                        'auc_p_v_cntrls': 1.0,
+                        'f1': 0.5835131276275085,
+                        'f1_weighted': 0.6139910669356395,
+                        'folds_acc': 0.6215057606145397,
+                        'folds_auc': 0.6263183378667878,
+                        'folds_f1': 0.5830062268267335,
+                        'folds_mfclass_acc': 0.6204332031470415,
+                        'folds_precision': 0.5892600117090412,
+                        'folds_recall': 0.5821426400933728,
+                        'folds_rho': 0.17125122754764172,
+                        'folds_rho-p': 8.171532748033019e-07,
+                        'folds_se_acc': 0.00636384938282245,
+                        'folds_se_auc': 0.004925375683828409,
+                        'folds_se_f1': 0.0052876967735605305,
+                        'folds_se_mfclass_acc': 0.005617520149889447,
+                        'folds_se_precision': 0.0051633911138540935,
+                        'folds_se_recall': 0.005000153961682519,
+                        'folds_se_rho': 0.010155417773013702,
+                        'folds_se_rho-p': 6.119542726143592e-07,
+                        'matt_ccoef': 0.17217715315406373,
+                        'mfclass': '1',
+                        'mfclass_acc': 0.6205898317351185,
+                        'num_classes': '2',
+                        'num_features': 2560,
+                        'precision': 0.5897635244720913,
+                        'recall': 0.5825640822443836,
+                        'recall_micro': 0.6218563415958024,
+                        'recall_sensitivity': 0.7454810495626822,
+                        'recall_specificity': 0.41964711492608486,
+                        'test_size': 1057,
+                        'train_size': 4470,
+                        '{modelFS_desc}': 'None',
+                        '{model_desc}': 'LogisticRegression(C=0.01, '
+                                        'class_weight=None, dual=False, '
+                                        'fit_intercept=True,          '
+                                        'intercept_scaling=1, l1_ratio=None, '
+                                        'max_iter=100,          '
+                                        "multi_class='auto', n_jobs=None, "
+                                        "penalty='l2',          "
+                                        "random_state=42, solver='lbfgs', "
+                                        'tol=0.0001, verbose=0,          '
+                                        'warm_start=False)'}}}}
+
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.622, f1: 0.584, auc: 0.627 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+-------
+Settings:
+
+Database - persuasion
+Corpus - per_con_v_sty_train_v001
+Group ID - message_id
+Feature table(s) - ['feat$LUARmsgstrain$per_con_v_sty_train_v001$message_id', 'feat$LUARclaimstrain$per_con_v_sty_train_v001$message_id', 'feat$SBERTmsgstrain$per_con_v_sty_train_v001$message_id', 'feat$SBERTclaimstrain$per_con_v_sty_train_v001$message_id']
+Outcome table - per_con_v_sty_train_v001
+Outcome(s) - persuaded
+-------
+Interface Runtime: 155.24 seconds
+DLATK exits with success! A good day indeed  ¯\_(ツ)_/¯.
+
+
+## DLATK: luar+sbert without claims
+./dlatkInterface.py -d persuasion -t per_con_v_sty_train_v001 -g message_id -f 'feat$LUARmsgstrain$per_con_v_sty_train_v001$message_id' 'feat$SBERTmsgstrain$per_con_v_sty_train_v001$message_id' --outcome_table per_con_v_sty_train_v001 --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_sbert_lr_gft100.metrics --csv
+[TEST COMPLETE]
+
+Wrote to: <_io.TextIOWrapper name='/chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_sbert_lr_gft100.metrics.accuracy_data.csv' mode='w' encoding='UTF-8'>
+{'persuaded': {(): {1: {'acc': 0.6356070200832278,
+                        'auc': 0.629422429098351,
+                        'auc_cntl_comb2': 0.0,
+                        'auc_cntl_comb2_p': 1.0,
+                        'auc_cntl_comb2_t': 0.0,
+                        'auc_p': 0.0,
+                        'auc_p_v_cntrls': 1.0,
+                        'f1': 0.59090555608641,
+                        'f1_weighted': 0.6235202531349914,
+                        'folds_acc': 0.635241197444616,
+                        'folds_auc': 0.6292712286788491,
+                        'folds_f1': 0.5905312174823215,
+                        'folds_mfclass_acc': 0.6204332031470415,
+                        'folds_precision': 0.6029107855520157,
+                        'folds_recall': 0.590172601645699,
+                        'folds_rho': 0.19264247678382365,
+                        'folds_rho-p': 2.0767542984091018e-08,
+                        'folds_se_acc': 0.005830527505075178,
+                        'folds_se_auc': 0.006614457576361388,
+                        'folds_se_f1': 0.005984501915745643,
+                        'folds_se_mfclass_acc': 0.005617520149889447,
+                        'folds_se_precision': 0.005374843566536702,
+                        'folds_se_recall': 0.0053129310649640046,
+                        'folds_se_rho': 0.010651432140829102,
+                        'folds_se_rho-p': 1.1641240304492107e-08,
+                        'matt_ccoef': 0.19293907619022338,
+                        'mfclass': '1',
+                        'mfclass_acc': 0.6205898317351185,
+                        'num_classes': '2',
+                        'num_features': 1280,
+                        'precision': 0.6031585463799718,
+                        'recall': 0.5902142586035026,
+                        'recall_micro': 0.6356070200832278,
+                        'recall_sensitivity': 0.7784256559766763,
+                        'recall_specificity': 0.402002861230329,
+                        'test_size': 1057,
+                        'train_size': 4470,
+                        '{modelFS_desc}': 'None',
+                        '{model_desc}': 'LogisticRegression(C=0.01, '
+                                        'class_weight=None, dual=False, '
+                                        'fit_intercept=True,          '
+                                        'intercept_scaling=1, l1_ratio=None, '
+                                        'max_iter=100,          '
+                                        "multi_class='auto', n_jobs=None, "
+                                        "penalty='l2',          "
+                                        "random_state=42, solver='lbfgs', "
+                                        'tol=0.0001, verbose=0,          '
+                                        'warm_start=False)'}}}}
+
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.636, f1: 0.591, auc: 0.629 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+-------
+Settings:
+
+Database - persuasion
+Corpus - per_con_v_sty_train_v001
+Group ID - message_id
+Feature table(s) - ['feat$LUARmsgstrain$per_con_v_sty_train_v001$message_id', 'feat$SBERTmsgstrain$per_con_v_sty_train_v001$message_id']
+Outcome table - per_con_v_sty_train_v001
+Outcome(s) - persuaded
+-------
+Interface Runtime: 89.61 seconds
+DLATK exits with success! A good day indeed  ¯\_(ツ)_/¯.
+
+
+## DLATK: luar only with claims
+./dlatkInterface.py -d persuasion -t per_con_v_sty_train_v001 -g message_id -f 'feat$LUARmsgstrain$per_con_v_sty_train_v001$message_id' 'feat$LUARclaimstrain$per_con_v_sty_train_v001$message_id' --outcome_table per_con_v_sty_train_v001 --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_w_claim_lr_gft100.metrics --csv
+[TEST COMPLETE]
+
+Wrote to: <_io.TextIOWrapper name='/chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_w_claim_lr_gft100.metrics.accuracy_data.csv' mode='w' encoding='UTF-8'>
+{'persuaded': {(): {1: {'acc': 0.6480911887099693,
+                        'auc': 0.6481794761640605,
+                        'auc_cntl_comb2': 0.0,
+                        'auc_cntl_comb2_p': 1.0,
+                        'auc_cntl_comb2_t': 0.0,
+                        'auc_p': 0.0,
+                        'auc_p_v_cntrls': 1.0,
+                        'f1': 0.5934654368389308,
+                        'f1_weighted': 0.6294062696346338,
+                        'folds_acc': 0.6482865745879651,
+                        'folds_auc': 0.648394917585041,
+                        'folds_f1': 0.593648935699581,
+                        'folds_mfclass_acc': 0.6204332031470415,
+                        'folds_precision': 0.6177977809589195,
+                        'folds_recall': 0.5947136702793249,
+                        'folds_rho': 0.21122429721196861,
+                        'folds_rho-p': 3.9563701734948533e-10,
+                        'folds_se_acc': 0.006810079942670346,
+                        'folds_se_auc': 0.0044760436825864135,
+                        'folds_se_f1': 0.006491757036131345,
+                        'folds_se_mfclass_acc': 0.005617520149889447,
+                        'folds_se_precision': 0.006547959470763609,
+                        'folds_se_recall': 0.005467873969722366,
+                        'folds_se_rho': 0.011881694477810442,
+                        'folds_se_rho-p': 2.1837742507087173e-10,
+                        'matt_ccoef': 0.2101187936844568,
+                        'mfclass': '1',
+                        'mfclass_acc': 0.6205898317351185,
+                        'num_classes': '2',
+                        'num_features': 1024,
+                        'precision': 0.6171091845964511,
+                        'recall': 0.594249455351321,
+                        'recall_micro': 0.6480911887099693,
+                        'recall_sensitivity': 0.8174927113702624,
+                        'recall_specificity': 0.3710061993323796,
+                        'test_size': 1057,
+                        'train_size': 4470,
+                        '{modelFS_desc}': 'None',
+                        '{model_desc}': 'LogisticRegression(C=0.01, '
+                                        'class_weight=None, dual=False, '
+                                        'fit_intercept=True,          '
+                                        'intercept_scaling=1, l1_ratio=None, '
+                                        'max_iter=100,          '
+                                        "multi_class='auto', n_jobs=None, "
+                                        "penalty='l2',          "
+                                        "random_state=42, solver='lbfgs', "
+                                        'tol=0.0001, verbose=0,          '
+                                        'warm_start=False)'}}}}
+
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.648, f1: 0.593, auc: 0.648 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+-------
+Settings:
+
+Database - persuasion
+Corpus - per_con_v_sty_train_v001
+Group ID - message_id
+Feature table(s) - ['feat$LUARmsgstrain$per_con_v_sty_train_v001$message_id', 'feat$LUARclaimstrain$per_con_v_sty_train_v001$message_id']
+Outcome table - per_con_v_sty_train_v001
+Outcome(s) - persuaded
+-------
+Interface Runtime: 76.30 seconds
+DLATK exits with success! A good day indeed  ¯\_(ツ)_/¯.
+
+
+## DLATK: luar only without claims
+./dlatkInterface.py -d persuasion -t per_con_v_sty_train_v001 -g message_id -f 'feat$LUARmsgstrain$per_con_v_sty_train_v001$message_id' --outcome_table per_con_v_sty_train_v001 --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_lr_gft100.metrics --csv
+[TEST COMPLETE]
+
+Wrote to: <_io.TextIOWrapper name='/chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_lr_gft100.metrics.accuracy_data.csv' mode='w' encoding='UTF-8'>
+{'persuaded': {(): {1: {'acc': 0.6480911887099693,
+                        'auc': 0.6540500034062265,
+                        'auc_cntl_comb2': 0.0,
+                        'auc_cntl_comb2_p': 1.0,
+                        'auc_cntl_comb2_t': 0.0,
+                        'auc_p': 0.0,
+                        'auc_p_v_cntrls': 1.0,
+                        'f1': 0.5872497993364906,
+                        'f1_weighted': 0.6254692018034307,
+                        'folds_acc': 0.6482045219583046,
+                        'folds_auc': 0.6542419159934006,
+                        'folds_f1': 0.5872601217085452,
+                        'folds_mfclass_acc': 0.6204332031470415,
+                        'folds_precision': 0.6172484894366388,
+                        'folds_recall': 0.5900550486926687,
+                        'folds_rho': 0.20548609928312683,
+                        'folds_rho-p': 1.2079383061502619e-10,
+                        'folds_se_acc': 0.0033771013197057037,
+                        'folds_se_auc': 0.0031081517886642107,
+                        'folds_se_f1': 0.004931963650463467,
+                        'folds_se_mfclass_acc': 0.005617520149889447,
+                        'folds_se_precision': 0.005072192939528832,
+                        'folds_se_recall': 0.004438298078475864,
+                        'folds_se_rho': 0.009402324641756473,
+                        'folds_se_rho-p': 5.5497205490786715e-11,
+                        'matt_ccoef': 0.20504623565289284,
+                        'mfclass': '1',
+                        'mfclass_acc': 0.6205898317351185,
+                        'num_classes': '2',
+                        'num_features': 512,
+                        'precision': 0.617046773261777,
+                        'recall': 0.58980161858326,
+                        'recall_micro': 0.6480911887099693,
+                        'recall_sensitivity': 0.8314868804664723,
+                        'recall_specificity': 0.3481163567000477,
+                        'test_size': 1057,
+                        'train_size': 4470,
+                        '{modelFS_desc}': 'None',
+                        '{model_desc}': 'LogisticRegression(C=0.01, '
+                                        'class_weight=None, dual=False, '
+                                        'fit_intercept=True,          '
+                                        'intercept_scaling=1, l1_ratio=None, '
+                                        'max_iter=100,          '
+                                        "multi_class='auto', n_jobs=None, "
+                                        "penalty='l2',          "
+                                        "random_state=42, solver='lbfgs', "
+                                        'tol=0.0001, verbose=0,          '
+                                        'warm_start=False)'}}}}
+
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.648, f1: 0.587, auc: 0.654 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+-------
+Settings:
+
+Database - persuasion
+Corpus - per_con_v_sty_train_v001
+Group ID - message_id
+Feature table(s) - feat$LUARmsgstrain$per_con_v_sty_train_v001$message_id
+Outcome table - per_con_v_sty_train_v001
+Outcome(s) - persuaded
+-------
+Interface Runtime: 41.46 seconds
+DLATK exits with success! A good day indeed  ¯\_(ツ)_/¯.
+
+
+
+
+
+#### Running lr with Group Freq Threshold 100 and hyperparam Search of Ridge Regression
+####    Made change to /cronus_data/araghavan/dlatk/dlatk/classifyPredictor.py of hyperparam search of ridge regression
+## DLATK: luar+sbert with claims
+./dlatkInterface.py -d persuasion -t per_con_v_sty_train_v001 -g message_id -f 'feat$LUARmsgstrain$per_con_v_sty_train_v001$message_id' 'feat$LUARclaimstrain$per_con_v_sty_train_v001$message_id' 'feat$SBERTmsgstrain$per_con_v_sty_train_v001$message_id' 'feat$SBERTclaimstrain$per_con_v_sty_train_v001$message_id' --outcome_table per_con_v_sty_train_v001 --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_sbert_w_claim_lr_gft100_hs_ridgereg.metrics --csv
+[TEST COMPLETE]
+
+Wrote to: <_io.TextIOWrapper name='/chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_sbert_w_claim_lr_gft100_hs_ridgereg.metrics.accuracy_data.csv' mode='w' encoding='UTF-8'>
+{'persuaded': {(): {1: {'acc': 0.6509860683915325,
+                        'auc': 0.6506065168761149,
+                        'auc_cntl_comb2': 0.0,
+                        'auc_cntl_comb2_p': 1.0,
+                        'auc_cntl_comb2_t': 0.0,
+                        'auc_p': 0.0,
+                        'auc_p_v_cntrls': 1.0,
+                        'f1': 0.5942984256131224,
+                        'f1_weighted': 0.6308737536981275,
+                        'folds_acc': 0.6507520316851132,
+                        'folds_auc': 0.6508442082009711,
+                        'folds_f1': 0.5938604261285059,
+                        'folds_mfclass_acc': 0.6204332031470415,
+                        'folds_precision': 0.6211005785241215,
+                        'folds_recall': 0.5955059425978131,
+                        'folds_rho': 0.2150361327440647,
+                        'folds_rho-p': 7.763585647079795e-11,
+                        'folds_se_acc': 0.003366902840853581,
+                        'folds_se_auc': 0.005634762927859297,
+                        'folds_se_f1': 0.004465329118579205,
+                        'folds_se_mfclass_acc': 0.005617520149889447,
+                        'folds_se_precision': 0.004018899033928417,
+                        'folds_se_recall': 0.0036884912794681248,
+                        'folds_se_rho': 0.007420043079033279,
+                        'folds_se_rho-p': 6.285999915764246e-11,
+                        'matt_ccoef': 0.21489789202898868,
+                        'mfclass': '1',
+                        'mfclass_acc': 0.6205898317351185,
+                        'num_classes': '2',
+                        'num_features': 2560,
+                        'precision': 0.6209311114601963,
+                        'recall': 0.5954698576753407,
+                        'recall_micro': 0.6509860683915325,
+                        'recall_sensitivity': 0.8256559766763848,
+                        'recall_specificity': 0.3652837386742966,
+                        'test_size': 1057,
+                        'train_size': 4470,
+                        '{modelFS_desc}': 'None',
+                        '{model_desc}': 'LogisticRegression(C=0.001, '
+                                        'class_weight=None, dual=False, '
+                                        'fit_intercept=True,          '
+                                        'intercept_scaling=1, l1_ratio=None, '
+                                        'max_iter=100,          '
+                                        "multi_class='auto', n_jobs=None, "
+                                        "penalty='l2',          "
+                                        "random_state=42, solver='lbfgs', "
+                                        'tol=0.0001, verbose=0,          '
+                                        'warm_start=False)'}}}}
+
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.651, f1: 0.594, auc: 0.651 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+-------
+Settings:
+
+Database - persuasion
+Corpus - per_con_v_sty_train_v001
+Group ID - message_id
+Feature table(s) - ['feat$LUARmsgstrain$per_con_v_sty_train_v001$message_id', 'feat$LUARclaimstrain$per_con_v_sty_train_v001$message_id', 'feat$SBERTmsgstrain$per_con_v_sty_train_v001$message_id', 'feat$SBERTclaimstrain$per_con_v_sty_train_v001$message_id']
+Outcome table - per_con_v_sty_train_v001
+Outcome(s) - persuaded
+-------
+Interface Runtime: 131.81 seconds
+DLATK exits with success! A good day indeed  ¯\_(ツ)_/¯.
+
+
+## DLATK: luar+sbert without claims
+./dlatkInterface.py -d persuasion -t per_con_v_sty_train_v001 -g message_id -f 'feat$LUARmsgstrain$per_con_v_sty_train_v001$message_id' 'feat$SBERTmsgstrain$per_con_v_sty_train_v001$message_id' --outcome_table per_con_v_sty_train_v001 --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_sbert_lr_gft100_hs_ridgereg.metrics --csv
+[TEST COMPLETE]
+
+Wrote to: <_io.TextIOWrapper name='/chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_sbert_lr_gft100_hs_ridgereg.metrics.accuracy_data.csv' mode='w' encoding='UTF-8'>
+{'persuaded': {(): {1: {'acc': 0.6504432784512394,
+                        'auc': 0.6527459052290445,
+                        'auc_cntl_comb2': 0.0,
+                        'auc_cntl_comb2_p': 1.0,
+                        'auc_cntl_comb2_t': 0.0,
+                        'auc_p': 0.0,
+                        'auc_p_v_cntrls': 1.0,
+                        'f1': 0.5874998377529432,
+                        'f1_weighted': 0.6263620917829705,
+                        'folds_acc': 0.6501537247793749,
+                        'folds_auc': 0.6527269220726557,
+                        'folds_f1': 0.5871077098207124,
+                        'folds_mfclass_acc': 0.6204332031470415,
+                        'folds_precision': 0.6203423557687521,
+                        'folds_recall': 0.5905271656864304,
+                        'folds_rho': 0.20871820867677848,
+                        'folds_rho-p': 1.6040290090433396e-08,
+                        'folds_se_acc': 0.005131418922843871,
+                        'folds_se_auc': 0.005526005364258546,
+                        'folds_se_f1': 0.0058087469365471454,
+                        'folds_se_mfclass_acc': 0.005617520149889447,
+                        'folds_se_precision': 0.00603381566904115,
+                        'folds_se_recall': 0.004828132641990383,
+                        'folds_se_rho': 0.010671932992086765,
+                        'folds_se_rho-p': 1.4345684080773361e-08,
+                        'matt_ccoef': 0.2089091929543704,
+                        'mfclass': '1',
+                        'mfclass_acc': 0.6205898317351185,
+                        'num_classes': '2',
+                        'num_features': 1280,
+                        'precision': 0.6204481810841029,
+                        'recall': 0.5905847031230231,
+                        'recall_micro': 0.6504432784512394,
+                        'recall_sensitivity': 0.8387755102040816,
+                        'recall_specificity': 0.3423938960419647,
+                        'test_size': 1057,
+                        'train_size': 4470,
+                        '{modelFS_desc}': 'None',
+                        '{model_desc}': 'LogisticRegression(C=0.001, '
+                                        'class_weight=None, dual=False, '
+                                        'fit_intercept=True,          '
+                                        'intercept_scaling=1, l1_ratio=None, '
+                                        'max_iter=100,          '
+                                        "multi_class='auto', n_jobs=None, "
+                                        "penalty='l2',          "
+                                        "random_state=42, solver='lbfgs', "
+                                        'tol=0.0001, verbose=0,          '
+                                        'warm_start=False)'}}}}
+
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.650, f1: 0.587, auc: 0.653 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+-------
+Settings:
+
+Database - persuasion
+Corpus - per_con_v_sty_train_v001
+Group ID - message_id
+Feature table(s) - ['feat$LUARmsgstrain$per_con_v_sty_train_v001$message_id', 'feat$SBERTmsgstrain$per_con_v_sty_train_v001$message_id']
+Outcome table - per_con_v_sty_train_v001
+Outcome(s) - persuaded
+-------
+Interface Runtime: 73.88 seconds
+DLATK exits with success! A good day indeed  ¯\_(ツ)_/¯.
+
+
+## DLATK: luar only with claims
+./dlatkInterface.py -d persuasion -t per_con_v_sty_train_v001 -g message_id -f 'feat$LUARmsgstrain$per_con_v_sty_train_v001$message_id' 'feat$LUARclaimstrain$per_con_v_sty_train_v001$message_id' --outcome_table per_con_v_sty_train_v001 --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_w_claim_lr_gft100_hs_ridgereg.metrics --csv
+[TEST COMPLETE]
+
+Wrote to: <_io.TextIOWrapper name='/chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_w_claim_lr_gft100_hs_ridgereg.metrics.accuracy_data.csv' mode='w' encoding='UTF-8'>
+{'persuaded': {(): {1: {'acc': 0.6527953681925095,
+                        'auc': 0.6551383275566511,
+                        'auc_cntl_comb2': 0.0,
+                        'auc_cntl_comb2_p': 1.0,
+                        'auc_cntl_comb2_t': 0.0,
+                        'auc_p': 0.0,
+                        'auc_p_v_cntrls': 1.0,
+                        'f1': 0.5785346974800131,
+                        'f1_weighted': 0.6212025742299085,
+                        'folds_acc': 0.6528107825173116,
+                        'folds_auc': 0.6553853140280761,
+                        'folds_f1': 0.5783631299890281,
+                        'folds_mfclass_acc': 0.6204332031470415,
+                        'folds_precision': 0.6258123506174208,
+                        'folds_recall': 0.5859231227247704,
+                        'folds_rho': 0.207871148705331,
+                        'folds_rho-p': 6.995334210914478e-10,
+                        'folds_se_acc': 0.005337021312292816,
+                        'folds_se_auc': 0.00437586561437578,
+                        'folds_se_f1': 0.007222255489468067,
+                        'folds_se_mfclass_acc': 0.005617520149889447,
+                        'folds_se_precision': 0.006106146928158445,
+                        'folds_se_recall': 0.005546629272416713,
+                        'folds_se_rho': 0.011588733848625224,
+                        'folds_se_rho-p': 6.12817164067899e-10,
+                        'matt_ccoef': 0.20741483906240452,
+                        'mfclass': '1',
+                        'mfclass_acc': 0.6205898317351185,
+                        'num_classes': '2',
+                        'num_features': 1024,
+                        'precision': 0.6256119374978328,
+                        'recall': 0.5856226651707075,
+                        'recall_micro': 0.6527953681925095,
+                        'recall_sensitivity': 0.8641399416909621,
+                        'recall_specificity': 0.307105388650453,
+                        'test_size': 1057,
+                        'train_size': 4470,
+                        '{modelFS_desc}': 'None',
+                        '{model_desc}': 'LogisticRegression(C=0.001, '
+                                        'class_weight=None, dual=False, '
+                                        'fit_intercept=True,          '
+                                        'intercept_scaling=1, l1_ratio=None, '
+                                        'max_iter=100,          '
+                                        "multi_class='auto', n_jobs=None, "
+                                        "penalty='l2',          "
+                                        "random_state=42, solver='lbfgs', "
+                                        'tol=0.0001, verbose=0,          '
+                                        'warm_start=False)'}}}}
+
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.653, f1: 0.579, auc: 0.655 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+-------
+Settings:
+
+Database - persuasion
+Corpus - per_con_v_sty_train_v001
+Group ID - message_id
+Feature table(s) - ['feat$LUARmsgstrain$per_con_v_sty_train_v001$message_id', 'feat$LUARclaimstrain$per_con_v_sty_train_v001$message_id']
+Outcome table - per_con_v_sty_train_v001
+Outcome(s) - persuaded
+-------
+Interface Runtime: 65.21 seconds
+DLATK exits with success! A good day indeed  ¯\_(ツ)_/¯.
+
+
+## DLATK: luar only without claims
+./dlatkInterface.py -d persuasion -t per_con_v_sty_train_v001 -g message_id -f 'feat$LUARmsgstrain$per_con_v_sty_train_v001$message_id' --outcome_table per_con_v_sty_train_v001 --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_lr_gft100_hs_ridgereg.metrics --csv
+[TEST COMPLETE]
+
+Wrote to: <_io.TextIOWrapper name='/chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_lr_gft100_hs_ridgereg.metrics.accuracy_data.csv' mode='w' encoding='UTF-8'>
+{'persuaded': {(): {1: {'acc': 0.6520716482721187,
+                        'auc': 0.65840774895693,
+                        'auc_cntl_comb2': 0.0,
+                        'auc_cntl_comb2_p': 1.0,
+                        'auc_cntl_comb2_t': 0.0,
+                        'auc_p': 0.0,
+                        'auc_p_v_cntrls': 1.0,
+                        'f1': 0.5743299657150547,
+                        'f1_weighted': 0.6182036587076738,
+                        'folds_acc': 0.652094312209031,
+                        'folds_auc': 0.6583808947687604,
+                        'folds_f1': 0.5742650692009759,
+                        'folds_mfclass_acc': 0.6204332031470415,
+                        'folds_precision': 0.6253895526095584,
+                        'folds_recall': 0.583101779451411,
+                        'folds_rho': 0.20412318622355397,
+                        'folds_rho-p': 2.7243411949695277e-09,
+                        'folds_se_acc': 0.0037164065988339575,
+                        'folds_se_auc': 0.003319794486820259,
+                        'folds_se_f1': 0.0058887691374101625,
+                        'folds_se_mfclass_acc': 0.005617520149889447,
+                        'folds_se_precision': 0.007496035587811145,
+                        'folds_se_recall': 0.005219146293508711,
+                        'folds_se_rho': 0.012378322375523927,
+                        'folds_se_rho-p': 1.515593487170034e-09,
+                        'matt_ccoef': 0.20378397140971738,
+                        'mfclass': '1',
+                        'mfclass_acc': 0.6205898317351185,
+                        'num_classes': '2',
+                        'num_features': 512,
+                        'precision': 0.625222375652323,
+                        'recall': 0.5829083196736695,
+                        'recall_micro': 0.6520716482721187,
+                        'recall_sensitivity': 0.8696793002915452,
+                        'recall_specificity': 0.296137339055794,
+                        'test_size': 1057,
+                        'train_size': 4470,
+                        '{modelFS_desc}': 'None',
+                        '{model_desc}': 'LogisticRegression(C=0.001, '
+                                        'class_weight=None, dual=False, '
+                                        'fit_intercept=True,          '
+                                        'intercept_scaling=1, l1_ratio=None, '
+                                        'max_iter=100,          '
+                                        "multi_class='auto', n_jobs=None, "
+                                        "penalty='l2',          "
+                                        "random_state=42, solver='lbfgs', "
+                                        'tol=0.0001, verbose=0,          '
+                                        'warm_start=False)'}}}}
+
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.652, f1: 0.574, auc: 0.658 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+-------
+Settings:
+
+Database - persuasion
+Corpus - per_con_v_sty_train_v001
+Group ID - message_id
+Feature table(s) - feat$LUARmsgstrain$per_con_v_sty_train_v001$message_id
+Outcome table - per_con_v_sty_train_v001
+Outcome(s) - persuaded
+-------
+Interface Runtime: 42.42 seconds
+DLATK exits with success! A good day indeed  ¯\_(ツ)_/¯.
+
+
+
+#### Running etc with Group Freq Threshold 100
+####    Made change to /cronus_data/araghavan/dlatk/dlatk/classifyPredictor.py of hyperparam search of ridge regression
+## DLATK: luar+sbert with claims
+./dlatkInterface.py -d persuasion -t per_con_v_sty_train_v001 -g message_id -f 'feat$LUARmsgstrain$per_con_v_sty_train_v001$message_id' 'feat$LUARclaimstrain$per_con_v_sty_train_v001$message_id' 'feat$SBERTmsgstrain$per_con_v_sty_train_v001$message_id' 'feat$SBERTclaimstrain$per_con_v_sty_train_v001$message_id' --outcome_table per_con_v_sty_train_v001 --outcomes persuaded --nfold_test_classifiers --model etc --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_sbert_w_claim_etc_gft100.metrics --csv
+[TEST COMPLETE]
+
+Wrote to: <_io.TextIOWrapper name='/chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_sbert_w_claim_etc_gft100.metrics.accuracy_data.csv' mode='w' encoding='UTF-8'>
+{'persuaded': {(): {1: {'acc': 0.6229419214763886,
+                        'auc': 0.6480040902524917,
+                        'auc_cntl_comb2': 0.0,
+                        'auc_cntl_comb2_p': 1.0,
+                        'auc_cntl_comb2_t': 0.0,
+                        'auc_p': 0.0,
+                        'auc_p_v_cntrls': 1.0,
+                        'f1': 0.39273086550972935,
+                        'f1_weighted': 0.48290757359187947,
+                        'folds_acc': 0.6227989015594593,
+                        'folds_auc': 0.648624505464085,
+                        'folds_f1': 0.39268178615099425,
+                        'folds_mfclass_acc': 0.6204332031470415,
+                        'folds_precision': 0.6944461564371528,
+                        'folds_recall': 0.5037892789456536,
+                        'folds_rho': 0.053690273324250734,
+                        'folds_rho-p': 0.14449326408033406,
+                        'folds_se_acc': 0.005487552565017365,
+                        'folds_se_auc': 0.00408973594392165,
+                        'folds_se_f1': 0.00277971300734204,
+                        'folds_se_mfclass_acc': 0.005617520149889447,
+                        'folds_se_precision': 0.03600413306952501,
+                        'folds_se_recall': 0.0006399822457640446,
+                        'folds_se_rho': 0.008649822600242068,
+                        'folds_se_rho-p': 0.08395634411106954,
+                        'matt_ccoef': 0.05217331546777398,
+                        'mfclass': '1',
+                        'mfclass_acc': 0.6205898317351185,
+                        'num_classes': '2',
+                        'num_features': 2560,
+                        'precision': 0.6815521885521885,
+                        'recall': 0.5037483090518038,
+                        'recall_micro': 0.6229419214763886,
+                        'recall_sensitivity': 0.9979591836734694,
+                        'recall_specificity': 0.009537434430138292,
+                        'test_size': 1057,
+                        'train_size': 4470,
+                        '{modelFS_desc}': 'None',
+                        '{model_desc}': 'ExtraTreesClassifier(bootstrap=False, '
+                                        'ccp_alpha=0.0, '
+                                        'class_weight=None,           '
+                                        "criterion='gini', max_depth=None, "
+                                        "max_features='auto',           "
+                                        'max_leaf_nodes=None, '
+                                        'max_samples=None,           '
+                                        'min_impurity_decrease=0.0, '
+                                        'min_impurity_split=None,           '
+                                        'min_samples_leaf=1, '
+                                        'min_samples_split=2,           '
+                                        'min_weight_fraction_leaf=0.0, '
+                                        'n_estimators=1000, '
+                                        'n_jobs=10,           oob_score=False, '
+                                        'random_state=None, '
+                                        'verbose=0,           '
+                                        'warm_start=False)'}}}}
+
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.623, f1: 0.393, auc: 0.648 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+-------
+Settings:
+
+Database - persuasion
+Corpus - per_con_v_sty_train_v001
+Group ID - message_id
+Feature table(s) - ['feat$LUARmsgstrain$per_con_v_sty_train_v001$message_id', 'feat$LUARclaimstrain$per_con_v_sty_train_v001$message_id', 'feat$SBERTmsgstrain$per_con_v_sty_train_v001$message_id', 'feat$SBERTclaimstrain$per_con_v_sty_train_v001$message_id']
+Outcome table - per_con_v_sty_train_v001
+Outcome(s) - persuaded
+-------
+Interface Runtime: 164.37 seconds
+DLATK exits with success! A good day indeed  ¯\_(ツ)_/¯.
+
+
+## DLATK: luar+sbert without claims
+./dlatkInterface.py -d persuasion -t per_con_v_sty_train_v001 -g message_id -f 'feat$LUARmsgstrain$per_con_v_sty_train_v001$message_id' 'feat$SBERTmsgstrain$per_con_v_sty_train_v001$message_id' --outcome_table per_con_v_sty_train_v001 --outcomes persuaded --nfold_test_classifiers --model etc --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_sbert_etc_gft100.metrics --csv
+[TEST COMPLETE]
+
+Wrote to: <_io.TextIOWrapper name='/chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_sbert_etc_gft100.metrics.accuracy_data.csv' mode='w' encoding='UTF-8'>
+{'persuaded': {(): {1: {'acc': 0.6303600506603945,
+                        'auc': 0.6535735487736889,
+                        'auc_cntl_comb2': 0.0,
+                        'auc_cntl_comb2_p': 1.0,
+                        'auc_cntl_comb2_t': 0.0,
+                        'auc_p': 0.0,
+                        'auc_p_v_cntrls': 1.0,
+                        'f1': 0.4228681706380426,
+                        'f1_weighted': 0.5063282418721388,
+                        'folds_acc': 0.6302337970189931,
+                        'folds_auc': 0.6537772150945785,
+                        'folds_f1': 0.42290314994132927,
+                        'folds_mfclass_acc': 0.6204332031470415,
+                        'folds_precision': 0.6788901920296153,
+                        'folds_recall': 0.5158466469251651,
+                        'folds_rho': 0.10627318168220187,
+                        'folds_rho-p': 0.0017537024668555373,
+                        'folds_se_acc': 0.00623601275336859,
+                        'folds_se_auc': 0.004850342203197342,
+                        'folds_se_f1': 0.004992562979101588,
+                        'folds_se_mfclass_acc': 0.005617520149889447,
+                        'folds_se_precision': 0.011391272676371784,
+                        'folds_se_recall': 0.001843796033235307,
+                        'folds_se_rho': 0.009424100188473703,
+                        'folds_se_rho-p': 0.0010791758142795983,
+                        'matt_ccoef': 0.10661949238802494,
+                        'mfclass': '1',
+                        'mfclass_acc': 0.6205898317351185,
+                        'num_classes': '2',
+                        'num_features': 1280,
+                        'precision': 0.680461735035273,
+                        'recall': 0.5157480977267261,
+                        'recall_micro': 0.6303600506603945,
+                        'recall_sensitivity': 0.9909620991253645,
+                        'recall_specificity': 0.04053409632808774,
+                        'test_size': 1057,
+                        'train_size': 4470,
+                        '{modelFS_desc}': 'None',
+                        '{model_desc}': 'ExtraTreesClassifier(bootstrap=False, '
+                                        'ccp_alpha=0.0, '
+                                        'class_weight=None,           '
+                                        "criterion='gini', max_depth=None, "
+                                        "max_features='auto',           "
+                                        'max_leaf_nodes=None, '
+                                        'max_samples=None,           '
+                                        'min_impurity_decrease=0.0, '
+                                        'min_impurity_split=None,           '
+                                        'min_samples_leaf=1, '
+                                        'min_samples_split=2,           '
+                                        'min_weight_fraction_leaf=0.0, '
+                                        'n_estimators=1000, '
+                                        'n_jobs=10,           oob_score=False, '
+                                        'random_state=None, '
+                                        'verbose=0,           '
+                                        'warm_start=False)'}}}}
+
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.630, f1: 0.423, auc: 0.654 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+-------
+Settings:
+
+Database - persuasion
+Corpus - per_con_v_sty_train_v001
+Group ID - message_id
+Feature table(s) - ['feat$LUARmsgstrain$per_con_v_sty_train_v001$message_id', 'feat$SBERTmsgstrain$per_con_v_sty_train_v001$message_id']
+Outcome table - per_con_v_sty_train_v001
+Outcome(s) - persuaded
+-------
+Interface Runtime: 92.11 seconds
+DLATK exits with success! A good day indeed  ¯\_(ツ)_/¯.
+
+
+## DLATK: luar only with claims
+./dlatkInterface.py -d persuasion -t per_con_v_sty_train_v001 -g message_id -f 'feat$LUARmsgstrain$per_con_v_sty_train_v001$message_id' 'feat$LUARclaimstrain$per_con_v_sty_train_v001$message_id' --outcome_table per_con_v_sty_train_v001 --outcomes persuaded --nfold_test_classifiers --model etc --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_w_claim_etc_gft100.metrics --csv
+[TEST COMPLETE]
+
+Wrote to: <_io.TextIOWrapper name='/chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_w_claim_etc_gft100.metrics.accuracy_data.csv' mode='w' encoding='UTF-8'>
+{'persuaded': {(): {1: {'acc': 0.6305409806404921,
+                        'auc': 0.6454971074879983,
+                        'auc_cntl_comb2': 0.0,
+                        'auc_cntl_comb2_p': 1.0,
+                        'auc_cntl_comb2_t': 0.0,
+                        'auc_p': 0.0,
+                        'auc_p_v_cntrls': 1.0,
+                        'f1': 0.42911787973883186,
+                        'f1_weighted': 0.5109019167482479,
+                        'folds_acc': 0.630567398176204,
+                        'folds_auc': 0.6464080100921786,
+                        'folds_f1': 0.42923877348873846,
+                        'folds_mfclass_acc': 0.6204332031470415,
+                        'folds_precision': 0.6610732588302641,
+                        'folds_recall': 0.5176110796726087,
+                        'folds_rho': 0.10619819751369693,
+                        'folds_rho-p': 0.010107420216965781,
+                        'folds_se_acc': 0.005203976754305343,
+                        'folds_se_auc': 0.0037099213819848337,
+                        'folds_se_f1': 0.0055052793496260955,
+                        'folds_se_mfclass_acc': 0.005617520149889447,
+                        'folds_se_precision': 0.025635293186524383,
+                        'folds_se_recall': 0.003171750881271014,
+                        'folds_se_rho': 0.017512412872035144,
+                        'folds_se_rho-p': 0.005657376243982346,
+                        'matt_ccoef': 0.10480652822137801,
+                        'mfclass': '1',
+                        'mfclass_acc': 0.6205898317351185,
+                        'num_classes': '2',
+                        'num_features': 1024,
+                        'precision': 0.6580355562299269,
+                        'recall': 0.5173764825774986,
+                        'recall_micro': 0.6305409806404921,
+                        'recall_sensitivity': 0.9865889212827988,
+                        'recall_specificity': 0.04816404387219838,
+                        'test_size': 1057,
+                        'train_size': 4470,
+                        '{modelFS_desc}': 'None',
+                        '{model_desc}': 'ExtraTreesClassifier(bootstrap=False, '
+                                        'ccp_alpha=0.0, '
+                                        'class_weight=None,           '
+                                        "criterion='gini', max_depth=None, "
+                                        "max_features='auto',           "
+                                        'max_leaf_nodes=None, '
+                                        'max_samples=None,           '
+                                        'min_impurity_decrease=0.0, '
+                                        'min_impurity_split=None,           '
+                                        'min_samples_leaf=1, '
+                                        'min_samples_split=2,           '
+                                        'min_weight_fraction_leaf=0.0, '
+                                        'n_estimators=1000, '
+                                        'n_jobs=10,           oob_score=False, '
+                                        'random_state=None, '
+                                        'verbose=0,           '
+                                        'warm_start=False)'}}}}
+
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.631, f1: 0.429, auc: 0.645 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+-------
+Settings:
+
+Database - persuasion
+Corpus - per_con_v_sty_train_v001
+Group ID - message_id
+Feature table(s) - ['feat$LUARmsgstrain$per_con_v_sty_train_v001$message_id', 'feat$LUARclaimstrain$per_con_v_sty_train_v001$message_id']
+Outcome table - per_con_v_sty_train_v001
+Outcome(s) - persuaded
+-------
+Interface Runtime: 87.07 seconds
+DLATK exits with success! A good day indeed  ¯\_(ツ)_/¯.
+
+## DLATK: luar only without claims
+./dlatkInterface.py -d persuasion -t per_con_v_sty_train_v001 -g message_id -f 'feat$LUARmsgstrain$per_con_v_sty_train_v001$message_id' --outcome_table per_con_v_sty_train_v001 --outcomes persuaded --nfold_test_classifiers --model etc --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_etc_gft100.metrics --csv
+[TEST COMPLETE]
+
+Wrote to: <_io.TextIOWrapper name='/chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_etc_gft100.metrics.accuracy_data.csv' mode='w' encoding='UTF-8'>
+{'persuaded': {(): {1: {'acc': 0.6379591098244979,
+                        'auc': 0.6504480230678005,
+                        'auc_cntl_comb2': 0.0,
+                        'auc_cntl_comb2_p': 1.0,
+                        'auc_cntl_comb2_t': 0.0,
+                        'auc_p': 0.0,
+                        'auc_p_v_cntrls': 1.0,
+                        'f1': 0.4748894051272832,
+                        'f1_weighted': 0.5454647026472141,
+                        'folds_acc': 0.6380599637116876,
+                        'folds_auc': 0.6505513088194858,
+                        'folds_f1': 0.4749513190841828,
+                        'folds_mfclass_acc': 0.6204332031470415,
+                        'folds_precision': 0.6420180872068272,
+                        'folds_recall': 0.5350798761667646,
+                        'folds_rho': 0.14056593620857352,
+                        'folds_rho-p': 0.00020739807250092285,
+                        'folds_se_acc': 0.005765365461100792,
+                        'folds_se_auc': 0.004828253978077192,
+                        'folds_se_f1': 0.007240384791085122,
+                        'folds_se_mfclass_acc': 0.005617520149889447,
+                        'folds_se_precision': 0.014447245885921335,
+                        'folds_se_recall': 0.0033884104833380316,
+                        'folds_se_rho': 0.012376407706001086,
+                        'folds_se_rho-p': 0.000182153518547867,
+                        'matt_ccoef': 0.13810443762027472,
+                        'mfclass': '1',
+                        'mfclass_acc': 0.6205898317351185,
+                        'num_classes': '2',
+                        'num_features': 512,
+                        'precision': 0.6375785755677585,
+                        'recall': 0.5346580774144933,
+                        'recall_micro': 0.6379591098244979,
+                        'recall_sensitivity': 0.9629737609329446,
+                        'recall_specificity': 0.10634239389604197,
+                        'test_size': 1057,
+                        'train_size': 4470,
+                        '{modelFS_desc}': 'None',
+                        '{model_desc}': 'ExtraTreesClassifier(bootstrap=False, '
+                                        'ccp_alpha=0.0, '
+                                        'class_weight=None,           '
+                                        "criterion='gini', max_depth=None, "
+                                        "max_features='auto',           "
+                                        'max_leaf_nodes=None, '
+                                        'max_samples=None,           '
+                                        'min_impurity_decrease=0.0, '
+                                        'min_impurity_split=None,           '
+                                        'min_samples_leaf=1, '
+                                        'min_samples_split=2,           '
+                                        'min_weight_fraction_leaf=0.0, '
+                                        'n_estimators=1000, '
+                                        'n_jobs=10,           oob_score=False, '
+                                        'random_state=None, '
+                                        'verbose=0,           '
+                                        'warm_start=False)'}}}}
+
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.638, f1: 0.475, auc: 0.650 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+-------
+Settings:
+
+Database - persuasion
+Corpus - per_con_v_sty_train_v001
+Group ID - message_id
+Feature table(s) - feat$LUARmsgstrain$per_con_v_sty_train_v001$message_id
+Outcome table - per_con_v_sty_train_v001
+Outcome(s) - persuaded
+-------
+Interface Runtime: 58.37 seconds
+DLATK exits with success! A good day indeed  ¯\_(ツ)_/¯.
+
+
+#### Running lr with Group Freq Threshold 100 + HS for L2 for SBERT only
+## DLATK: sbert only with claims
+./dlatkInterface.py -d persuasion -t per_con_v_sty_train_v001 -g message_id -f 'feat$SBERTmsgstrain$per_con_v_sty_train_v001$message_id' 'feat$SBERTclaimstrain$per_con_v_sty_train_v001$message_id' --outcome_table per_con_v_sty_train_v001 --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/sbert_w_claim_lr_gft100_hs_ridgereg.metrics --csv
+[TEST COMPLETE]
+
+Wrote to: <_io.TextIOWrapper name='/chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/sbert_w_claim_lr_gft100_hs_ridgereg.metrics.accuracy_data.csv' mode='w' encoding='UTF-8'>
+{'persuaded': {(): {1: {'acc': 0.6289126108196128,
+                        'auc': 0.6203909235879106,
+                        'auc_cntl_comb2': 0.0,
+                        'auc_cntl_comb2_p': 1.0,
+                        'auc_cntl_comb2_t': 0.0,
+                        'auc_p': 0.0,
+                        'auc_p_v_cntrls': 1.0,
+                        'f1': 0.5449605053465914,
+                        'f1_weighted': 0.5920995772065482,
+                        'folds_acc': 0.6285658431038859,
+                        'folds_auc': 0.620716993134093,
+                        'folds_f1': 0.5444997178634482,
+                        'folds_mfclass_acc': 0.6204332031470415,
+                        'folds_precision': 0.5881369846614276,
+                        'folds_recall': 0.5576813971816776,
+                        'folds_rho': 0.14255203482823492,
+                        'folds_rho-p': 3.3961519589098386e-05,
+                        'folds_se_acc': 0.005440132352133872,
+                        'folds_se_auc': 0.005452249775974925,
+                        'folds_se_f1': 0.005180700891724556,
+                        'folds_se_mfclass_acc': 0.005617520149889447,
+                        'folds_se_precision': 0.0057557166312280274,
+                        'folds_se_recall': 0.0037428450304471937,
+                        'folds_se_rho': 0.00915646358692539,
+                        'folds_se_rho-p': 2.338211625047001e-05,
+                        'matt_ccoef': 0.1425908669834029,
+                        'mfclass': '1',
+                        'mfclass_acc': 0.6205898317351185,
+                        'num_classes': '2',
+                        'num_features': 1536,
+                        'precision': 0.587998181038748,
+                        'recall': 0.5577629989253008,
+                        'recall_micro': 0.6289126108196128,
+                        'recall_sensitivity': 0.8527696793002916,
+                        'recall_specificity': 0.26275631855030995,
+                        'test_size': 1057,
+                        'train_size': 4470,
+                        '{modelFS_desc}': 'None',
+                        '{model_desc}': 'LogisticRegression(C=0.001, '
+                                        'class_weight=None, dual=False, '
+                                        'fit_intercept=True,          '
+                                        'intercept_scaling=1, l1_ratio=None, '
+                                        'max_iter=100,          '
+                                        "multi_class='auto', n_jobs=None, "
+                                        "penalty='l2',          "
+                                        "random_state=42, solver='lbfgs', "
+                                        'tol=0.0001, verbose=0,          '
+                                        'warm_start=False)'}}}}
+
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.629, f1: 0.545, auc: 0.620 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+-------
+Settings:
+
+Database - persuasion
+Corpus - per_con_v_sty_train_v001
+Group ID - message_id
+Feature table(s) - ['feat$SBERTmsgstrain$per_con_v_sty_train_v001$message_id', 'feat$SBERTclaimstrain$per_con_v_sty_train_v001$message_id']
+Outcome table - per_con_v_sty_train_v001
+Outcome(s) - persuaded
+-------
+Interface Runtime: 99.76 seconds
+DLATK exits with success! A good day indeed  ¯\_(ツ)_/¯.
+
+
+## DLATK: sbert only without claims
+./dlatkInterface.py -d persuasion -t per_con_v_sty_train_v001 -g message_id -f 'feat$SBERTmsgstrain$per_con_v_sty_train_v001$message_id' --outcome_table per_con_v_sty_train_v001 --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/sbert_lr_gft100_hs_ridgereg.metrics --csv
+[TEST COMPLETE]
+
+Wrote to: <_io.TextIOWrapper name='/chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/sbert_lr_gft100_hs_ridgereg.metrics.accuracy_data.csv' mode='w' encoding='UTF-8'>
+{'persuaded': {(): {1: {'acc': 0.6319884204812738,
+                        'auc': 0.6240275223107841,
+                        'auc_cntl_comb2': 0.0,
+                        'auc_cntl_comb2_p': 1.0,
+                        'auc_cntl_comb2_t': 0.0,
+                        'auc_p': 0.0,
+                        'auc_p_v_cntrls': 1.0,
+                        'f1': 0.5407968348163664,
+                        'f1_weighted': 0.5901506243784134,
+                        'folds_acc': 0.6315829184127522,
+                        'folds_auc': 0.6249078897985927,
+                        'folds_f1': 0.5403659353447245,
+                        'folds_mfclass_acc': 0.6204332031470415,
+                        'folds_precision': 0.5928120013538123,
+                        'folds_recall': 0.5567293645910375,
+                        'folds_rho': 0.1450617163664766,
+                        'folds_rho-p': 0.0006957917270356496,
+                        'folds_se_acc': 0.007105846377792038,
+                        'folds_se_auc': 0.007580649242533695,
+                        'folds_se_f1': 0.007158890973829829,
+                        'folds_se_mfclass_acc': 0.005617520149889447,
+                        'folds_se_precision': 0.009600300170229253,
+                        'folds_se_recall': 0.0056110364647823,
+                        'folds_se_rho': 0.014528272509066497,
+                        'folds_se_rho-p': 0.000619712490997168,
+                        'matt_ccoef': 0.1453560089028131,
+                        'mfclass': '1',
+                        'mfclass_acc': 0.6205898317351185,
+                        'num_classes': '2',
+                        'num_features': 768,
+                        'precision': 0.5928225747927212,
+                        'recall': 0.5569052554600422,
+                        'recall_micro': 0.6319884204812738,
+                        'recall_sensitivity': 0.8682215743440234,
+                        'recall_specificity': 0.24558893657606104,
+                        'test_size': 1057,
+                        'train_size': 4470,
+                        '{modelFS_desc}': 'None',
+                        '{model_desc}': 'LogisticRegression(C=0.001, '
+                                        'class_weight=None, dual=False, '
+                                        'fit_intercept=True,          '
+                                        'intercept_scaling=1, l1_ratio=None, '
+                                        'max_iter=100,          '
+                                        "multi_class='auto', n_jobs=None, "
+                                        "penalty='l2',          "
+                                        "random_state=42, solver='lbfgs', "
+                                        'tol=0.0001, verbose=0,          '
+                                        'warm_start=False)'}}}}
+
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.632, f1: 0.541, auc: 0.624 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+-------
+Settings:
+
+Database - persuasion
+Corpus - per_con_v_sty_train_v001
+Group ID - message_id
+Feature table(s) - feat$SBERTmsgstrain$per_con_v_sty_train_v001$message_id
+Outcome table - per_con_v_sty_train_v001
+Outcome(s) - persuaded
+-------
+Interface Runtime: 66.63 seconds
+DLATK exits with success! A good day indeed  ¯\_(ツ)_/¯.
+
+
+#### Running etc with Group Freq Threshold 100 for SBERT only
+## DLATK: sbert only with claims
+./dlatkInterface.py -d persuasion -t per_con_v_sty_train_v001 -g message_id -f 'feat$SBERTmsgstrain$per_con_v_sty_train_v001$message_id' 'feat$SBERTclaimstrain$per_con_v_sty_train_v001$message_id' --outcome_table per_con_v_sty_train_v001 --outcomes persuaded --nfold_test_classifiers --model etc --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/sbert_w_claim_etc_gft100.metrics --csv
+[TEST COMPLETE]
+
+Wrote to: <_io.TextIOWrapper name='/chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/sbert_w_claim_etc_gft100.metrics.accuracy_data.csv' mode='w' encoding='UTF-8'>
+{'persuaded': {(): {1: {'acc': 0.6205898317351185,
+                        'auc': 0.6054623361709287,
+                        'auc_cntl_comb2': 0.0,
+                        'auc_cntl_comb2_p': 1.0,
+                        'auc_cntl_comb2_t': 0.0,
+                        'auc_p': 0.0,
+                        'auc_p_v_cntrls': 1.0,
+                        'f1': 0.382940716757843,
+                        'f1_weighted': 0.47529822995455095,
+                        'folds_acc': 0.6204332031470415,
+                        'folds_auc': 0.6066583996858338,
+                        'folds_f1': 0.382843572932822,
+                        'folds_mfclass_acc': 0.6204332031470415,
+                        'folds_precision': 0.31021660157352077,
+                        'folds_recall': 0.5,
+                        'folds_rho': nan,
+                        'folds_rho-p': nan,
+                        'folds_se_acc': 0.005617520149889447,
+                        'folds_se_auc': 0.00515489925846466,
+                        'folds_se_f1': 0.002163452120118981,
+                        'folds_se_mfclass_acc': 0.005617520149889447,
+                        'folds_se_precision': 0.0028087600749447236,
+                        'folds_se_recall': 0.0,
+                        'folds_se_rho': nan,
+                        'folds_se_rho-p': nan,
+                        'matt_ccoef': 0.0,
+                        'mfclass': '1',
+                        'mfclass_acc': 0.6205898317351185,
+                        'num_classes': '2',
+                        'num_features': 1536,
+                        'precision': 0.31029491586755925,
+                        'recall': 0.5,
+                        'recall_micro': 0.6205898317351185,
+                        'recall_sensitivity': 1.0,
+                        'recall_specificity': 0.0,
+                        'test_size': 1057,
+                        'train_size': 4470,
+                        '{modelFS_desc}': 'None',
+                        '{model_desc}': 'ExtraTreesClassifier(bootstrap=False, '
+                                        'ccp_alpha=0.0, '
+                                        'class_weight=None,           '
+                                        "criterion='gini', max_depth=None, "
+                                        "max_features='auto',           "
+                                        'max_leaf_nodes=None, '
+                                        'max_samples=None,           '
+                                        'min_impurity_decrease=0.0, '
+                                        'min_impurity_split=None,           '
+                                        'min_samples_leaf=1, '
+                                        'min_samples_split=2,           '
+                                        'min_weight_fraction_leaf=0.0, '
+                                        'n_estimators=1000, '
+                                        'n_jobs=10,           oob_score=False, '
+                                        'random_state=None, '
+                                        'verbose=0,           '
+                                        'warm_start=False)'}}}}
+
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.621, f1: 0.383, auc: 0.605 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+-------
+Settings:
+
+Database - persuasion
+Corpus - per_con_v_sty_train_v001
+Group ID - message_id
+Feature table(s) - ['feat$SBERTmsgstrain$per_con_v_sty_train_v001$message_id', 'feat$SBERTclaimstrain$per_con_v_sty_train_v001$message_id']
+Outcome table - per_con_v_sty_train_v001
+Outcome(s) - persuaded
+-------
+Interface Runtime: 116.19 seconds
+DLATK exits with success! A good day indeed  ¯\_(ツ)_/¯.
+
+
+## DLATK: sbert only without claims
+./dlatkInterface.py -d persuasion -t per_con_v_sty_train_v001 -g message_id -f 'feat$SBERTmsgstrain$per_con_v_sty_train_v001$message_id' --outcome_table per_con_v_sty_train_v001 --outcomes persuaded --nfold_test_classifiers --model etc --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/sbert_etc_gft100.metrics --csv
+[TEST COMPLETE]
+
+Wrote to: <_io.TextIOWrapper name='/chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/sbert_etc_gft100.metrics.accuracy_data.csv' mode='w' encoding='UTF-8'>
+{'persuaded': {(): {1: {'acc': 0.6200470417948254,
+                        'auc': 0.6093689304865622,
+                        'auc_cntl_comb2': 0.0,
+                        'auc_cntl_comb2_p': 1.0,
+                        'auc_cntl_comb2_t': 0.0,
+                        'auc_p': 0.0,
+                        'auc_p_v_cntrls': 1.0,
+                        'f1': 0.3831835121918868,
+                        'f1_weighted': 0.47537010634100135,
+                        'folds_acc': 0.6198880746009773,
+                        'folds_auc': 0.6108938595233354,
+                        'folds_f1': 0.383063320013174,
+                        'folds_mfclass_acc': 0.6204332031470415,
+                        'folds_precision': 0.34346902371212956,
+                        'folds_recall': 0.49965485245124686,
+                        'folds_rho': nan,
+                        'folds_rho-p': nan,
+                        'folds_se_acc': 0.005519373805601324,
+                        'folds_se_auc': 0.007305551807624026,
+                        'folds_se_f1': 0.0022197337519329207,
+                        'folds_se_mfclass_acc': 0.005617520149889447,
+                        'folds_se_precision': 0.030419914603723935,
+                        'folds_se_recall': 0.0001519754616982706,
+                        'folds_se_rho': nan,
+                        'folds_se_rho-p': nan,
+                        'matt_ccoef': -0.011125692280581108,
+                        'mfclass': '1',
+                        'mfclass_acc': 0.6205898317351185,
+                        'num_classes': '2',
+                        'num_features': 768,
+                        'precision': 0.4102136906917784,
+                        'recall': 0.49965534548174473,
+                        'recall_micro': 0.6200470417948254,
+                        'recall_sensitivity': 0.9988338192419826,
+                        'recall_specificity': 0.0004768717215069146,
+                        'test_size': 1057,
+                        'train_size': 4470,
+                        '{modelFS_desc}': 'None',
+                        '{model_desc}': 'ExtraTreesClassifier(bootstrap=False, '
+                                        'ccp_alpha=0.0, '
+                                        'class_weight=None,           '
+                                        "criterion='gini', max_depth=None, "
+                                        "max_features='auto',           "
+                                        'max_leaf_nodes=None, '
+                                        'max_samples=None,           '
+                                        'min_impurity_decrease=0.0, '
+                                        'min_impurity_split=None,           '
+                                        'min_samples_leaf=1, '
+                                        'min_samples_split=2,           '
+                                        'min_weight_fraction_leaf=0.0, '
+                                        'n_estimators=1000, '
+                                        'n_jobs=10,           oob_score=False, '
+                                        'random_state=None, '
+                                        'verbose=0,           '
+                                        'warm_start=False)'}}}}
+
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.620, f1: 0.383, auc: 0.609 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+-------
+Settings:
+
+Database - persuasion
+Corpus - per_con_v_sty_train_v001
+Group ID - message_id
+Feature table(s) - feat$SBERTmsgstrain$per_con_v_sty_train_v001$message_id
+Outcome table - per_con_v_sty_train_v001
+Outcome(s) - persuaded
+-------
+Interface Runtime: 80.10 seconds
+DLATK exits with success! A good day indeed  ¯\_(ツ)_/¯.
+
+#### Running lr with Group Freq Threshold 100 + HS for L2 for SBERT only
+sbert only with claims (0.620)
+sbert only without claims (0.624)
+
+#### Running etc with Group Freq Threshold 100 for SBERT only
+sbert only with claims (0.605)
+sbert only without claims (0.609)
+
+
+
+#########################################################################################
+### lr + gft 100 + hs l2:
+# luar only wo rfa claims (0.658)
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -g message_id -f 'feat$LUAR_msgs_tr$percvs_v001_tr$message_id' --outcome_table percvs_v001_tr --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_wo_rfa_pca_claims_lr_gft100_hs_ridgereg.metrics --csv
+[TEST COMPLETE]
+
+Wrote to: <_io.TextIOWrapper name='/chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_wo_rfa_pca_claims_lr_gft100_hs_ridgereg.metrics.accuracy_data.csv' mode='w' encoding='UTF-8'>
+{'persuaded': {(): {1: {'acc': 0.6520716482721187,
+                        'auc': 0.65840774895693,
+                        'auc_cntl_comb2': 0.0,
+                        'auc_cntl_comb2_p': 1.0,
+                        'auc_cntl_comb2_t': 0.0,
+                        'auc_p': 0.0,
+                        'auc_p_v_cntrls': 1.0,
+                        'f1': 0.5743299657150547,
+                        'f1_weighted': 0.6182036587076738,
+                        'folds_acc': 0.652094312209031,
+                        'folds_auc': 0.6583808947687604,
+                        'folds_f1': 0.5742650692009759,
+                        'folds_mfclass_acc': 0.6204332031470415,
+                        'folds_precision': 0.6253895526095584,
+                        'folds_recall': 0.583101779451411,
+                        'folds_rho': 0.20412318622355397,
+                        'folds_rho-p': 2.7243411949695277e-09,
+                        'folds_se_acc': 0.0037164065988339575,
+                        'folds_se_auc': 0.003319794486820259,
+                        'folds_se_f1': 0.0058887691374101625,
+                        'folds_se_mfclass_acc': 0.005617520149889447,
+                        'folds_se_precision': 0.007496035587811145,
+                        'folds_se_recall': 0.005219146293508711,
+                        'folds_se_rho': 0.012378322375523927,
+                        'folds_se_rho-p': 1.515593487170034e-09,
+                        'matt_ccoef': 0.20378397140971738,
+                        'mfclass': '1',
+                        'mfclass_acc': 0.6205898317351185,
+                        'num_classes': '2',
+                        'num_features': 512,
+                        'precision': 0.625222375652323,
+                        'recall': 0.5829083196736695,
+                        'recall_micro': 0.6520716482721187,
+                        'recall_sensitivity': 0.8696793002915452,
+                        'recall_specificity': 0.296137339055794,
+                        'test_size': 1057,
+                        'train_size': 4470,
+                        '{modelFS_desc}': 'None',
+                        '{model_desc}': 'LogisticRegression(C=0.001, '
+                                        'class_weight=None, dual=False, '
+                                        'fit_intercept=True,          '
+                                        'intercept_scaling=1, l1_ratio=None, '
+                                        'max_iter=100,          '
+                                        "multi_class='auto', n_jobs=None, "
+                                        "penalty='l2',          "
+                                        "random_state=42, solver='lbfgs', "
+                                        'tol=0.0001, verbose=0,          '
+                                        'warm_start=False)'}}}}
+
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.652, f1: 0.574, auc: 0.658 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+-------
+Settings:
+
+Database - persuasion
+Corpus - percvs_v001_tr
+Group ID - message_id
+Feature table(s) - feat$LUAR_msgs_tr$percvs_v001_tr$message_id
+Outcome table - percvs_v001_tr
+Outcome(s) - persuaded
+-------
+Interface Runtime: 50.05 seconds
+DLATK exits with success! A good day indeed  ¯\_(ツ)_/¯.
+
+# luar only w rfa claims (0.655)
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -g message_id -f 'feat$LUAR_claims_rfa_pca_d0_tr$percvs_v001_tr$message_id' 'feat$LUAR_claims_rfa_pca_d1_tr$percvs_v001_tr$message_id' 'feat$LUAR_claims_rfa_pca_d2_tr$percvs_v001_tr$message_id' 'feat$LUAR_msgs_tr$percvs_v001_tr$message_id' --outcome_table percvs_v001_tr --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_w_rfa_pca_claims_lr_gft100_hs_ridgereg.metrics --csv
+[TEST COMPLETE]
+
+Wrote to: <_io.TextIOWrapper name='/chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_w_rfa_pca_claims_lr_gft100_hs_ridgereg.metrics.accuracy_data.csv' mode='w' encoding='UTF-8'>
+{'persuaded': {(): {1: {'acc': 0.6442916591279175,
+                        'auc': 0.6360747200985442,
+                        'auc_cntl_comb2': 0.0,
+                        'auc_cntl_comb2_p': 1.0,
+                        'auc_cntl_comb2_t': 0.0,
+                        'auc_p': 0.0,
+                        'auc_p_v_cntrls': 1.0,
+                        'f1': 0.5784010586996631,
+                        'f1_weighted': 0.6185988483430787,
+                        'folds_acc': 0.6444601723343636,
+                        'folds_auc': 0.6363213549815747,
+                        'folds_f1': 0.5783710730886615,
+                        'folds_mfclass_acc': 0.6204332031470415,
+                        'folds_precision': 0.6124310131219043,
+                        'folds_recall': 0.5831306592646317,
+                        'folds_rho': 0.1933003517533775,
+                        'folds_rho-p': 2.6118679941495304e-09,
+                        'folds_se_acc': 0.0022690856448163324,
+                        'folds_se_auc': 0.0010803003314933822,
+                        'folds_se_f1': 0.0044988979353576646,
+                        'folds_se_mfclass_acc': 0.005617520149889447,
+                        'folds_se_precision': 0.006494079892499486,
+                        'folds_se_recall': 0.004479450020369473,
+                        'folds_se_rho': 0.010580012910515742,
+                        'folds_se_rho-p': 1.629070450044505e-09,
+                        'matt_ccoef': 0.19246559517984596,
+                        'mfclass': '1',
+                        'mfclass_acc': 0.6205898317351185,
+                        'num_classes': '2',
+                        'num_features': 2048,
+                        'precision': 0.6117792984173969,
+                        'recall': 0.5828485369214107,
+                        'recall_micro': 0.6442916591279175,
+                        'recall_sensitivity': 0.8376093294460641,
+                        'recall_specificity': 0.32808774439675725,
+                        'test_size': 1057,
+                        'train_size': 4470,
+                        '{modelFS_desc}': 'None',
+                        '{model_desc}': 'LogisticRegression(C=0.001, '
+                                        'class_weight=None, dual=False, '
+                                        'fit_intercept=True,          '
+                                        'intercept_scaling=1, l1_ratio=None, '
+                                        'max_iter=100,          '
+                                        "multi_class='auto', n_jobs=None, "
+                                        "penalty='l2',          "
+                                        "random_state=42, solver='lbfgs', "
+                                        'tol=0.0001, verbose=0,          '
+                                        'warm_start=False)'}}}}
+
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.644, f1: 0.578, auc: 0.636 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+-------
+Settings:
+
+Database - persuasion
+Corpus - percvs_v001_tr
+Group ID - message_id
+Feature table(s) - ['feat$LUAR_claims_rfa_pca_d0_tr$percvs_v001_tr$message_id', 'feat$LUAR_claims_rfa_pca_d1_tr$percvs_v001_tr$message_id', 'feat$LUAR_claims_rfa_pca_d2_tr$percvs_v001_tr$message_id', 'feat$LUAR_msgs_tr$percvs_v001_tr$message_id']
+Outcome table - percvs_v001_tr
+Outcome(s) - persuaded
+-------
+Interface Runtime: 129.51 seconds
+DLATK exits with success! A good day indeed  ¯\_(ツ)_/¯.
+
+# luar+sbert wo rfa claims (0.653)
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -g message_id -f 'feat$LUAR_msgs_tr$percvs_v001_tr$message_id' 'feat$SBERTadrbv1_msgs_tr$percvs_v001_tr$message_id' --outcome_table percvs_v001_tr --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_sbert_wo_rfa_pca_claims_lr_gft100_hs_ridgereg.metrics --csv
+[TEST COMPLETE]
+
+Wrote to: <_io.TextIOWrapper name='/chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_sbert_wo_rfa_pca_claims_lr_gft100_hs_ridgereg.metrics.accuracy_data.csv' mode='w' encoding='UTF-8'>
+{'persuaded': {(): {1: {'acc': 0.6504432784512394,
+                        'auc': 0.6527459052290445,
+                        'auc_cntl_comb2': 0.0,
+                        'auc_cntl_comb2_p': 1.0,
+                        'auc_cntl_comb2_t': 0.0,
+                        'auc_p': 0.0,
+                        'auc_p_v_cntrls': 1.0,
+                        'f1': 0.5874998377529432,
+                        'f1_weighted': 0.6263620917829705,
+                        'folds_acc': 0.6501537247793749,
+                        'folds_auc': 0.6527269220726557,
+                        'folds_f1': 0.5871077098207124,
+                        'folds_mfclass_acc': 0.6204332031470415,
+                        'folds_precision': 0.6203423557687521,
+                        'folds_recall': 0.5905271656864304,
+                        'folds_rho': 0.20871820867677848,
+                        'folds_rho-p': 1.6040290090433396e-08,
+                        'folds_se_acc': 0.005131418922843871,
+                        'folds_se_auc': 0.005526005364258543,
+                        'folds_se_f1': 0.0058087469365471454,
+                        'folds_se_mfclass_acc': 0.005617520149889447,
+                        'folds_se_precision': 0.00603381566904115,
+                        'folds_se_recall': 0.004828132641990383,
+                        'folds_se_rho': 0.010671932992086765,
+                        'folds_se_rho-p': 1.4345684080773361e-08,
+                        'matt_ccoef': 0.2089091929543704,
+                        'mfclass': '1',
+                        'mfclass_acc': 0.6205898317351185,
+                        'num_classes': '2',
+                        'num_features': 1280,
+                        'precision': 0.6204481810841029,
+                        'recall': 0.5905847031230231,
+                        'recall_micro': 0.6504432784512394,
+                        'recall_sensitivity': 0.8387755102040816,
+                        'recall_specificity': 0.3423938960419647,
+                        'test_size': 1057,
+                        'train_size': 4470,
+                        '{modelFS_desc}': 'None',
+                        '{model_desc}': 'LogisticRegression(C=0.001, '
+                                        'class_weight=None, dual=False, '
+                                        'fit_intercept=True,          '
+                                        'intercept_scaling=1, l1_ratio=None, '
+                                        'max_iter=100,          '
+                                        "multi_class='auto', n_jobs=None, "
+                                        "penalty='l2',          "
+                                        "random_state=42, solver='lbfgs', "
+                                        'tol=0.0001, verbose=0,          '
+                                        'warm_start=False)'}}}}
+
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.650, f1: 0.587, auc: 0.653 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+-------
+Settings:
+
+Database - persuasion
+Corpus - percvs_v001_tr
+Group ID - message_id
+Feature table(s) - ['feat$LUAR_msgs_tr$percvs_v001_tr$message_id', 'feat$SBERTadrbv1_msgs_tr$percvs_v001_tr$message_id']
+Outcome table - percvs_v001_tr
+Outcome(s) - persuaded
+-------
+Interface Runtime: 83.91 seconds
+DLATK exits with success! A good day indeed  ¯\_(ツ)_/¯.
+
+# luar+sbert w rfa claims (0.651)
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -g message_id -f 'feat$LUAR_claims_rfa_pca_d0_tr$percvs_v001_tr$message_id' 'feat$LUAR_claims_rfa_pca_d1_tr$percvs_v001_tr$message_id' 'feat$LUAR_claims_rfa_pca_d2_tr$percvs_v001_tr$message_id' 'feat$LUAR_msgs_tr$percvs_v001_tr$message_id' 'feat$SBERTadrbv1_claims_rfa_pca_d0_tr$percvs_v001_tr$message_id' 'feat$SBERTadrbv1_claims_rfa_pca_d1_tr$percvs_v001_tr$message_id' 'feat$SBERTadrbv1_claims_rfa_pca_d2_tr$percvs_v001_tr$message_id' 'feat$SBERTadrbv1_msgs_tr$percvs_v001_tr$message_id' --outcome_table percvs_v001_tr --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_sbert_w_rfa_pca_claims_lr_gft100_hs_ridgereg.metrics --csv
+[TEST COMPLETE]
+
+Wrote to: <_io.TextIOWrapper name='/chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_sbert_w_rfa_pca_claims_lr_gft100_hs_ridgereg.metrics.accuracy_data.csv' mode='w' encoding='UTF-8'>
+{'persuaded': {(): {1: {'acc': 0.6347023701827392,
+                        'auc': 0.6216189725430331,
+                        'auc_cntl_comb2': 0.0,
+                        'auc_cntl_comb2_p': 1.0,
+                        'auc_cntl_comb2_t': 0.0,
+                        'auc_p': 0.0,
+                        'auc_p_v_cntrls': 1.0,
+                        'f1': 0.5843316495413666,
+                        'f1_weighted': 0.6192298671167042,
+                        'folds_acc': 0.6343985481883915,
+                        'folds_auc': 0.6219979844492508,
+                        'folds_f1': 0.5839241155683222,
+                        'folds_mfclass_acc': 0.6204332031470415,
+                        'folds_precision': 0.600518937911344,
+                        'folds_recall': 0.5846681849627245,
+                        'folds_rho': 0.1844851250673639,
+                        'folds_rho-p': 2.9277095979876114e-08,
+                        'folds_se_acc': 0.005339420350857934,
+                        'folds_se_auc': 0.0026980119652836097,
+                        'folds_se_f1': 0.004833333454277163,
+                        'folds_se_mfclass_acc': 0.005617520149889447,
+                        'folds_se_precision': 0.0040760336679536565,
+                        'folds_se_recall': 0.00392160040971921,
+                        'folds_se_rho': 0.007938191300205684,
+                        'folds_se_rho-p': 2.324938547318303e-08,
+                        'matt_ccoef': 0.1847504429990208,
+                        'mfclass': '1',
+                        'mfclass_acc': 0.6205898317351185,
+                        'num_classes': '2',
+                        'num_features': 5120,
+                        'precision': 0.600675140769922,
+                        'recall': 0.584759569063677,
+                        'recall_micro': 0.6347023701827392,
+                        'recall_sensitivity': 0.7918367346938775,
+                        'recall_specificity': 0.3776824034334764,
+                        'test_size': 1057,
+                        'train_size': 4470,
+                        '{modelFS_desc}': 'None',
+                        '{model_desc}': 'LogisticRegression(C=0.001, '
+                                        'class_weight=None, dual=False, '
+                                        'fit_intercept=True,          '
+                                        'intercept_scaling=1, l1_ratio=None, '
+                                        'max_iter=100,          '
+                                        "multi_class='auto', n_jobs=None, "
+                                        "penalty='l2',          "
+                                        "random_state=42, solver='lbfgs', "
+                                        'tol=0.0001, verbose=0,          '
+                                        'warm_start=False)'}}}}
+
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.635, f1: 0.584, auc: 0.622 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+-------
+Settings:
+
+Database - persuasion
+Corpus - percvs_v001_tr
+Group ID - message_id
+Feature table(s) - ['feat$LUAR_claims_rfa_pca_d0_tr$percvs_v001_tr$message_id', 'feat$LUAR_claims_rfa_pca_d1_tr$percvs_v001_tr$message_id', 'feat$LUAR_claims_rfa_pca_d2_tr$percvs_v001_tr$message_id', 'feat$LUAR_msgs_tr$percvs_v001_tr$message_id', 'feat$SBERTadrbv1_claims_rfa_pca_d0_tr$percvs_v001_tr$message_id', 'feat$SBERTadrbv1_claims_rfa_pca_d1_tr$percvs_v001_tr$message_id', 'feat$SBERTadrbv1_claims_rfa_pca_d2_tr$percvs_v001_tr$message_id', 'feat$SBERTadrbv1_msgs_tr$percvs_v001_tr$message_id']
+Outcome table - percvs_v001_tr
+Outcome(s) - persuaded
+-------
+Interface Runtime: 279.80 seconds
+DLATK exits with success! A good day indeed  ¯\_(ツ)_/¯.
+
+# sbert only wo rfa claims (0.624)
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -g message_id -f 'feat$SBERTadrbv1_msgs_tr$percvs_v001_tr$message_id' --outcome_table percvs_v001_tr --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/sbert_wo_rfa_pca_claims_lr_gft100_hs_ridgereg.metrics --csv
+[TEST COMPLETE]
+
+Wrote to: <_io.TextIOWrapper name='/chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/sbert_wo_rfa_pca_claims_lr_gft100_hs_ridgereg.metrics.accuracy_data.csv' mode='w' encoding='UTF-8'>
+{'persuaded': {(): {1: {'acc': 0.6319884204812738,
+                        'auc': 0.6240275223107841,
+                        'auc_cntl_comb2': 0.0,
+                        'auc_cntl_comb2_p': 1.0,
+                        'auc_cntl_comb2_t': 0.0,
+                        'auc_p': 0.0,
+                        'auc_p_v_cntrls': 1.0,
+                        'f1': 0.5407968348163664,
+                        'f1_weighted': 0.5901506243784134,
+                        'folds_acc': 0.6315829184127522,
+                        'folds_auc': 0.6249078897985927,
+                        'folds_f1': 0.5403659353447245,
+                        'folds_mfclass_acc': 0.6204332031470415,
+                        'folds_precision': 0.5928120013538123,
+                        'folds_recall': 0.5567293645910375,
+                        'folds_rho': 0.1450617163664766,
+                        'folds_rho-p': 0.0006957917270356496,
+                        'folds_se_acc': 0.007105846377792038,
+                        'folds_se_auc': 0.007580649242533679,
+                        'folds_se_f1': 0.007158890973829829,
+                        'folds_se_mfclass_acc': 0.005617520149889447,
+                        'folds_se_precision': 0.009600300170229253,
+                        'folds_se_recall': 0.0056110364647823,
+                        'folds_se_rho': 0.014528272509066497,
+                        'folds_se_rho-p': 0.000619712490997168,
+                        'matt_ccoef': 0.1453560089028131,
+                        'mfclass': '1',
+                        'mfclass_acc': 0.6205898317351185,
+                        'num_classes': '2',
+                        'num_features': 768,
+                        'precision': 0.5928225747927212,
+                        'recall': 0.5569052554600422,
+                        'recall_micro': 0.6319884204812738,
+                        'recall_sensitivity': 0.8682215743440234,
+                        'recall_specificity': 0.24558893657606104,
+                        'test_size': 1057,
+                        'train_size': 4470,
+                        '{modelFS_desc}': 'None',
+                        '{model_desc}': 'LogisticRegression(C=0.001, '
+                                        'class_weight=None, dual=False, '
+                                        'fit_intercept=True,          '
+                                        'intercept_scaling=1, l1_ratio=None, '
+                                        'max_iter=100,          '
+                                        "multi_class='auto', n_jobs=None, "
+                                        "penalty='l2',          "
+                                        "random_state=42, solver='lbfgs', "
+                                        'tol=0.0001, verbose=0,          '
+                                        'warm_start=False)'}}}}
+
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.632, f1: 0.541, auc: 0.624 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+-------
+Settings:
+
+Database - persuasion
+Corpus - percvs_v001_tr
+Group ID - message_id
+Feature table(s) - feat$SBERTadrbv1_msgs_tr$percvs_v001_tr$message_id
+Outcome table - percvs_v001_tr
+Outcome(s) - persuaded
+-------
+Interface Runtime: 57.51 seconds
+DLATK exits with success! A good day indeed  ¯\_(ツ)_/¯.
+
+
+# sbert only w rfa claims (0.620)
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -g message_id -f 'feat$SBERTadrbv1_claims_rfa_pca_d0_tr$percvs_v001_tr$message_id' 'feat$SBERTadrbv1_claims_rfa_pca_d1_tr$percvs_v001_tr$message_id' 'feat$SBERTadrbv1_claims_rfa_pca_d2_tr$percvs_v001_tr$message_id' 'feat$SBERTadrbv1_msgs_tr$percvs_v001_tr$message_id' --outcome_table percvs_v001_tr --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/sbert_w_rfa_pca_claims_lr_gft100_hs_ridgereg.metrics --csv
+[TEST COMPLETE]
+
+Wrote to: <_io.TextIOWrapper name='/chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/sbert_w_rfa_pca_claims_lr_gft100_hs_ridgereg.metrics.accuracy_data.csv' mode='w' encoding='UTF-8'>
+{'persuaded': {(): {1: {'acc': 0.6207707617152162,
+                        'auc': 0.5963891217635634,
+                        'auc_cntl_comb2': 0.0,
+                        'auc_cntl_comb2_p': 1.0,
+                        'auc_cntl_comb2_t': 0.0,
+                        'auc_p': 0.0,
+                        'auc_p_v_cntrls': 1.0,
+                        'f1': 0.5503706613218986,
+                        'f1_weighted': 0.5932802789827547,
+                        'folds_acc': 0.6205998609772739,
+                        'folds_auc': 0.5971201987223488,
+                        'folds_f1': 0.5502012859471839,
+                        'folds_mfclass_acc': 0.6204332031470415,
+                        'folds_precision': 0.5781846987167724,
+                        'folds_recall': 0.5581069151970057,
+                        'folds_rho': 0.13475936426473267,
+                        'folds_rho-p': 0.00010069483707028597,
+                        'folds_se_acc': 0.005557285335134027,
+                        'folds_se_auc': 0.003962530112156744,
+                        'folds_se_f1': 0.006687931789617112,
+                        'folds_se_mfclass_acc': 0.005617520149889447,
+                        'folds_se_precision': 0.005321666634740123,
+                        'folds_se_recall': 0.004780864643668518,
+                        'folds_se_rho': 0.010072888490003156,
+                        'folds_se_rho-p': 5.643283597782619e-05,
+                        'matt_ccoef': 0.13431081394963312,
+                        'mfclass': '1',
+                        'mfclass_acc': 0.6205898317351185,
+                        'num_classes': '2',
+                        'num_features': 3072,
+                        'precision': 0.5780489320963033,
+                        'recall': 0.5577823240475426,
+                        'recall_micro': 0.6207707617152162,
+                        'recall_sensitivity': 0.8189504373177843,
+                        'recall_specificity': 0.2966142107773009,
+                        'test_size': 1057,
+                        'train_size': 4470,
+                        '{modelFS_desc}': 'None',
+                        '{model_desc}': 'LogisticRegression(C=0.001, '
+                                        'class_weight=None, dual=False, '
+                                        'fit_intercept=True,          '
+                                        'intercept_scaling=1, l1_ratio=None, '
+                                        'max_iter=100,          '
+                                        "multi_class='auto', n_jobs=None, "
+                                        "penalty='l2',          "
+                                        "random_state=42, solver='lbfgs', "
+                                        'tol=0.0001, verbose=0,          '
+                                        'warm_start=False)'}}}}
+
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.621, f1: 0.550, auc: 0.596 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+-------
+Settings:
+
+Database - persuasion
+Corpus - percvs_v001_tr
+Group ID - message_id
+Feature table(s) - ['feat$SBERTadrbv1_claims_rfa_pca_d0_tr$percvs_v001_tr$message_id', 'feat$SBERTadrbv1_claims_rfa_pca_d1_tr$percvs_v001_tr$message_id', 'feat$SBERTadrbv1_claims_rfa_pca_d2_tr$percvs_v001_tr$message_id', 'feat$SBERTadrbv1_msgs_tr$percvs_v001_tr$message_id']
+Outcome table - percvs_v001_tr
+Outcome(s) - persuaded
+-------
+Interface Runtime: 173.94 seconds
+DLATK exits with success! A good day indeed  ¯\_(ツ)_/¯.
+
+### etc + gft 100:
+# luar+sbert wo rfa claims (0.654)
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -g message_id -f 'feat$LUAR_msgs_tr$percvs_v001_tr$message_id' 'feat$SBERTadrbv1_msgs_tr$percvs_v001_tr$message_id' --outcome_table percvs_v001_tr --outcomes persuaded --nfold_test_classifiers --model etc --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_sbert_wo_rfa_pca_claims_etc_gft100.metrics --csv
+[TEST COMPLETE]
+
+Wrote to: <_io.TextIOWrapper name='/chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_sbert_wo_rfa_pca_claims_etc_gft100.metrics.accuracy_data.csv' mode='w' encoding='UTF-8'>
+{'persuaded': {(): {1: {'acc': 0.629998190700199,
+                        'auc': 0.6535299629764024,
+                        'auc_cntl_comb2': 0.0,
+                        'auc_cntl_comb2_p': 1.0,
+                        'auc_cntl_comb2_t': 0.0,
+                        'auc_p': 0.0,
+                        'auc_p_v_cntrls': 1.0,
+                        'f1': 0.42269421098829146,
+                        'f1_weighted': 0.5061290554798291,
+                        'folds_acc': 0.6298161576651152,
+                        'folds_auc': 0.6539117010691123,
+                        'folds_f1': 0.42245019821952107,
+                        'folds_mfclass_acc': 0.6204332031470415,
+                        'folds_precision': 0.6776415116834017,
+                        'folds_recall': 0.5154561232242606,
+                        'folds_rho': 0.1043003394682643,
+                        'folds_rho-p': 0.004066375274529269,
+                        'folds_se_acc': 0.004675625415048975,
+                        'folds_se_auc': 0.00387183086967866,
+                        'folds_se_f1': 0.0036400422337919207,
+                        'folds_se_mfclass_acc': 0.005617520149889447,
+                        'folds_se_precision': 0.0178397114686171,
+                        'folds_se_recall': 0.0013766833957570713,
+                        'folds_se_rho': 0.008871071815041752,
+                        'folds_se_rho-p': 0.003302399665870483,
+                        'matt_ccoef': 0.1037742040340954,
+                        'mfclass': '1',
+                        'mfclass_acc': 0.6205898317351185,
+                        'num_classes': '2',
+                        'num_features': 1280,
+                        'precision': 0.6741831724276237,
+                        'recall': 0.5154565525372217,
+                        'recall_micro': 0.629998190700199,
+                        'recall_sensitivity': 0.9903790087463556,
+                        'recall_specificity': 0.04053409632808774,
+                        'test_size': 1057,
+                        'train_size': 4470,
+                        '{modelFS_desc}': 'None',
+                        '{model_desc}': 'ExtraTreesClassifier(bootstrap=False, '
+                                        'ccp_alpha=0.0, '
+                                        'class_weight=None,           '
+                                        "criterion='gini', max_depth=None, "
+                                        "max_features='auto',           "
+                                        'max_leaf_nodes=None, '
+                                        'max_samples=None,           '
+                                        'min_impurity_decrease=0.0, '
+                                        'min_impurity_split=None,           '
+                                        'min_samples_leaf=1, '
+                                        'min_samples_split=2,           '
+                                        'min_weight_fraction_leaf=0.0, '
+                                        'n_estimators=1000, '
+                                        'n_jobs=10,           oob_score=False, '
+                                        'random_state=None, '
+                                        'verbose=0,           '
+                                        'warm_start=False)'}}}}
+
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.630, f1: 0.423, auc: 0.654 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+-------
+Settings:
+
+Database - persuasion
+Corpus - percvs_v001_tr
+Group ID - message_id
+Feature table(s) - ['feat$LUAR_msgs_tr$percvs_v001_tr$message_id', 'feat$SBERTadrbv1_msgs_tr$percvs_v001_tr$message_id']
+Outcome table - percvs_v001_tr
+Outcome(s) - persuaded
+-------
+Interface Runtime: 96.50 seconds
+DLATK exits with success! A good day indeed  ¯\_(ツ)_/¯.
+
+# luar only wo rfa claims (0.650)
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -g message_id -f 'feat$LUAR_msgs_tr$percvs_v001_tr$message_id' --outcome_table percvs_v001_tr --outcomes persuaded --nfold_test_classifiers --model etc --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_wo_rfa_pca_claims_etc_gft100.metrics --csv
+[TEST COMPLETE]
+
+Wrote to: <_io.TextIOWrapper name='/chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_wo_rfa_pca_claims_etc_gft100.metrics.accuracy_data.csv' mode='w' encoding='UTF-8'>
+{'persuaded': {(): {1: {'acc': 0.639768409625475,
+                        'auc': 0.6475299991241131,
+                        'auc_cntl_comb2': 0.0,
+                        'auc_cntl_comb2_p': 1.0,
+                        'auc_cntl_comb2_t': 0.0,
+                        'auc_p': 0.0,
+                        'auc_p_v_cntrls': 1.0,
+                        'f1': 0.47505067736869133,
+                        'f1_weighted': 0.545970812090362,
+                        'folds_acc': 0.6399637726693902,
+                        'folds_auc': 0.6479388067184129,
+                        'folds_f1': 0.4752614169682163,
+                        'folds_mfclass_acc': 0.6204332031470415,
+                        'folds_precision': 0.6515590081347691,
+                        'folds_recall': 0.5362064848886922,
+                        'folds_rho': 0.1479030586369021,
+                        'folds_rho-p': 0.0011606280458981277,
+                        'folds_se_acc': 0.00539107326206989,
+                        'folds_se_auc': 0.0036812545884391517,
+                        'folds_se_f1': 0.006364623165881722,
+                        'folds_se_mfclass_acc': 0.005617520149889447,
+                        'folds_se_precision': 0.01796793502496485,
+                        'folds_se_recall': 0.004255562055810426,
+                        'folds_se_rho': 0.016892856175798675,
+                        'folds_se_rho-p': 0.0010366543919362733,
+                        'matt_ccoef': 0.1459605133260982,
+                        'mfclass': '1',
+                        'mfclass_acc': 0.6205898317351185,
+                        'num_classes': '2',
+                        'num_features': 512,
+                        'precision': 0.6486172657573357,
+                        'recall': 0.5358378135640113,
+                        'recall_micro': 0.639768409625475,
+                        'recall_sensitivity': 0.9667638483965014,
+                        'recall_specificity': 0.10491177873152122,
+                        'test_size': 1057,
+                        'train_size': 4470,
+                        '{modelFS_desc}': 'None',
+                        '{model_desc}': 'ExtraTreesClassifier(bootstrap=False, '
+                                        'ccp_alpha=0.0, '
+                                        'class_weight=None,           '
+                                        "criterion='gini', max_depth=None, "
+                                        "max_features='auto',           "
+                                        'max_leaf_nodes=None, '
+                                        'max_samples=None,           '
+                                        'min_impurity_decrease=0.0, '
+                                        'min_impurity_split=None,           '
+                                        'min_samples_leaf=1, '
+                                        'min_samples_split=2,           '
+                                        'min_weight_fraction_leaf=0.0, '
+                                        'n_estimators=1000, '
+                                        'n_jobs=10,           oob_score=False, '
+                                        'random_state=None, '
+                                        'verbose=0,           '
+                                        'warm_start=False)'}}}}
+
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.640, f1: 0.475, auc: 0.648 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+-------
+Settings:
+
+Database - persuasion
+Corpus - percvs_v001_tr
+Group ID - message_id
+Feature table(s) - feat$LUAR_msgs_tr$percvs_v001_tr$message_id
+Outcome table - percvs_v001_tr
+Outcome(s) - persuaded
+-------
+Interface Runtime: 61.29 seconds
+DLATK exits with success! A good day indeed  ¯\_(ツ)_/¯.
+
+# luar+sbert w rfa claims (0.648)
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -g message_id -f 'feat$LUAR_claims_rfa_pca_d0_tr$percvs_v001_tr$message_id' 'feat$LUAR_claims_rfa_pca_d1_tr$percvs_v001_tr$message_id' 'feat$LUAR_claims_rfa_pca_d2_tr$percvs_v001_tr$message_id' 'feat$LUAR_msgs_tr$percvs_v001_tr$message_id' 'feat$SBERTadrbv1_claims_rfa_pca_d0_tr$percvs_v001_tr$message_id' 'feat$SBERTadrbv1_claims_rfa_pca_d1_tr$percvs_v001_tr$message_id' 'feat$SBERTadrbv1_claims_rfa_pca_d2_tr$percvs_v001_tr$message_id' 'feat$SBERTadrbv1_msgs_tr$percvs_v001_tr$message_id' --outcome_table percvs_v001_tr --outcomes persuaded --nfold_test_classifiers --model etc --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_sbert_w_rfa_pca_claims_etc_gft100.metrics --csv
+[TEST COMPLETE]
+
+Wrote to: <_io.TextIOWrapper name='/chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_sbert_w_rfa_pca_claims_etc_gft100.metrics.accuracy_data.csv' mode='w' encoding='UTF-8'>
+{'persuaded': {(): {1: {'acc': 0.6240275013569748,
+                        'auc': 0.6253638058534267,
+                        'auc_cntl_comb2': 0.0,
+                        'auc_cntl_comb2_p': 1.0,
+                        'auc_cntl_comb2_t': 0.0,
+                        'auc_p': 0.0,
+                        'auc_p_v_cntrls': 1.0,
+                        'f1': 0.39664107909103513,
+                        'f1_weighted': 0.48597385270745064,
+                        'folds_acc': 0.6239492442874489,
+                        'folds_auc': 0.627249421948026,
+                        'folds_f1': 0.39667331170459325,
+                        'folds_mfclass_acc': 0.6204332031470415,
+                        'folds_precision': 0.6890891204015541,
+                        'folds_recall': 0.5054522863971401,
+                        'folds_rho': 0.063998674298782,
+                        'folds_rho-p': 0.09053098791692135,
+                        'folds_se_acc': 0.005429812703239431,
+                        'folds_se_auc': 0.005207563703960231,
+                        'folds_se_f1': 0.002747168557255976,
+                        'folds_se_mfclass_acc': 0.005617520149889447,
+                        'folds_se_precision': 0.028369392230287182,
+                        'folds_se_recall': 0.0010423473473459542,
+                        'folds_se_rho': 0.010611920167193152,
+                        'folds_se_rho-p': 0.04803837709599472,
+                        'matt_ccoef': 0.06384079801910557,
+                        'mfclass': '1',
+                        'mfclass_acc': 0.6205898317351185,
+                        'num_classes': '2',
+                        'num_features': 5120,
+                        'precision': 0.6899448628956826,
+                        'recall': 0.5053642507483271,
+                        'recall_micro': 0.6240275013569748,
+                        'recall_sensitivity': 0.9973760932944606,
+                        'recall_specificity': 0.01335240820219361,
+                        'test_size': 1057,
+                        'train_size': 4470,
+                        '{modelFS_desc}': 'None',
+                        '{model_desc}': 'ExtraTreesClassifier(bootstrap=False, '
+                                        'ccp_alpha=0.0, '
+                                        'class_weight=None,           '
+                                        "criterion='gini', max_depth=None, "
+                                        "max_features='auto',           "
+                                        'max_leaf_nodes=None, '
+                                        'max_samples=None,           '
+                                        'min_impurity_decrease=0.0, '
+                                        'min_impurity_split=None,           '
+                                        'min_samples_leaf=1, '
+                                        'min_samples_split=2,           '
+                                        'min_weight_fraction_leaf=0.0, '
+                                        'n_estimators=1000, '
+                                        'n_jobs=10,           oob_score=False, '
+                                        'random_state=None, '
+                                        'verbose=0,           '
+                                        'warm_start=False)'}}}}
+
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.624, f1: 0.397, auc: 0.625 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+-------
+Settings:
+
+Database - persuasion
+Corpus - percvs_v001_tr
+Group ID - message_id
+Feature table(s) - ['feat$LUAR_claims_rfa_pca_d0_tr$percvs_v001_tr$message_id', 'feat$LUAR_claims_rfa_pca_d1_tr$percvs_v001_tr$message_id', 'feat$LUAR_claims_rfa_pca_d2_tr$percvs_v001_tr$message_id', 'feat$LUAR_msgs_tr$percvs_v001_tr$message_id', 'feat$SBERTadrbv1_claims_rfa_pca_d0_tr$percvs_v001_tr$message_id', 'feat$SBERTadrbv1_claims_rfa_pca_d1_tr$percvs_v001_tr$message_id', 'feat$SBERTadrbv1_claims_rfa_pca_d2_tr$percvs_v001_tr$message_id', 'feat$SBERTadrbv1_msgs_tr$percvs_v001_tr$message_id']
+Outcome table - percvs_v001_tr
+Outcome(s) - persuaded
+-------
+Interface Runtime: 297.96 seconds
+DLATK exits with success! A good day indeed  ¯\_(ツ)_/¯.
+
+# luar only w rfa claims (0.645)
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -g message_id -f 'feat$LUAR_claims_rfa_pca_d0_tr$percvs_v001_tr$message_id' 'feat$LUAR_claims_rfa_pca_d1_tr$percvs_v001_tr$message_id' 'feat$LUAR_claims_rfa_pca_d2_tr$percvs_v001_tr$message_id' 'feat$LUAR_msgs_tr$percvs_v001_tr$message_id' --outcome_table percvs_v001_tr --outcomes persuaded --nfold_test_classifiers --model etc --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_w_rfa_pca_claims_etc_gft100.metrics --csv
+[TEST COMPLETE]
+
+Wrote to: <_io.TextIOWrapper name='/chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_w_rfa_pca_claims_etc_gft100.metrics.accuracy_data.csv' mode='w' encoding='UTF-8'>
+{'persuaded': {(): {1: {'acc': 0.6314456305409807,
+                        'auc': 0.626778293577803,
+                        'auc_cntl_comb2': 0.0,
+                        'auc_cntl_comb2_p': 1.0,
+                        'auc_cntl_comb2_t': 0.0,
+                        'auc_p': 0.0,
+                        'auc_p_v_cntrls': 1.0,
+                        'f1': 0.4314591455752055,
+                        'f1_weighted': 0.5127837289978346,
+                        'folds_acc': 0.6314224267951074,
+                        'folds_auc': 0.6277809904333509,
+                        'folds_f1': 0.4314588262887679,
+                        'folds_mfclass_acc': 0.6204332031470415,
+                        'folds_precision': 0.6748928358970927,
+                        'folds_recall': 0.518773495308979,
+                        'folds_rho': 0.11403260692068429,
+                        'folds_rho-p': 0.003756001181700501,
+                        'folds_se_acc': 0.005153006058772173,
+                        'folds_se_auc': 0.004409980004293958,
+                        'folds_se_f1': 0.004075441233509687,
+                        'folds_se_mfclass_acc': 0.005617520149889447,
+                        'folds_se_precision': 0.02357145894293202,
+                        'folds_se_recall': 0.0017635345220734207,
+                        'folds_se_rho': 0.012332286473798955,
+                        'folds_se_rho-p': 0.0031466685786152564,
+                        'matt_ccoef': 0.11019093059685843,
+                        'mfclass': '1',
+                        'mfclass_acc': 0.6205898317351185,
+                        'num_classes': '2',
+                        'num_features': 2048,
+                        'precision': 0.6634749082007343,
+                        'recall': 0.5185686618812659,
+                        'recall_micro': 0.6314456305409807,
+                        'recall_sensitivity': 0.9865889212827988,
+                        'recall_specificity': 0.050548402479732954,
+                        'test_size': 1057,
+                        'train_size': 4470,
+                        '{modelFS_desc}': 'None',
+                        '{model_desc}': 'ExtraTreesClassifier(bootstrap=False, '
+                                        'ccp_alpha=0.0, '
+                                        'class_weight=None,           '
+                                        "criterion='gini', max_depth=None, "
+                                        "max_features='auto',           "
+                                        'max_leaf_nodes=None, '
+                                        'max_samples=None,           '
+                                        'min_impurity_decrease=0.0, '
+                                        'min_impurity_split=None,           '
+                                        'min_samples_leaf=1, '
+                                        'min_samples_split=2,           '
+                                        'min_weight_fraction_leaf=0.0, '
+                                        'n_estimators=1000, '
+                                        'n_jobs=10,           oob_score=False, '
+                                        'random_state=None, '
+                                        'verbose=0,           '
+                                        'warm_start=False)'}}}}
+
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.631, f1: 0.431, auc: 0.627 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+-------
+Settings:
+
+Database - persuasion
+Corpus - percvs_v001_tr
+Group ID - message_id
+Feature table(s) - ['feat$LUAR_claims_rfa_pca_d0_tr$percvs_v001_tr$message_id', 'feat$LUAR_claims_rfa_pca_d1_tr$percvs_v001_tr$message_id', 'feat$LUAR_claims_rfa_pca_d2_tr$percvs_v001_tr$message_id', 'feat$LUAR_msgs_tr$percvs_v001_tr$message_id']
+Outcome table - percvs_v001_tr
+Outcome(s) - persuaded
+-------
+Interface Runtime: 144.15 seconds
+DLATK exits with success! A good day indeed  ¯\_(ツ)_/¯.
+
+# sbert only wo rfa claims (0.609)
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -g message_id -f 'feat$SBERTadrbv1_msgs_tr$percvs_v001_tr$message_id' --outcome_table percvs_v001_tr --outcomes persuaded --nfold_test_classifiers --model etc --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/sbert_wo_rfa_pca_claims_etc_gft100.metrics --csv
+[TEST COMPLETE]
+
+Wrote to: <_io.TextIOWrapper name='/chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/sbert_wo_rfa_pca_claims_etc_gft100.metrics.accuracy_data.csv' mode='w' encoding='UTF-8'>
+{'persuaded': {(): {1: {'acc': 0.620951691695314,
+                        'auc': 0.6174326505586905,
+                        'auc_cntl_comb2': 0.0,
+                        'auc_cntl_comb2_p': 1.0,
+                        'auc_cntl_comb2_t': 0.0,
+                        'auc_p': 0.0,
+                        'auc_p_v_cntrls': 1.0,
+                        'f1': 0.38576930040317053,
+                        'f1_weighted': 0.4774354195822428,
+                        'folds_acc': 0.6207924584073519,
+                        'folds_auc': 0.6187301581071896,
+                        'folds_f1': 0.38566876411195833,
+                        'folds_mfclass_acc': 0.6204332031470415,
+                        'folds_precision': 0.6170844902996953,
+                        'folds_recall': 0.5008509713704058,
+                        'folds_rho': nan,
+                        'folds_rho-p': nan,
+                        'folds_se_acc': 0.005491020705857452,
+                        'folds_se_auc': 0.00401050534431987,
+                        'folds_se_f1': 0.002260117253327449,
+                        'folds_se_mfclass_acc': 0.005617520149889447,
+                        'folds_se_precision': 0.08349711684068661,
+                        'folds_se_recall': 0.000274133216747098,
+                        'folds_se_rho': nan,
+                        'folds_se_rho-p': nan,
+                        'matt_ccoef': 0.019354287443593462,
+                        'mfclass': '1',
+                        'mfclass_acc': 0.6205898317351185,
+                        'num_classes': '2',
+                        'num_features': 768,
+                        'precision': 0.610494834148994,
+                        'recall': 0.500847524785512,
+                        'recall_micro': 0.620951691695314,
+                        'recall_sensitivity': 0.9988338192419826,
+                        'recall_specificity': 0.002861230329041488,
+                        'test_size': 1057,
+                        'train_size': 4470,
+                        '{modelFS_desc}': 'None',
+                        '{model_desc}': 'ExtraTreesClassifier(bootstrap=False, '
+                                        'ccp_alpha=0.0, '
+                                        'class_weight=None,           '
+                                        "criterion='gini', max_depth=None, "
+                                        "max_features='auto',           "
+                                        'max_leaf_nodes=None, '
+                                        'max_samples=None,           '
+                                        'min_impurity_decrease=0.0, '
+                                        'min_impurity_split=None,           '
+                                        'min_samples_leaf=1, '
+                                        'min_samples_split=2,           '
+                                        'min_weight_fraction_leaf=0.0, '
+                                        'n_estimators=1000, '
+                                        'n_jobs=10,           oob_score=False, '
+                                        'random_state=None, '
+                                        'verbose=0,           '
+                                        'warm_start=False)'}}}}
+
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.621, f1: 0.386, auc: 0.617 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+-------
+Settings:
+
+Database - persuasion
+Corpus - percvs_v001_tr
+Group ID - message_id
+Feature table(s) - feat$SBERTadrbv1_msgs_tr$percvs_v001_tr$message_id
+Outcome table - percvs_v001_tr
+Outcome(s) - persuaded
+-------
+Interface Runtime: 72.37 seconds
+DLATK exits with success! A good day indeed  ¯\_(ツ)_/¯.
+
+# sbert only w rfa claims (0.605)
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -g message_id -f 'feat$SBERTadrbv1_claims_rfa_pca_d0_tr$percvs_v001_tr$message_id' 'feat$SBERTadrbv1_claims_rfa_pca_d1_tr$percvs_v001_tr$message_id' 'feat$SBERTadrbv1_claims_rfa_pca_d2_tr$percvs_v001_tr$message_id' 'feat$SBERTadrbv1_msgs_tr$percvs_v001_tr$message_id' --outcome_table percvs_v001_tr --outcomes persuaded --nfold_test_classifiers --model etc --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/sbert_w_rfa_pca_claims_etc_gft100.metrics --csv
+[TEST COMPLETE]
+
+Wrote to: <_io.TextIOWrapper name='/chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/sbert_w_rfa_pca_claims_etc_gft100.metrics.accuracy_data.csv' mode='w' encoding='UTF-8'>
+{'persuaded': {(): {1: {'acc': 0.6213135516555093,
+                        'auc': 0.5903726133821605,
+                        'auc_cntl_comb2': 0.0,
+                        'auc_cntl_comb2_p': 1.0,
+                        'auc_cntl_comb2_t': 0.0,
+                        'auc_p': 0.0,
+                        'auc_p_v_cntrls': 1.0,
+                        'f1': 0.3885709386796115,
+                        'f1_weighted': 0.4795521419338261,
+                        'folds_acc': 0.6212385008568964,
+                        'folds_auc': 0.5926721849356256,
+                        'folds_f1': 0.38868947741705584,
+                        'folds_mfclass_acc': 0.6204332031470415,
+                        'folds_precision': 0.5489834471888944,
+                        'folds_recall': 0.5018401696440048,
+                        'folds_rho': 0.01954828749368849,
+                        'folds_rho-p': 0.39635772214083403,
+                        'folds_se_acc': 0.006091621124922504,
+                        'folds_se_auc': 0.003429083671796374,
+                        'folds_se_f1': 0.004721835354102465,
+                        'folds_se_mfclass_acc': 0.005617520149889447,
+                        'folds_se_precision': 0.08434426647953719,
+                        'folds_se_recall': 0.0016116986303754592,
+                        'folds_se_rho': 0.01948517601348975,
+                        'folds_se_rho-p': 0.14877883133632652,
+                        'matt_ccoef': 0.027395935706969007,
+                        'mfclass': '1',
+                        'mfclass_acc': 0.6205898317351185,
+                        'num_classes': '2',
+                        'num_features': 3072,
+                        'precision': 0.6106954784819321,
+                        'recall': 0.501695049571024,
+                        'recall_micro': 0.6213135516555093,
+                        'recall_sensitivity': 0.997667638483965,
+                        'recall_specificity': 0.005722460658082976,
+                        'test_size': 1057,
+                        'train_size': 4470,
+                        '{modelFS_desc}': 'None',
+                        '{model_desc}': 'ExtraTreesClassifier(bootstrap=False, '
+                                        'ccp_alpha=0.0, '
+                                        'class_weight=None,           '
+                                        "criterion='gini', max_depth=None, "
+                                        "max_features='auto',           "
+                                        'max_leaf_nodes=None, '
+                                        'max_samples=None,           '
+                                        'min_impurity_decrease=0.0, '
+                                        'min_impurity_split=None,           '
+                                        'min_samples_leaf=1, '
+                                        'min_samples_split=2,           '
+                                        'min_weight_fraction_leaf=0.0, '
+                                        'n_estimators=1000, '
+                                        'n_jobs=10,           oob_score=False, '
+                                        'random_state=None, '
+                                        'verbose=0,           '
+                                        'warm_start=False)'}}}}
+
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.621, f1: 0.389, auc: 0.590 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+-------
+Settings:
+
+Database - persuasion
+Corpus - percvs_v001_tr
+Group ID - message_id
+Feature table(s) - ['feat$SBERTadrbv1_claims_rfa_pca_d0_tr$percvs_v001_tr$message_id', 'feat$SBERTadrbv1_claims_rfa_pca_d1_tr$percvs_v001_tr$message_id', 'feat$SBERTadrbv1_claims_rfa_pca_d2_tr$percvs_v001_tr$message_id', 'feat$SBERTadrbv1_msgs_tr$percvs_v001_tr$message_id']
+Outcome table - percvs_v001_tr
+Outcome(s) - persuaded
+-------
+Interface Runtime: 197.66 seconds
+DLATK exits with success! A good day indeed  ¯\_(ツ)_/¯.
+
+
+
+
+
+
+######### Without RFA PCA Claims - Just Normal Claims -------
+### lr + gft 100 + hs l2:
+# luar only w claims (0.655)
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -g message_id -f 'feat$LUAR_claims_tr$percvs_v001_tr$message_id' 'feat$LUAR_msgs_tr$percvs_v001_tr$message_id' --outcome_table percvs_v001_tr --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_w_claims_lr_gft100_hs_ridgereg.metrics --csv
+[TEST COMPLETE]
+
+Wrote to: <_io.TextIOWrapper name='/chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_w_claims_lr_gft100_hs_ridgereg.metrics.accuracy_data.csv' mode='w' encoding='UTF-8'>
+{'persuaded': {(): {1: {'acc': 0.6527953681925095,
+                        'auc': 0.6551383275566511,
+                        'auc_cntl_comb2': 0.0,
+                        'auc_cntl_comb2_p': 1.0,
+                        'auc_cntl_comb2_t': 0.0,
+                        'auc_p': 0.0,
+                        'auc_p_v_cntrls': 1.0,
+                        'f1': 0.5785346974800131,
+                        'f1_weighted': 0.6212025742299085,
+                        'folds_acc': 0.6528107825173116,
+                        'folds_auc': 0.6553853140280761,
+                        'folds_f1': 0.5783631299890281,
+                        'folds_mfclass_acc': 0.6204332031470415,
+                        'folds_precision': 0.6258123506174208,
+                        'folds_recall': 0.5859231227247704,
+                        'folds_rho': 0.207871148705331,
+                        'folds_rho-p': 6.995334210914478e-10,
+                        'folds_se_acc': 0.005337021312292816,
+                        'folds_se_auc': 0.004375865614375778,
+                        'folds_se_f1': 0.007222255489468067,
+                        'folds_se_mfclass_acc': 0.005617520149889447,
+                        'folds_se_precision': 0.006106146928158445,
+                        'folds_se_recall': 0.005546629272416713,
+                        'folds_se_rho': 0.011588733848625224,
+                        'folds_se_rho-p': 6.12817164067899e-10,
+                        'matt_ccoef': 0.20741483906240452,
+                        'mfclass': '1',
+                        'mfclass_acc': 0.6205898317351185,
+                        'num_classes': '2',
+                        'num_features': 1024,
+                        'precision': 0.6256119374978328,
+                        'recall': 0.5856226651707075,
+                        'recall_micro': 0.6527953681925095,
+                        'recall_sensitivity': 0.8641399416909621,
+                        'recall_specificity': 0.307105388650453,
+                        'test_size': 1057,
+                        'train_size': 4470,
+                        '{modelFS_desc}': 'None',
+                        '{model_desc}': 'LogisticRegression(C=0.001, '
+                                        'class_weight=None, dual=False, '
+                                        'fit_intercept=True,          '
+                                        'intercept_scaling=1, l1_ratio=None, '
+                                        'max_iter=100,          '
+                                        "multi_class='auto', n_jobs=None, "
+                                        "penalty='l2',          "
+                                        "random_state=42, solver='lbfgs', "
+                                        'tol=0.0001, verbose=0,          '
+                                        'warm_start=False)'}}}}
+
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.653, f1: 0.579, auc: 0.655 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+-------
+Settings:
+
+Database - persuasion
+Corpus - percvs_v001_tr
+Group ID - message_id
+Feature table(s) - ['feat$LUAR_claims_tr$percvs_v001_tr$message_id', 'feat$LUAR_msgs_tr$percvs_v001_tr$message_id']
+Outcome table - percvs_v001_tr
+Outcome(s) - persuaded
+-------
+Interface Runtime: 73.57 seconds
+DLATK exits with success! A good day indeed  ¯\_(ツ)_/¯.
+
+
+# luar+sbert w claims (0.651)
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -g message_id -f 'feat$LUAR_claims_tr$percvs_v001_tr$message_id' 'feat$LUAR_msgs_tr$percvs_v001_tr$message_id' 'feat$SBERTadrbv1_claims_tr$percvs_v001_tr$message_id' 'feat$SBERTadrbv1_msgs_tr$percvs_v001_tr$message_id' --outcome_table percvs_v001_tr --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_sbert_w_claims_lr_gft100_hs_ridgereg.metrics --csv
+[TEST COMPLETE]
+
+Wrote to: <_io.TextIOWrapper name='/chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_sbert_w_claims_lr_gft100_hs_ridgereg.metrics.accuracy_data.csv' mode='w' encoding='UTF-8'>
+{'persuaded': {(): {1: {'acc': 0.6509860683915325,
+                        'auc': 0.6506065168761149,
+                        'auc_cntl_comb2': 0.0,
+                        'auc_cntl_comb2_p': 1.0,
+                        'auc_cntl_comb2_t': 0.0,
+                        'auc_p': 0.0,
+                        'auc_p_v_cntrls': 1.0,
+                        'f1': 0.5942984256131224,
+                        'f1_weighted': 0.6308737536981275,
+                        'folds_acc': 0.6507520316851132,
+                        'folds_auc': 0.6508442082009711,
+                        'folds_f1': 0.5938604261285059,
+                        'folds_mfclass_acc': 0.6204332031470415,
+                        'folds_precision': 0.6211005785241215,
+                        'folds_recall': 0.5955059425978131,
+                        'folds_rho': 0.2150361327440647,
+                        'folds_rho-p': 7.763585647079795e-11,
+                        'folds_se_acc': 0.003366902840853581,
+                        'folds_se_auc': 0.005634762927859289,
+                        'folds_se_f1': 0.004465329118579205,
+                        'folds_se_mfclass_acc': 0.005617520149889447,
+                        'folds_se_precision': 0.004018899033928417,
+                        'folds_se_recall': 0.0036884912794681248,
+                        'folds_se_rho': 0.007420043079033279,
+                        'folds_se_rho-p': 6.285999915764246e-11,
+                        'matt_ccoef': 0.21489789202898868,
+                        'mfclass': '1',
+                        'mfclass_acc': 0.6205898317351185,
+                        'num_classes': '2',
+                        'num_features': 2560,
+                        'precision': 0.6209311114601963,
+                        'recall': 0.5954698576753407,
+                        'recall_micro': 0.6509860683915325,
+                        'recall_sensitivity': 0.8256559766763848,
+                        'recall_specificity': 0.3652837386742966,
+                        'test_size': 1057,
+                        'train_size': 4470,
+                        '{modelFS_desc}': 'None',
+                        '{model_desc}': 'LogisticRegression(C=0.001, '
+                                        'class_weight=None, dual=False, '
+                                        'fit_intercept=True,          '
+                                        'intercept_scaling=1, l1_ratio=None, '
+                                        'max_iter=100,          '
+                                        "multi_class='auto', n_jobs=None, "
+                                        "penalty='l2',          "
+                                        "random_state=42, solver='lbfgs', "
+                                        'tol=0.0001, verbose=0,          '
+                                        'warm_start=False)'}}}}
+
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.651, f1: 0.594, auc: 0.651 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+-------
+Settings:
+
+Database - persuasion
+Corpus - percvs_v001_tr
+Group ID - message_id
+Feature table(s) - ['feat$LUAR_claims_tr$percvs_v001_tr$message_id', 'feat$LUAR_msgs_tr$percvs_v001_tr$message_id', 'feat$SBERTadrbv1_claims_tr$percvs_v001_tr$message_id', 'feat$SBERTadrbv1_msgs_tr$percvs_v001_tr$message_id']
+Outcome table - percvs_v001_tr
+Outcome(s) - persuaded
+-------
+Interface Runtime: 152.44 seconds
+DLATK exits with success! A good day indeed  ¯\_(ツ)_/¯.
+
+# sbert only w claims (0.620)
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -g message_id -f 'feat$SBERTadrbv1_claims_tr$percvs_v001_tr$message_id' 'feat$SBERTadrbv1_msgs_tr$percvs_v001_tr$message_id' --outcome_table percvs_v001_tr --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/sbert_w_claims_lr_gft100_hs_ridgereg.metrics --csv
+[TEST COMPLETE]
+
+Wrote to: <_io.TextIOWrapper name='/chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/sbert_w_claims_lr_gft100_hs_ridgereg.metrics.accuracy_data.csv' mode='w' encoding='UTF-8'>
+{'persuaded': {(): {1: {'acc': 0.6289126108196128,
+                        'auc': 0.6203909235879106,
+                        'auc_cntl_comb2': 0.0,
+                        'auc_cntl_comb2_p': 1.0,
+                        'auc_cntl_comb2_t': 0.0,
+                        'auc_p': 0.0,
+                        'auc_p_v_cntrls': 1.0,
+                        'f1': 0.5449605053465914,
+                        'f1_weighted': 0.5920995772065482,
+                        'folds_acc': 0.6285658431038859,
+                        'folds_auc': 0.620716993134093,
+                        'folds_f1': 0.5444997178634482,
+                        'folds_mfclass_acc': 0.6204332031470415,
+                        'folds_precision': 0.5881369846614276,
+                        'folds_recall': 0.5576813971816776,
+                        'folds_rho': 0.14255203482823492,
+                        'folds_rho-p': 3.3961519589098386e-05,
+                        'folds_se_acc': 0.005440132352133872,
+                        'folds_se_auc': 0.005452249775974925,
+                        'folds_se_f1': 0.005180700891724556,
+                        'folds_se_mfclass_acc': 0.005617520149889447,
+                        'folds_se_precision': 0.0057557166312280274,
+                        'folds_se_recall': 0.0037428450304471937,
+                        'folds_se_rho': 0.00915646358692539,
+                        'folds_se_rho-p': 2.338211625047001e-05,
+                        'matt_ccoef': 0.1425908669834029,
+                        'mfclass': '1',
+                        'mfclass_acc': 0.6205898317351185,
+                        'num_classes': '2',
+                        'num_features': 1536,
+                        'precision': 0.587998181038748,
+                        'recall': 0.5577629989253008,
+                        'recall_micro': 0.6289126108196128,
+                        'recall_sensitivity': 0.8527696793002916,
+                        'recall_specificity': 0.26275631855030995,
+                        'test_size': 1057,
+                        'train_size': 4470,
+                        '{modelFS_desc}': 'None',
+                        '{model_desc}': 'LogisticRegression(C=0.001, '
+                                        'class_weight=None, dual=False, '
+                                        'fit_intercept=True,          '
+                                        'intercept_scaling=1, l1_ratio=None, '
+                                        'max_iter=100,          '
+                                        "multi_class='auto', n_jobs=None, "
+                                        "penalty='l2',          "
+                                        "random_state=42, solver='lbfgs', "
+                                        'tol=0.0001, verbose=0,          '
+                                        'warm_start=False)'}}}}
+
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.629, f1: 0.545, auc: 0.620 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+-------
+Settings:
+
+Database - persuasion
+Corpus - percvs_v001_tr
+Group ID - message_id
+Feature table(s) - ['feat$SBERTadrbv1_claims_tr$percvs_v001_tr$message_id', 'feat$SBERTadrbv1_msgs_tr$percvs_v001_tr$message_id']
+Outcome table - percvs_v001_tr
+Outcome(s) - persuaded
+-------
+Interface Runtime: 93.33 seconds
+DLATK exits with success! A good day indeed  ¯\_(ツ)_/¯.
+
+### etc + gft 100:
+# luar+sbert w claims (0.648)
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -g message_id -f 'feat$LUAR_claims_tr$percvs_v001_tr$message_id' 'feat$LUAR_msgs_tr$percvs_v001_tr$message_id' 'feat$SBERTadrbv1_claims_tr$percvs_v001_tr$message_id' 'feat$SBERTadrbv1_msgs_tr$percvs_v001_tr$message_id' --outcome_table percvs_v001_tr --outcomes persuaded --nfold_test_classifiers --model etc --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_sbert_w_claims_etc_gft100.metrics --csv
+[TEST COMPLETE]
+
+Wrote to: <_io.TextIOWrapper name='/chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_sbert_w_claims_etc_gft100.metrics.accuracy_data.csv' mode='w' encoding='UTF-8'>
+{'persuaded': {(): {1: {'acc': 0.623303781436584,
+                        'auc': 0.6487498453295073,
+                        'auc_cntl_comb2': 0.0,
+                        'auc_cntl_comb2_p': 1.0,
+                        'auc_cntl_comb2_t': 0.0,
+                        'auc_p': 0.0,
+                        'auc_p_v_cntrls': 1.0,
+                        'f1': 0.3924411090132671,
+                        'f1_weighted': 0.4827668919132616,
+                        'folds_acc': 0.6231929190174439,
+                        'folds_auc': 0.6490307182284513,
+                        'folds_f1': 0.3924543286305892,
+                        'folds_mfclass_acc': 0.6204332031470415,
+                        'folds_precision': 0.7311653085535937,
+                        'folds_recall': 0.5040199985260154,
+                        'folds_rho': 0.06061620704495677,
+                        'folds_rho-p': 0.1999968260730381,
+                        'folds_se_acc': 0.005755137232618466,
+                        'folds_se_auc': 0.005189229169063715,
+                        'folds_se_f1': 0.003117797767162127,
+                        'folds_se_mfclass_acc': 0.005617520149889447,
+                        'folds_se_precision': 0.05171789613790511,
+                        'folds_se_recall': 0.0009637870284778607,
+                        'folds_se_rho': 0.013762376020248348,
+                        'folds_se_rho-p': 0.1587686566287966,
+                        'matt_ccoef': 0.05950607146396854,
+                        'mfclass': '1',
+                        'mfclass_acc': 0.6205898317351185,
+                        'num_classes': '2',
+                        'num_features': 2560,
+                        'precision': 0.7242716759352882,
+                        'recall': 0.5039471909753069,
+                        'recall_micro': 0.623303781436584,
+                        'recall_sensitivity': 0.9988338192419826,
+                        'recall_specificity': 0.009060562708631379,
+                        'test_size': 1057,
+                        'train_size': 4470,
+                        '{modelFS_desc}': 'None',
+                        '{model_desc}': 'ExtraTreesClassifier(bootstrap=False, '
+                                        'ccp_alpha=0.0, '
+                                        'class_weight=None,           '
+                                        "criterion='gini', max_depth=None, "
+                                        "max_features='auto',           "
+                                        'max_leaf_nodes=None, '
+                                        'max_samples=None,           '
+                                        'min_impurity_decrease=0.0, '
+                                        'min_impurity_split=None,           '
+                                        'min_samples_leaf=1, '
+                                        'min_samples_split=2,           '
+                                        'min_weight_fraction_leaf=0.0, '
+                                        'n_estimators=1000, '
+                                        'n_jobs=10,           oob_score=False, '
+                                        'random_state=None, '
+                                        'verbose=0,           '
+                                        'warm_start=False)'}}}}
+
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.623, f1: 0.392, auc: 0.649 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+-------
+Settings:
+
+Database - persuasion
+Corpus - percvs_v001_tr
+Group ID - message_id
+Feature table(s) - ['feat$LUAR_claims_tr$percvs_v001_tr$message_id', 'feat$LUAR_msgs_tr$percvs_v001_tr$message_id', 'feat$SBERTadrbv1_claims_tr$percvs_v001_tr$message_id', 'feat$SBERTadrbv1_msgs_tr$percvs_v001_tr$message_id']
+Outcome table - percvs_v001_tr
+Outcome(s) - persuaded
+-------
+Interface Runtime: 170.78 seconds
+DLATK exits with success! A good day indeed  ¯\_(ツ)_/¯.
+
+# luar only w claims (0.645)
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -g message_id -f 'feat$LUAR_claims_tr$percvs_v001_tr$message_id' 'feat$LUAR_msgs_tr$percvs_v001_tr$message_id' --outcome_table percvs_v001_tr --outcomes persuaded --nfold_test_classifiers --model etc --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_w_claims_etc_gft100.metrics --csv
+[TEST COMPLETE]
+
+Wrote to: <_io.TextIOWrapper name='/chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_w_claims_etc_gft100.metrics.accuracy_data.csv' mode='w' encoding='UTF-8'>
+{'persuaded': {(): {1: {'acc': 0.629998190700199,
+                        'auc': 0.6472454749322577,
+                        'auc_cntl_comb2': 0.0,
+                        'auc_cntl_comb2_p': 1.0,
+                        'auc_cntl_comb2_t': 0.0,
+                        'auc_p': 0.0,
+                        'auc_p_v_cntrls': 1.0,
+                        'f1': 0.4284689605513292,
+                        'f1_weighted': 0.5103210214253218,
+                        'folds_acc': 0.6300738392947641,
+                        'folds_auc': 0.6479768823723464,
+                        'folds_f1': 0.4287354237447797,
+                        'folds_mfclass_acc': 0.6204332031470415,
+                        'folds_precision': 0.6565128903435973,
+                        'folds_recall': 0.5172133622460013,
+                        'folds_rho': 0.10313076055783699,
+                        'folds_rho-p': 0.022936879527254615,
+                        'folds_se_acc': 0.006375007935468846,
+                        'folds_se_auc': 0.0029538840334957664,
+                        'folds_se_f1': 0.007206579349387358,
+                        'folds_se_mfclass_acc': 0.005617520149889447,
+                        'folds_se_precision': 0.026195945686607172,
+                        'folds_se_recall': 0.003467876585525024,
+                        'folds_se_rho': 0.018203039843969693,
+                        'folds_se_rho-p': 0.017570569686004164,
+                        'matt_ccoef': 0.10127549318298401,
+                        'mfclass': '1',
+                        'mfclass_acc': 0.6205898317351185,
+                        'num_classes': '2',
+                        'num_features': 1024,
+                        'precision': 0.6522085387116061,
+                        'recall': 0.5168465015272408,
+                        'recall_micro': 0.629998190700199,
+                        'recall_sensitivity': 0.9860058309037901,
+                        'recall_specificity': 0.047687172150691466,
+                        'test_size': 1057,
+                        'train_size': 4470,
+                        '{modelFS_desc}': 'None',
+                        '{model_desc}': 'ExtraTreesClassifier(bootstrap=False, '
+                                        'ccp_alpha=0.0, '
+                                        'class_weight=None,           '
+                                        "criterion='gini', max_depth=None, "
+                                        "max_features='auto',           "
+                                        'max_leaf_nodes=None, '
+                                        'max_samples=None,           '
+                                        'min_impurity_decrease=0.0, '
+                                        'min_impurity_split=None,           '
+                                        'min_samples_leaf=1, '
+                                        'min_samples_split=2,           '
+                                        'min_weight_fraction_leaf=0.0, '
+                                        'n_estimators=1000, '
+                                        'n_jobs=10,           oob_score=False, '
+                                        'random_state=None, '
+                                        'verbose=0,           '
+                                        'warm_start=False)'}}}}
+
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.630, f1: 0.428, auc: 0.647 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+-------
+Settings:
+
+Database - persuasion
+Corpus - percvs_v001_tr
+Group ID - message_id
+Feature table(s) - ['feat$LUAR_claims_tr$percvs_v001_tr$message_id', 'feat$LUAR_msgs_tr$percvs_v001_tr$message_id']
+Outcome table - percvs_v001_tr
+Outcome(s) - persuaded
+-------
+Interface Runtime: 90.63 seconds
+DLATK exits with success! A good day indeed  ¯\_(ツ)_/¯.
+
+
+# sbert only w claims (0.605)
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -g message_id -f 'feat$SBERTadrbv1_claims_tr$percvs_v001_tr$message_id' 'feat$SBERTadrbv1_msgs_tr$percvs_v001_tr$message_id' --outcome_table percvs_v001_tr --outcomes persuaded --nfold_test_classifiers --model etc --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/sbert_w_claims_etc_gft100.metrics --csv
+[TEST COMPLETE]
+
+Wrote to: <_io.TextIOWrapper name='/chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/sbert_w_claims_etc_gft100.metrics.accuracy_data.csv' mode='w' encoding='UTF-8'>
+{'persuaded': {(): {1: {'acc': 0.6204089017550208,
+                        'auc': 0.6080749814742982,
+                        'auc_cntl_comb2': 0.0,
+                        'auc_cntl_comb2_p': 1.0,
+                        'auc_cntl_comb2_t': 0.0,
+                        'auc_p': 0.0,
+                        'auc_p_v_cntrls': 1.0,
+                        'f1': 0.3828718177757928,
+                        'f1_weighted': 0.47521271393919645,
+                        'folds_acc': 0.6202475021256859,
+                        'folds_auc': 0.609926699121399,
+                        'folds_f1': 0.38277327840724473,
+                        'folds_mfclass_acc': 0.6204332031470415,
+                        'folds_precision': 0.31018182577816467,
+                        'folds_recall': 0.4998516320474778,
+                        'folds_rho': nan,
+                        'folds_rho-p': nan,
+                        'folds_se_acc': 0.005584312712642523,
+                        'folds_se_auc': 0.0068666575097410835,
+                        'folds_se_f1': 0.002150816583231412,
+                        'folds_se_mfclass_acc': 0.005617520149889447,
+                        'folds_se_precision': 0.002802264652325468,
+                        'folds_se_recall': 0.0001327043310088892,
+                        'folds_se_rho': nan,
+                        'folds_se_rho-p': nan,
+                        'matt_ccoef': -0.010518328129319049,
+                        'mfclass': '1',
+                        'mfclass_acc': 0.6205898317351185,
+                        'num_classes': '2',
+                        'num_features': 1536,
+                        'precision': 0.31026058631921827,
+                        'recall': 0.4998542274052478,
+                        'recall_micro': 0.6204089017550208,
+                        'recall_sensitivity': 0.9997084548104956,
+                        'recall_specificity': 0.0,
+                        'test_size': 1057,
+                        'train_size': 4470,
+                        '{modelFS_desc}': 'None',
+                        '{model_desc}': 'ExtraTreesClassifier(bootstrap=False, '
+                                        'ccp_alpha=0.0, '
+                                        'class_weight=None,           '
+                                        "criterion='gini', max_depth=None, "
+                                        "max_features='auto',           "
+                                        'max_leaf_nodes=None, '
+                                        'max_samples=None,           '
+                                        'min_impurity_decrease=0.0, '
+                                        'min_impurity_split=None,           '
+                                        'min_samples_leaf=1, '
+                                        'min_samples_split=2,           '
+                                        'min_weight_fraction_leaf=0.0, '
+                                        'n_estimators=1000, '
+                                        'n_jobs=10,           oob_score=False, '
+                                        'random_state=None, '
+                                        'verbose=0,           '
+                                        'warm_start=False)'}}}}
+
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.620, f1: 0.383, auc: 0.608 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+-------
+Settings:
+
+Database - persuasion
+Corpus - percvs_v001_tr
+Group ID - message_id
+Feature table(s) - ['feat$SBERTadrbv1_claims_tr$percvs_v001_tr$message_id', 'feat$SBERTadrbv1_msgs_tr$percvs_v001_tr$message_id']
+Outcome table - percvs_v001_tr
+Outcome(s) - persuaded
+-------
+Interface Runtime: 117.14 seconds
+DLATK exits with success! A good day indeed  ¯\_(ツ)_/¯.

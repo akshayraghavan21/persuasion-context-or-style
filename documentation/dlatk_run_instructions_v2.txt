@@ -1,0 +1,803 @@
+## Stratify Whole Dataset Into Train, Test Splits on claim group and outcome label
+python stratifygroup_wholedataset_generate_kfolds.py --input_file "../../data/dpo_random_neg_op_comment_v003_to_per_con_v_styl_v001.json" --output_train_file "../../data/dpo_random_neg_op_comment_v003_to_percvs_v001_tr_grpstrat_80pct.jsonl" --output_held_out_test_file "../../data/dpo_random_neg_op_comment_v003_to_percvs_v001_te_grpstrat_20pct.jsonl" --old_label_col_name "outcome_label" --new_label_col_name "persuaded"
+
+## Train Feat Embeddings
+python generate_embeddings_csv_for_dlatk.py --input_file "../../data/dpo_random_neg_op_comment_v003_to_percvs_v001_tr_grpstrat_80pct.jsonl" --output_file "../../data/percvs_v001_luar_feat_message_train.csv" --model_type "luar" --model_name "rrivera1849/LUAR-MUD" --tokenizer_name "rrivera1849/LUAR-MUD" --text_col_name "message" --embeddings_group_id_col "message_id"
+python generate_embeddings_csv_for_dlatk.py --input_file "../../data/dpo_random_neg_op_comment_v003_to_percvs_v001_tr_grpstrat_80pct.jsonl" --output_file "../../data/percvs_v001_sbertadrbv1_feat_message_train.csv" --model_type "sbert" --model_name "all-distilroberta-v1" --text_col_name "message" --embeddings_group_id_col "message_id"
+
+python generate_embeddings_csv_for_dlatk.py --input_file "../../data/dpo_random_neg_op_comment_v003_to_percvs_v001_tr_grpstrat_80pct.jsonl" --output_file "../../data/percvs_v001_luar_feat_claim_train.csv" --model_type "luar" --model_name "rrivera1849/LUAR-MUD" --tokenizer_name "rrivera1849/LUAR-MUD" --text_col_name "prompt" --embeddings_group_id_col "message_id"
+python generate_embeddings_csv_for_dlatk.py --input_file "../../data/dpo_random_neg_op_comment_v003_to_percvs_v001_tr_grpstrat_80pct.jsonl" --output_file "../../data/percvs_v001_sbertadrbv1_feat_claim_train.csv" --model_type "sbert" --model_name "all-distilroberta-v1" --text_col_name "prompt" --embeddings_group_id_col "message_id"
+
+## Test Feat Embeddings
+python generate_embeddings_csv_for_dlatk.py --input_file "../../data/dpo_random_neg_op_comment_v003_to_percvs_v001_te_grpstrat_20pct.jsonl" --output_file "../../data/percvs_v001_luar_feat_message_test.csv" --model_type "luar" --model_name "rrivera1849/LUAR-MUD" --tokenizer_name "rrivera1849/LUAR-MUD" --text_col_name "message" --embeddings_group_id_col "message_id"
+python generate_embeddings_csv_for_dlatk.py --input_file "../../data/dpo_random_neg_op_comment_v003_to_percvs_v001_te_grpstrat_20pct.jsonl" --output_file "../../data/percvs_v001_sbertadrbv1_feat_message_test.csv" --model_type "sbert" --model_name "all-distilroberta-v1" --text_col_name "message" --embeddings_group_id_col "message_id"
+
+python generate_embeddings_csv_for_dlatk.py --input_file "../../data/dpo_random_neg_op_comment_v003_to_percvs_v001_te_grpstrat_20pct.jsonl" --output_file "../../data/percvs_v001_luar_feat_claim_test.csv" --model_type "luar" --model_name "rrivera1849/LUAR-MUD" --tokenizer_name "rrivera1849/LUAR-MUD" --text_col_name "prompt" --embeddings_group_id_col "message_id"
+python generate_embeddings_csv_for_dlatk.py --input_file "../../data/dpo_random_neg_op_comment_v003_to_percvs_v001_te_grpstrat_20pct.jsonl" --output_file "../../data/percvs_v001_sbertadrbv1_feat_claim_test.csv" --model_type "sbert" --model_name "all-distilroberta-v1" --text_col_name "prompt" --embeddings_group_id_col "message_id"
+
+
+### To create feat tables
+python load_embeddings_csv_to_feat_table_dlatk.py --database_name "persuasion" --table_name 'feat$LUAR_msgs_tr$percvs_v001_tr$message_id' --input_file "../../data/percvs_v001_luar_feat_message_train.csv"
+python load_embeddings_csv_to_feat_table_dlatk.py --database_name "persuasion" --table_name 'feat$SBERTadrbv1_msgs_tr$percvs_v001_tr$message_id' --input_file "../../data/percvs_v001_sbertadrbv1_feat_message_train.csv"
+python load_embeddings_csv_to_feat_table_dlatk.py --database_name "persuasion" --table_name 'feat$LUAR_claims_tr$percvs_v001_tr$message_id' --input_file "../../data/percvs_v001_luar_feat_claim_train.csv"
+python load_embeddings_csv_to_feat_table_dlatk.py --database_name "persuasion" --table_name 'feat$SBERTadrbv1_claims_tr$percvs_v001_tr$message_id' --input_file "../../data/percvs_v001_sbertadrbv1_feat_claim_train.csv"
+
+python load_embeddings_csv_to_feat_table_dlatk.py --database_name "persuasion" --table_name 'feat$LUAR_msgs_te$percvs_v001_te$message_id' --input_file "../../data/percvs_v001_luar_feat_message_test.csv"
+python load_embeddings_csv_to_feat_table_dlatk.py --database_name "persuasion" --table_name 'feat$SBERTadrbv1_msgs_te$percvs_v001_te$message_id' --input_file "../../data/percvs_v001_sbertadrbv1_feat_message_test.csv"
+python load_embeddings_csv_to_feat_table_dlatk.py --database_name "persuasion" --table_name 'feat$LUARclaimstest$percvs_v001_te$message_id' --input_file "../../data/percvs_v001_luar_feat_claim_test.csv"
+python load_embeddings_csv_to_feat_table_dlatk.py --database_name "persuasion" --table_name 'feat$SBERTadrbv1_claims_te$percvs_v001_te$message_id' --input_file "../../data/percvs_v001_sbertadrbv1_feat_claim_test.csv"
+
+### To create main table
+python load_dataset_json_to_message_table_dlatk.py --database_name "persuasion" --table_name "percvs_v001_tr" --input_file "../../data/dpo_random_neg_op_comment_v003_to_percvs_v001_tr_grpstrat_80pct.jsonl"
+
+### Generate RFA values from claims feat table and load to new rfa feat table
+python generate_rfa_feat_from_emb_feat_table_dlatk.py --database_name "persuasion" --input_table_name 'feat$LUAR_claims_tr$percvs_v001_tr$message_id' --output_table_name 'feat$LUAR_claims_rfa_pca_tr$percvs_v001_tr$message_id' --dimensionality_reduction_method 'pca' --rfa_output_dimension 3
+python generate_rfa_feat_from_emb_feat_table_dlatk.py --database_name "persuasion" --input_table_name 'feat$SBERTadrbv1_claims_tr$percvs_v001_tr$message_id' --output_table_name 'feat$SBERTadrbv1_claims_rfa_pca_tr$percvs_v001_tr$message_id' --dimensionality_reduction_method 'pca' --rfa_output_dimension 3
+
+### Perform element wise multiplication of claims dim and message feat
+# LUAR - PCA
+CREATE TABLE feat$LUAR_claims_rfa_pca_d0_tr$percvs_v001_tr$message_id AS
+SELECT
+    a.group_id,
+    a.feat,
+    a.value * b.value AS value,
+    a.value * b.value AS group_norm
+FROM feat$LUAR_msgs_tr$percvs_v001_tr$message_id AS a
+JOIN feat$LUAR_claims_rfa_pca_tr$percvs_v001_tr$message_id AS b
+  ON a.group_id = b.group_id
+WHERE b.feat = 'dim_feat_000';
+
+CREATE TABLE feat$LUAR_claims_rfa_pca_d1_tr$percvs_v001_tr$message_id AS
+SELECT
+    a.group_id,
+    a.feat,
+    a.value * b.value AS value,
+    a.value * b.value AS group_norm
+FROM feat$LUAR_msgs_tr$percvs_v001_tr$message_id AS a
+JOIN feat$LUAR_claims_rfa_pca_tr$percvs_v001_tr$message_id AS b
+  ON a.group_id = b.group_id
+WHERE b.feat = 'dim_feat_001';
+
+CREATE TABLE feat$LUAR_claims_rfa_pca_d2_tr$percvs_v001_tr$message_id AS
+SELECT
+    a.group_id,
+    a.feat,
+    a.value * b.value AS value,
+    a.value * b.value AS group_norm
+FROM feat$LUAR_msgs_tr$percvs_v001_tr$message_id AS a
+JOIN feat$LUAR_claims_rfa_pca_tr$percvs_v001_tr$message_id AS b
+  ON a.group_id = b.group_id
+WHERE b.feat = 'dim_feat_002';
+
+# SBERT - PCA
+CREATE TABLE feat$SBERTadrbv1_claims_rfa_pca_d0_tr$percvs_v001_tr$message_id AS
+SELECT
+    a.group_id,
+    a.feat,
+    a.value * b.value AS value,
+    a.value * b.value AS group_norm,
+    a.value as aval, b.value as bval
+FROM feat$SBERTadrbv1_msgs_tr$percvs_v001_tr$message_id AS a
+JOIN feat$SBERTadrbv1_claims_rfa_pca_tr$percvs_v001_tr$message_id AS b
+  ON a.group_id = b.group_id
+WHERE b.feat = 'dim_feat_000';
+
+CREATE TABLE feat$SBERTadrbv1_claims_rfa_pca_d1_tr$percvs_v001_tr$message_id AS
+SELECT
+    a.group_id,
+    a.feat,
+    a.value * b.value AS value,
+    a.value * b.value AS group_norm
+FROM feat$SBERTadrbv1_msgs_tr$percvs_v001_tr$message_id AS a
+JOIN feat$SBERTadrbv1_claims_rfa_pca_tr$percvs_v001_tr$message_id AS b
+  ON a.group_id = b.group_id
+WHERE b.feat = 'dim_feat_001';
+
+CREATE TABLE feat$SBERTadrbv1_claims_rfa_pca_d2_tr$percvs_v001_tr$message_id AS
+SELECT
+    a.group_id,
+    a.feat,
+    a.value * b.value AS value,
+    a.value * b.value AS group_norm
+FROM feat$SBERTadrbv1_msgs_tr$percvs_v001_tr$message_id AS a
+JOIN feat$SBERTadrbv1_claims_rfa_pca_tr$percvs_v001_tr$message_id AS b
+  ON a.group_id = b.group_id
+WHERE b.feat = 'dim_feat_002';
+
+## Adding indexes
+ALTER TABLE `feat$LUAR_claims_rfa_pca_d0_tr$percvs_v001_tr$message_id`
+  ADD COLUMN `id` bigint(16) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST,
+  ADD INDEX `idx_group_id` (`group_id`),
+  ADD INDEX `idx_feat` (`feat`);
+
+ALTER TABLE `feat$LUAR_claims_rfa_pca_d1_tr$percvs_v001_tr$message_id`
+  ADD COLUMN `id` bigint(16) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST,
+  ADD INDEX `idx_group_id` (`group_id`),
+  ADD INDEX `idx_feat` (`feat`);
+
+ALTER TABLE `feat$LUAR_claims_rfa_pca_d2_tr$percvs_v001_tr$message_id`
+  ADD COLUMN `id` bigint(16) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST,
+  ADD INDEX `idx_group_id` (`group_id`),
+  ADD INDEX `idx_feat` (`feat`);
+
+ALTER TABLE `feat$SBERTadrbv1_claims_rfa_pca_d0_tr$percvs_v001_tr$message_id`
+  ADD COLUMN `id` bigint(16) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST,
+  ADD INDEX `idx_group_id` (`group_id`),
+  ADD INDEX `idx_feat` (`feat`);
+
+ALTER TABLE `feat$SBERTadrbv1_claims_rfa_pca_d1_tr$percvs_v001_tr$message_id`
+  ADD COLUMN `id` bigint(16) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST,
+  ADD INDEX `idx_group_id` (`group_id`),
+  ADD INDEX `idx_feat` (`feat`);
+
+ALTER TABLE `feat$SBERTadrbv1_claims_rfa_pca_d2_tr$percvs_v001_tr$message_id`
+  ADD COLUMN `id` bigint(16) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST,
+  ADD INDEX `idx_group_id` (`group_id`),
+  ADD INDEX `idx_feat` (`feat`);
+
+
+### DLATK: Running lr with group_freq_thresh of 0
+## DLATK: luar+sbert with claims
+(/cronus_data/conda_envs/dlatk_py36) araghavan@cronus:/chronos_data/araghavan/dlatk$ 
+./dlatkInterface.py -d persuasion -t per_con_v_sty_train_v001 -g message_id -f 'feat$LUARmsgstrain$per_con_v_sty_train_v001$message_id' 'feat$LUARclaimstrain$per_con_v_sty_train_v001$message_id' 'feat$SBERTmsgstrain$per_con_v_sty_train_v001$message_id' 'feat$SBERTclaimstrain$per_con_v_sty_train_v001$message_id' --outcome_table per_con_v_sty_train_v001 --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 0 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_sbert_w_claim_lr.metrics --csv
+0.703
+
+## DLATK: luar+sbert without claims
+./dlatkInterface.py -d persuasion -t per_con_v_sty_train_v001 -g message_id -f 'feat$LUARmsgstrain$per_con_v_sty_train_v001$message_id' 'feat$SBERTmsgstrain$per_con_v_sty_train_v001$message_id' --outcome_table per_con_v_sty_train_v001 --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 0 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_sbert_lr.metrics --csv
+0.708
+
+## DLATK: luar only with claims
+./dlatkInterface.py -d persuasion -t per_con_v_sty_train_v001 -g message_id -f 'feat$LUARmsgstrain$per_con_v_sty_train_v001$message_id' 'feat$LUARclaimstrain$per_con_v_sty_train_v001$message_id' --outcome_table per_con_v_sty_train_v001 --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 0 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_w_claim_lr.metrics --csv
+0.715
+
+## DLATK: luar only without claims
+./dlatkInterface.py -d persuasion -t per_con_v_sty_train_v001 -g message_id -f 'feat$LUARmsgstrain$per_con_v_sty_train_v001$message_id' --outcome_table per_con_v_sty_train_v001 --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 0 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_lr.metrics --csv
+0.716
+
+
+
+
+
+### DLATK: Running etc with group_freq_thresh of 0
+## DLATK: luar+sbert with claims - etc model
+./dlatkInterface.py -d persuasion -t per_con_v_sty_train_v001 -g message_id -f 'feat$LUARmsgstrain$per_con_v_sty_train_v001$message_id' 'feat$LUARclaimstrain$per_con_v_sty_train_v001$message_id' 'feat$SBERTmsgstrain$per_con_v_sty_train_v001$message_id' 'feat$SBERTclaimstrain$per_con_v_sty_train_v001$message_id' --outcome_table per_con_v_sty_train_v001 --outcomes persuaded --nfold_test_classifiers --model etc --folds 5 --fold_column folds_col --group_freq_thresh 0 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_sbert_w_claim_etc.metrics --csv
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.642, f1: 0.642, auc: 0.692 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.500)
+
+## DLATK: luar+sbert without claims - etc model
+./dlatkInterface.py -d persuasion -t per_con_v_sty_train_v001 -g message_id -f 'feat$LUARmsgstrain$per_con_v_sty_train_v001$message_id' 'feat$SBERTmsgstrain$per_con_v_sty_train_v001$message_id' --outcome_table per_con_v_sty_train_v001 --outcomes persuaded --nfold_test_classifiers --model etc --folds 5 --fold_column folds_col --group_freq_thresh 0 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_sbert_etc.metrics --csv
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.646, f1: 0.646, auc: 0.696 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.500)
+
+## DLATK: luar only with claims - etc model
+./dlatkInterface.py -d persuasion -t per_con_v_sty_train_v001 -g message_id -f 'feat$LUARmsgstrain$per_con_v_sty_train_v001$message_id' 'feat$LUARclaimstrain$per_con_v_sty_train_v001$message_id' --outcome_table per_con_v_sty_train_v001 --outcomes persuaded --nfold_test_classifiers --model etc --folds 5 --fold_column folds_col --group_freq_thresh 0 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_w_claim_etc.metrics --csv
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.642, f1: 0.642, auc: 0.691 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.500)
+
+## DLATK: luar only without claims - etc model
+./dlatkInterface.py -d persuasion -t per_con_v_sty_train_v001 -g message_id -f 'feat$LUARmsgstrain$per_con_v_sty_train_v001$message_id' --outcome_table per_con_v_sty_train_v001 --outcomes persuaded --nfold_test_classifiers --model etc --folds 5 --fold_column folds_col --group_freq_thresh 0 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_etc.metrics --csv
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.646, f1: 0.646, auc: 0.695 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.500)
+
+
+
+
+
+Pre-Req:
+Create 1gram table:
+./dlatkInterface.py -d persuasion -t per_con_v_sty_train_v001 -g message_id --add_ngrams
+
+
+#### Running lr with Group Freq Threshold 100
+## DLATK: luar+sbert with claims
+./dlatkInterface.py -d persuasion -t per_con_v_sty_train_v001 -g message_id -f 'feat$LUARmsgstrain$per_con_v_sty_train_v001$message_id' 'feat$LUARclaimstrain$per_con_v_sty_train_v001$message_id' 'feat$SBERTmsgstrain$per_con_v_sty_train_v001$message_id' 'feat$SBERTclaimstrain$per_con_v_sty_train_v001$message_id' --outcome_table per_con_v_sty_train_v001 --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_sbert_w_claim_lr_gft100.metrics --csv
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.622, f1: 0.584, auc: 0.627 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+
+## DLATK: luar+sbert without claims
+./dlatkInterface.py -d persuasion -t per_con_v_sty_train_v001 -g message_id -f 'feat$LUARmsgstrain$per_con_v_sty_train_v001$message_id' 'feat$SBERTmsgstrain$per_con_v_sty_train_v001$message_id' --outcome_table per_con_v_sty_train_v001 --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_sbert_lr_gft100.metrics --csv
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.636, f1: 0.591, auc: 0.629 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+
+## DLATK: luar only with claims
+./dlatkInterface.py -d persuasion -t per_con_v_sty_train_v001 -g message_id -f 'feat$LUARmsgstrain$per_con_v_sty_train_v001$message_id' 'feat$LUARclaimstrain$per_con_v_sty_train_v001$message_id' --outcome_table per_con_v_sty_train_v001 --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_w_claim_lr_gft100.metrics --csv
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.648, f1: 0.593, auc: 0.648 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+
+## DLATK: luar only without claims
+./dlatkInterface.py -d persuasion -t per_con_v_sty_train_v001 -g message_id -f 'feat$LUARmsgstrain$per_con_v_sty_train_v001$message_id' --outcome_table per_con_v_sty_train_v001 --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_lr_gft100.metrics --csv
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.648, f1: 0.587, auc: 0.654 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+
+
+Summary:
+For etc model
+  - luar+sbert wo claims performs better than with claims
+  - luar only wo claims performs better than with claims
+  - luar+sbert performs better than luar only
+  - Summary: luar+sbert wo claims > luar wo claims > luar+sbert w claims > luar w claims
+
+For lr model gft 0
+  - luar+sbert wo claims performs better than with claims
+  - luar only wo claims performs better than with claims
+  - luar only performs better than luar+sbert
+  - Summary: luar wo claims > luar w claims > luar+sbert wo claims > luar+sbert w claims
+
+For lr model gft 100
+  - luar+sbert wo claims performs better than with claims
+  - luar only wo claims performs better than with claims
+  - luar only performs better than luar+sbert
+  - Summary: luar wo claims > luar w claims > luar+sbert wo claims > luar+sbert w claims
+
+Final: gft 100 scores less than gft 0 for lr models, lr gft 0 scores better than etc model 
+[maybe due to dataset size drop?]
+        : lr gft 0 > etc gft 0 > lr gft 100
+
+gft 0:
+'test_size': 1852,
+'train_size': 7750,
+
+gft 100:
+'test_size': 1057,
+'train_size': 4470,
+
+
+#### Running lr with Group Freq Threshold 100 and hyperparam Search of Ridge Regression
+####    Made change to /cronus_data/araghavan/dlatk/dlatk/classifyPredictor.py of hyperparam search of ridge regression
+## DLATK: luar+sbert with claims
+./dlatkInterface.py -d persuasion -t per_con_v_sty_train_v001 -g message_id -f 'feat$LUARmsgstrain$per_con_v_sty_train_v001$message_id' 'feat$LUARclaimstrain$per_con_v_sty_train_v001$message_id' 'feat$SBERTmsgstrain$per_con_v_sty_train_v001$message_id' 'feat$SBERTclaimstrain$per_con_v_sty_train_v001$message_id' --outcome_table per_con_v_sty_train_v001 --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_sbert_w_claim_lr_gft100_hs_ridgereg.metrics --csv
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.651, f1: 0.594, auc: 0.651 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+
+## DLATK: luar+sbert without claims
+./dlatkInterface.py -d persuasion -t per_con_v_sty_train_v001 -g message_id -f 'feat$LUARmsgstrain$per_con_v_sty_train_v001$message_id' 'feat$SBERTmsgstrain$per_con_v_sty_train_v001$message_id' --outcome_table per_con_v_sty_train_v001 --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_sbert_lr_gft100_hs_ridgereg.metrics --csv
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.650, f1: 0.587, auc: 0.653 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+
+## DLATK: luar only with claims
+./dlatkInterface.py -d persuasion -t per_con_v_sty_train_v001 -g message_id -f 'feat$LUARmsgstrain$per_con_v_sty_train_v001$message_id' 'feat$LUARclaimstrain$per_con_v_sty_train_v001$message_id' --outcome_table per_con_v_sty_train_v001 --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_w_claim_lr_gft100_hs_ridgereg.metrics --csv
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.653, f1: 0.579, auc: 0.655 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+
+
+## DLATK: luar only without claims
+./dlatkInterface.py -d persuasion -t per_con_v_sty_train_v001 -g message_id -f 'feat$LUARmsgstrain$per_con_v_sty_train_v001$message_id' --outcome_table per_con_v_sty_train_v001 --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_lr_gft100_hs_ridgereg.metrics --csv
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.652, f1: 0.574, auc: 0.658 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+
+
+#### Running etc with Group Freq Threshold 100
+####    Made change to /cronus_data/araghavan/dlatk/dlatk/classifyPredictor.py of hyperparam search of ridge regression
+## DLATK: luar+sbert with claims
+./dlatkInterface.py -d persuasion -t per_con_v_sty_train_v001 -g message_id -f 'feat$LUARmsgstrain$per_con_v_sty_train_v001$message_id' 'feat$LUARclaimstrain$per_con_v_sty_train_v001$message_id' 'feat$SBERTmsgstrain$per_con_v_sty_train_v001$message_id' 'feat$SBERTclaimstrain$per_con_v_sty_train_v001$message_id' --outcome_table per_con_v_sty_train_v001 --outcomes persuaded --nfold_test_classifiers --model etc --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_sbert_w_claim_etc_gft100.metrics --csv
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.623, f1: 0.393, auc: 0.648 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+
+## DLATK: luar+sbert without claims
+./dlatkInterface.py -d persuasion -t per_con_v_sty_train_v001 -g message_id -f 'feat$LUARmsgstrain$per_con_v_sty_train_v001$message_id' 'feat$SBERTmsgstrain$per_con_v_sty_train_v001$message_id' --outcome_table per_con_v_sty_train_v001 --outcomes persuaded --nfold_test_classifiers --model etc --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_sbert_etc_gft100.metrics --csv
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.630, f1: 0.423, auc: 0.654 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+
+## DLATK: luar only with claims
+./dlatkInterface.py -d persuasion -t per_con_v_sty_train_v001 -g message_id -f 'feat$LUARmsgstrain$per_con_v_sty_train_v001$message_id' 'feat$LUARclaimstrain$per_con_v_sty_train_v001$message_id' --outcome_table per_con_v_sty_train_v001 --outcomes persuaded --nfold_test_classifiers --model etc --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_w_claim_etc_gft100.metrics --csv
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.631, f1: 0.429, auc: 0.645 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+
+## DLATK: luar only without claims
+./dlatkInterface.py -d persuasion -t per_con_v_sty_train_v001 -g message_id -f 'feat$LUARmsgstrain$per_con_v_sty_train_v001$message_id' --outcome_table per_con_v_sty_train_v001 --outcomes persuaded --nfold_test_classifiers --model etc --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_etc_gft100.metrics --csv
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.638, f1: 0.475, auc: 0.650 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+
+
+Summary:
+lr + gft 100 + hs l2:
+- Summary:
+luar only wo claims (0.658)
+luar only w claims (0.655)
+luar+sbert wo claims (0.653)
+luar+sbert w claims (0.651)
+
+etc + gft 100:
+- Summary:
+luar+sbert wo claims (0.654)
+luar only wo claims (0.650)
+luar+sbert w claims (0.648)
+luar only w claims (0.645)
+
+residualized factor adaptation
+sbert only
+
+#### Running lr with Group Freq Threshold 100 + HS for L2 for SBERT only
+## DLATK: sbert only with claims
+./dlatkInterface.py -d persuasion -t per_con_v_sty_train_v001 -g message_id -f 'feat$SBERTmsgstrain$per_con_v_sty_train_v001$message_id' 'feat$SBERTclaimstrain$per_con_v_sty_train_v001$message_id' --outcome_table per_con_v_sty_train_v001 --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/sbert_w_claim_lr_gft100_hs_ridgereg.metrics --csv
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.629, f1: 0.545, auc: 0.620 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+
+## DLATK: sbert only without claims
+./dlatkInterface.py -d persuasion -t per_con_v_sty_train_v001 -g message_id -f 'feat$SBERTmsgstrain$per_con_v_sty_train_v001$message_id' --outcome_table per_con_v_sty_train_v001 --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/sbert_lr_gft100_hs_ridgereg.metrics --csv
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.632, f1: 0.541, auc: 0.624 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+
+#### Running etc with Group Freq Threshold 100 for SBERT only
+## DLATK: sbert only with claims
+./dlatkInterface.py -d persuasion -t per_con_v_sty_train_v001 -g message_id -f 'feat$SBERTmsgstrain$per_con_v_sty_train_v001$message_id' 'feat$SBERTclaimstrain$per_con_v_sty_train_v001$message_id' --outcome_table per_con_v_sty_train_v001 --outcomes persuaded --nfold_test_classifiers --model etc --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/sbert_w_claim_etc_gft100.metrics --csv
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.621, f1: 0.383, auc: 0.605 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+
+## DLATK: sbert only without claims
+./dlatkInterface.py -d persuasion -t per_con_v_sty_train_v001 -g message_id -f 'feat$SBERTmsgstrain$per_con_v_sty_train_v001$message_id' --outcome_table per_con_v_sty_train_v001 --outcomes persuaded --nfold_test_classifiers --model etc --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/sbert_etc_gft100.metrics --csv
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.620, f1: 0.383, auc: 0.609 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+
+
+Summary:
+lr + gft 100 + hs l2:
+- Summary:
+luar only wo claims (0.658)
+luar only w claims (0.655)
+luar+sbert wo claims (0.653)
+luar+sbert w claims (0.651)
+sbert only wo claims (0.624)
+sbert only w claims (0.620)
+
+etc + gft 100:
+- Summary:
+luar+sbert wo claims (0.654)
+luar only wo claims (0.650)
+luar+sbert w claims (0.648)
+luar only w claims (0.645)
+sbert only wo claims (0.609)
+sbert only w claims (0.605)
+
+
+
+#########################################################################################
+
+### DLATK: Running lr with group_freq_thresh of 0
+## DLATK: luar+sbert with claims
+(/cronus_data/conda_envs/dlatk_py36) araghavan@cronus:/chronos_data/araghavan/dlatk$ 
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -g message_id -f 'feat$LUAR_msgs_tr$percvs_v001_tr$message_id' 'feat$LUAR_claims_tr$percvs_v001_tr$message_id' 'feat$SBERTadrbv1_msgs_tr$percvs_v001_tr$message_id' 'feat$SBERTadrbv1_claims_tr$percvs_v001_tr$message_id' --outcome_table percvs_v001_tr --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 0 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_sbert_w_claim_lr_v2.metrics --csv
+0.703
+
+## DLATK: luar+sbert without claims
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -g message_id -f 'feat$LUAR_msgs_tr$percvs_v001_tr$message_id' 'feat$SBERTadrbv1_msgs_tr$percvs_v001_tr$message_id' --outcome_table percvs_v001_tr --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 0 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_sbert_lr_v2.metrics --csv
+0.708
+
+## DLATK: luar only with claims
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -g message_id -f 'feat$LUAR_msgs_tr$percvs_v001_tr$message_id' 'feat$LUAR_claims_tr$percvs_v001_tr$message_id' --outcome_table percvs_v001_tr --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 0 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_w_claim_lr_v2.metrics --csv
+0.715
+
+## DLATK: luar only without claims
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -g message_id -f 'feat$LUAR_msgs_tr$percvs_v001_tr$message_id' --outcome_table percvs_v001_tr --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 0 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_lr_v2.metrics --csv
+0.716
+
+
+
+
+
+### DLATK: Running etc with group_freq_thresh of 0
+## DLATK: luar+sbert with claims - etc model
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -g message_id -f 'feat$LUAR_msgs_tr$percvs_v001_tr$message_id' 'feat$LUAR_claims_tr$percvs_v001_tr$message_id' 'feat$SBERTadrbv1_msgs_tr$percvs_v001_tr$message_id' 'feat$SBERTadrbv1_claims_tr$percvs_v001_tr$message_id' --outcome_table percvs_v001_tr --outcomes persuaded --nfold_test_classifiers --model etc --folds 5 --fold_column folds_col --group_freq_thresh 0 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_sbert_w_claim_etc_v2.metrics --csv
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.642, f1: 0.642, auc: 0.692 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.500)
+
+## DLATK: luar+sbert without claims - etc model
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -g message_id -f 'feat$LUAR_msgs_tr$percvs_v001_tr$message_id' 'feat$SBERTadrbv1_msgs_tr$percvs_v001_tr$message_id' --outcome_table percvs_v001_tr --outcomes persuaded --nfold_test_classifiers --model etc --folds 5 --fold_column folds_col --group_freq_thresh 0 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_sbert_etc_v2.metrics --csv
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.646, f1: 0.646, auc: 0.696 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.500)
+
+## DLATK: luar only with claims - etc model
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -g message_id -f 'feat$LUAR_msgs_tr$percvs_v001_tr$message_id' 'feat$LUAR_claims_tr$percvs_v001_tr$message_id' --outcome_table percvs_v001_tr --outcomes persuaded --nfold_test_classifiers --model etc --folds 5 --fold_column folds_col --group_freq_thresh 0 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_w_claim_etc_v2.metrics --csv
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.642, f1: 0.642, auc: 0.691 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.500)
+
+## DLATK: luar only without claims - etc model
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -g message_id -f 'feat$LUAR_msgs_tr$percvs_v001_tr$message_id' --outcome_table percvs_v001_tr --outcomes persuaded --nfold_test_classifiers --model etc --folds 5 --fold_column folds_col --group_freq_thresh 0 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_etc_v2.metrics --csv
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.646, f1: 0.646, auc: 0.695 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.500)
+
+
+
+
+
+Pre-Req:
+Create 1gram table:
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -g message_id --add_ngrams
+
+
+#### Running lr with Group Freq Threshold 100
+## DLATK: luar+sbert with claims
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -g message_id -f 'feat$LUAR_msgs_tr$percvs_v001_tr$message_id' 'feat$LUAR_claims_tr$percvs_v001_tr$message_id' 'feat$SBERTadrbv1_msgs_tr$percvs_v001_tr$message_id' 'feat$SBERTadrbv1_claims_tr$percvs_v001_tr$message_id' --outcome_table percvs_v001_tr --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_sbert_w_claim_lr_gft100_v2.metrics --csv
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.622, f1: 0.584, auc: 0.627 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+
+## DLATK: luar+sbert without claims
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -g message_id -f 'feat$LUAR_msgs_tr$percvs_v001_tr$message_id' 'feat$SBERTadrbv1_msgs_tr$percvs_v001_tr$message_id' --outcome_table percvs_v001_tr --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_sbert_lr_gft100_v2.metrics --csv
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.636, f1: 0.591, auc: 0.629 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+
+## DLATK: luar only with claims
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -g message_id -f 'feat$LUAR_msgs_tr$percvs_v001_tr$message_id' 'feat$LUAR_claims_tr$percvs_v001_tr$message_id' --outcome_table percvs_v001_tr --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_w_claim_lr_gft100_v2.metrics --csv
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.648, f1: 0.593, auc: 0.648 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+
+## DLATK: luar only without claims
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -g message_id -f 'feat$LUAR_msgs_tr$percvs_v001_tr$message_id' --outcome_table percvs_v001_tr --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_lr_gft100_v2.metrics --csv
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.648, f1: 0.587, auc: 0.654 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+
+
+Summary:
+For etc model
+  - luar+sbert wo claims performs better than with claims
+  - luar only wo claims performs better than with claims
+  - luar+sbert performs better than luar only
+  - Summary: luar+sbert wo claims > luar wo claims > luar+sbert w claims > luar w claims
+
+For lr model gft 0
+  - luar+sbert wo claims performs better than with claims
+  - luar only wo claims performs better than with claims
+  - luar only performs better than luar+sbert
+  - Summary: luar wo claims > luar w claims > luar+sbert wo claims > luar+sbert w claims
+
+For lr model gft 100
+  - luar+sbert wo claims performs better than with claims
+  - luar only wo claims performs better than with claims
+  - luar only performs better than luar+sbert
+  - Summary: luar wo claims > luar w claims > luar+sbert wo claims > luar+sbert w claims
+
+Final: gft 100 scores less than gft 0 for lr models, lr gft 0 scores better than etc model 
+[maybe due to dataset size drop?]
+        : lr gft 0 > etc gft 0 > lr gft 100
+
+gft 0:
+'test_size': 1852,
+'train_size': 7750,
+
+gft 100:
+'test_size': 1057,
+'train_size': 4470,
+
+
+#### Running lr with Group Freq Threshold 100 and hyperparam Search of Ridge Regression
+####    Made change to /cronus_data/araghavan/dlatk/dlatk/classifyPredictor.py of hyperparam search of ridge regression
+## DLATK: luar+sbert with claims
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -g message_id -f 'feat$LUAR_msgs_tr$percvs_v001_tr$message_id' 'feat$LUAR_claims_tr$percvs_v001_tr$message_id' 'feat$SBERTadrbv1_msgs_tr$percvs_v001_tr$message_id' 'feat$SBERTadrbv1_claims_tr$percvs_v001_tr$message_id' --outcome_table percvs_v001_tr --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_sbert_w_claim_lr_gft100_hs_ridgereg_v2.metrics --csv
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.651, f1: 0.594, auc: 0.651 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+
+## DLATK: luar+sbert without claims
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -g message_id -f 'feat$LUAR_msgs_tr$percvs_v001_tr$message_id' 'feat$SBERTadrbv1_msgs_tr$percvs_v001_tr$message_id' --outcome_table percvs_v001_tr --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_sbert_lr_gft100_hs_ridgereg_v2.metrics --csv
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.650, f1: 0.587, auc: 0.653 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+
+## DLATK: luar only with claims
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -g message_id -f 'feat$LUAR_msgs_tr$percvs_v001_tr$message_id' 'feat$LUAR_claims_tr$percvs_v001_tr$message_id' --outcome_table percvs_v001_tr --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_w_claim_lr_gft100_hs_ridgereg_v2.metrics --csv
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.653, f1: 0.579, auc: 0.655 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+
+
+## DLATK: luar only without claims
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -g message_id -f 'feat$LUAR_msgs_tr$percvs_v001_tr$message_id' --outcome_table percvs_v001_tr --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_lr_gft100_hs_ridgereg_v2.metrics --csv
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.652, f1: 0.574, auc: 0.658 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+
+
+#### Running etc with Group Freq Threshold 100
+####    Made change to /cronus_data/araghavan/dlatk/dlatk/classifyPredictor.py of hyperparam search of ridge regression
+## DLATK: luar+sbert with claims
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -g message_id -f 'feat$LUAR_msgs_tr$percvs_v001_tr$message_id' 'feat$LUAR_claims_tr$percvs_v001_tr$message_id' 'feat$SBERTadrbv1_msgs_tr$percvs_v001_tr$message_id' 'feat$SBERTadrbv1_claims_tr$percvs_v001_tr$message_id' --outcome_table percvs_v001_tr --outcomes persuaded --nfold_test_classifiers --model etc --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_sbert_w_claim_etc_gft100_v2.metrics --csv
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.623, f1: 0.393, auc: 0.648 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+
+## DLATK: luar+sbert without claims
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -g message_id -f 'feat$LUAR_msgs_tr$percvs_v001_tr$message_id' 'feat$SBERTadrbv1_msgs_tr$percvs_v001_tr$message_id' --outcome_table percvs_v001_tr --outcomes persuaded --nfold_test_classifiers --model etc --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_sbert_etc_gft100_v2.metrics --csv
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.630, f1: 0.423, auc: 0.654 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+
+## DLATK: luar only with claims
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -g message_id -f 'feat$LUAR_msgs_tr$percvs_v001_tr$message_id' 'feat$LUAR_claims_tr$percvs_v001_tr$message_id' --outcome_table percvs_v001_tr --outcomes persuaded --nfold_test_classifiers --model etc --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_w_claim_etc_gft100_v2.metrics --csv
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.631, f1: 0.429, auc: 0.645 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+
+## DLATK: luar only without claims
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -g message_id -f 'feat$LUAR_msgs_tr$percvs_v001_tr$message_id' --outcome_table percvs_v001_tr --outcomes persuaded --nfold_test_classifiers --model etc --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_etc_gft100_v2.metrics --csv
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.638, f1: 0.475, auc: 0.650 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+
+
+Summary:
+lr + gft 100 + hs l2:
+- Summary:
+luar only wo claims (0.658)
+luar only w claims (0.655)
+luar+sbert wo claims (0.653)
+luar+sbert w claims (0.651)
+
+etc + gft 100:
+- Summary:
+luar+sbert wo claims (0.654)
+luar only wo claims (0.650)
+luar+sbert w claims (0.648)
+luar only w claims (0.645)
+
+residualized factor adaptation
+sbert only
+
+#### Running lr with Group Freq Threshold 100 + HS for L2 for SBERT only
+## DLATK: sbert only with claims
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -g message_id -f 'feat$SBERTadrbv1_msgs_tr$percvs_v001_tr$message_id' 'feat$SBERTadrbv1_claims_tr$percvs_v001_tr$message_id' --outcome_table percvs_v001_tr --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/sbert_w_claim_lr_gft100_hs_ridgereg_v2.metrics --csv
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.629, f1: 0.545, auc: 0.620 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+
+## DLATK: sbert only without claims
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -g message_id -f 'feat$SBERTadrbv1_msgs_tr$percvs_v001_tr$message_id' --outcome_table percvs_v001_tr --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/sbert_lr_gft100_hs_ridgereg_v2.metrics --csv
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.632, f1: 0.541, auc: 0.624 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+
+#### Running etc with Group Freq Threshold 100 for SBERT only
+## DLATK: sbert only with claims
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -g message_id -f 'feat$SBERTadrbv1_msgs_tr$percvs_v001_tr$message_id' 'feat$SBERTadrbv1_claims_tr$percvs_v001_tr$message_id' --outcome_table percvs_v001_tr --outcomes persuaded --nfold_test_classifiers --model etc --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/sbert_w_claim_etc_gft100_v2.metrics --csv
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.621, f1: 0.383, auc: 0.605 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+
+## DLATK: sbert only without claims
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -g message_id -f 'feat$SBERTadrbv1_msgs_tr$percvs_v001_tr$message_id' --outcome_table percvs_v001_tr --outcomes persuaded --nfold_test_classifiers --model etc --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/sbert_etc_gft100_v2.metrics --csv
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.620, f1: 0.383, auc: 0.609 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+
+
+Summary:
+lr + gft 100 + hs l2:
+- Summary:
+luar only wo claims (0.658)
+luar only w claims (0.655)
+luar+sbert wo claims (0.653)
+luar+sbert w claims (0.651)
+sbert only wo claims (0.624)
+sbert only w claims (0.620)
+
+etc + gft 100:
+- Summary:
+luar+sbert wo claims (0.654)
+luar only wo claims (0.650)
+luar+sbert w claims (0.648)
+luar only w claims (0.645)
+sbert only wo claims (0.609)
+sbert only w claims (0.605)
+
+
+#######################################
+'feat$LUAR_claims_rfa_pca_d0_tr$percvs_v001_tr$message_id'
+'feat$LUAR_claims_rfa_pca_d1_tr$percvs_v001_tr$message_id'
+'feat$LUAR_claims_rfa_pca_d2_tr$percvs_v001_tr$message_id'
+'feat$LUAR_msgs_tr$percvs_v001_tr$message_id'
+
+'feat$SBERTadrbv1_claims_rfa_pca_d0_tr$percvs_v001_tr$message_id'
+'feat$SBERTadrbv1_claims_rfa_pca_d1_tr$percvs_v001_tr$message_id'
+'feat$SBERTadrbv1_claims_rfa_pca_d2_tr$percvs_v001_tr$message_id'
+'feat$SBERTadrbv1_msgs_tr$percvs_v001_tr$message_id'
+
+### lr + gft 100 + hs l2:
+# luar only wo rfa claims (0.658)
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -g message_id -f 'feat$LUAR_msgs_tr$percvs_v001_tr$message_id' --outcome_table percvs_v001_tr --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_wo_rfa_pca_claims_lr_gft100_hs_ridgereg.metrics --csv
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.652, f1: 0.574, auc: 0.658 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+
+# luar only w rfa claims (0.655)
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -g message_id -f 'feat$LUAR_claims_rfa_pca_d0_tr$percvs_v001_tr$message_id' 'feat$LUAR_claims_rfa_pca_d1_tr$percvs_v001_tr$message_id' 'feat$LUAR_claims_rfa_pca_d2_tr$percvs_v001_tr$message_id' 'feat$LUAR_msgs_tr$percvs_v001_tr$message_id' --outcome_table percvs_v001_tr --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_w_rfa_pca_claims_lr_gft100_hs_ridgereg.metrics --csv
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.644, f1: 0.578, auc: 0.636 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+
+# luar+sbert wo rfa claims (0.653)
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -g message_id -f 'feat$LUAR_msgs_tr$percvs_v001_tr$message_id' 'feat$SBERTadrbv1_msgs_tr$percvs_v001_tr$message_id' --outcome_table percvs_v001_tr --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_sbert_wo_rfa_pca_claims_lr_gft100_hs_ridgereg.metrics --csv
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.650, f1: 0.587, auc: 0.653 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+
+# luar+sbert w rfa claims (0.651)
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -g message_id -f 'feat$LUAR_claims_rfa_pca_d0_tr$percvs_v001_tr$message_id' 'feat$LUAR_claims_rfa_pca_d1_tr$percvs_v001_tr$message_id' 'feat$LUAR_claims_rfa_pca_d2_tr$percvs_v001_tr$message_id' 'feat$LUAR_msgs_tr$percvs_v001_tr$message_id' 'feat$SBERTadrbv1_claims_rfa_pca_d0_tr$percvs_v001_tr$message_id' 'feat$SBERTadrbv1_claims_rfa_pca_d1_tr$percvs_v001_tr$message_id' 'feat$SBERTadrbv1_claims_rfa_pca_d2_tr$percvs_v001_tr$message_id' 'feat$SBERTadrbv1_msgs_tr$percvs_v001_tr$message_id' --outcome_table percvs_v001_tr --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_sbert_w_rfa_pca_claims_lr_gft100_hs_ridgereg.metrics --csv
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.635, f1: 0.584, auc: 0.622 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+
+# sbert only wo rfa claims (0.624)
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -g message_id -f 'feat$SBERTadrbv1_msgs_tr$percvs_v001_tr$message_id' --outcome_table percvs_v001_tr --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/sbert_wo_rfa_pca_claims_lr_gft100_hs_ridgereg.metrics --csv
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.632, f1: 0.541, auc: 0.624 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+
+# sbert only w rfa claims (0.620)
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -g message_id -f 'feat$SBERTadrbv1_claims_rfa_pca_d0_tr$percvs_v001_tr$message_id' 'feat$SBERTadrbv1_claims_rfa_pca_d1_tr$percvs_v001_tr$message_id' 'feat$SBERTadrbv1_claims_rfa_pca_d2_tr$percvs_v001_tr$message_id' 'feat$SBERTadrbv1_msgs_tr$percvs_v001_tr$message_id' --outcome_table percvs_v001_tr --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/sbert_w_rfa_pca_claims_lr_gft100_hs_ridgereg.metrics --csv
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.621, f1: 0.550, auc: 0.596 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+
+### etc + gft 100:
+# luar+sbert wo rfa claims (0.654)
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -g message_id -f 'feat$LUAR_msgs_tr$percvs_v001_tr$message_id' 'feat$SBERTadrbv1_msgs_tr$percvs_v001_tr$message_id' --outcome_table percvs_v001_tr --outcomes persuaded --nfold_test_classifiers --model etc --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_sbert_wo_rfa_pca_claims_etc_gft100.metrics --csv
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.630, f1: 0.423, auc: 0.654 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+
+# luar only wo rfa claims (0.650)
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -g message_id -f 'feat$LUAR_msgs_tr$percvs_v001_tr$message_id' --outcome_table percvs_v001_tr --outcomes persuaded --nfold_test_classifiers --model etc --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_wo_rfa_pca_claims_etc_gft100.metrics --csv
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.640, f1: 0.475, auc: 0.648 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+
+# luar+sbert w rfa claims (0.648)
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -g message_id -f 'feat$LUAR_claims_rfa_pca_d0_tr$percvs_v001_tr$message_id' 'feat$LUAR_claims_rfa_pca_d1_tr$percvs_v001_tr$message_id' 'feat$LUAR_claims_rfa_pca_d2_tr$percvs_v001_tr$message_id' 'feat$LUAR_msgs_tr$percvs_v001_tr$message_id' 'feat$SBERTadrbv1_claims_rfa_pca_d0_tr$percvs_v001_tr$message_id' 'feat$SBERTadrbv1_claims_rfa_pca_d1_tr$percvs_v001_tr$message_id' 'feat$SBERTadrbv1_claims_rfa_pca_d2_tr$percvs_v001_tr$message_id' 'feat$SBERTadrbv1_msgs_tr$percvs_v001_tr$message_id' --outcome_table percvs_v001_tr --outcomes persuaded --nfold_test_classifiers --model etc --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_sbert_w_rfa_pca_claims_etc_gft100.metrics --csv
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.624, f1: 0.397, auc: 0.625 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+
+# luar only w rfa claims (0.645)
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -g message_id -f 'feat$LUAR_claims_rfa_pca_d0_tr$percvs_v001_tr$message_id' 'feat$LUAR_claims_rfa_pca_d1_tr$percvs_v001_tr$message_id' 'feat$LUAR_claims_rfa_pca_d2_tr$percvs_v001_tr$message_id' 'feat$LUAR_msgs_tr$percvs_v001_tr$message_id' --outcome_table percvs_v001_tr --outcomes persuaded --nfold_test_classifiers --model etc --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_w_rfa_pca_claims_etc_gft100.metrics --csv
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.631, f1: 0.431, auc: 0.627 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+
+# sbert only wo rfa claims (0.609)
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -g message_id -f 'feat$SBERTadrbv1_msgs_tr$percvs_v001_tr$message_id' --outcome_table percvs_v001_tr --outcomes persuaded --nfold_test_classifiers --model etc --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/sbert_wo_rfa_pca_claims_etc_gft100.metrics --csv
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.621, f1: 0.386, auc: 0.617 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+
+# sbert only w rfa claims (0.605)
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -g message_id -f 'feat$SBERTadrbv1_claims_rfa_pca_d0_tr$percvs_v001_tr$message_id' 'feat$SBERTadrbv1_claims_rfa_pca_d1_tr$percvs_v001_tr$message_id' 'feat$SBERTadrbv1_claims_rfa_pca_d2_tr$percvs_v001_tr$message_id' 'feat$SBERTadrbv1_msgs_tr$percvs_v001_tr$message_id' --outcome_table percvs_v001_tr --outcomes persuaded --nfold_test_classifiers --model etc --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/sbert_w_rfa_pca_claims_etc_gft100.metrics --csv
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.621, f1: 0.389, auc: 0.590 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+
+
+cutoff: pretrianing, post trianing
+
+
+
+
+
+
+
+
+'feat$LUAR_claims_tr$percvs_v001_tr$message_id'
+'feat$SBERTadrbv1_claims_tr$percvs_v001_tr$message_id'
+######### Without RFA PCA Claims - Just Normal Claims -------
+### lr + gft 100 + hs l2:
+# luar only w claims (0.655)
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -g message_id -f 'feat$LUAR_claims_tr$percvs_v001_tr$message_id' 'feat$LUAR_msgs_tr$percvs_v001_tr$message_id' --outcome_table percvs_v001_tr --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_w_claims_lr_gft100_hs_ridgereg.metrics --csv
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.653, f1: 0.579, auc: 0.655 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+
+# luar+sbert w claims (0.651)
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -g message_id -f 'feat$LUAR_claims_tr$percvs_v001_tr$message_id' 'feat$LUAR_msgs_tr$percvs_v001_tr$message_id' 'feat$SBERTadrbv1_claims_tr$percvs_v001_tr$message_id' 'feat$SBERTadrbv1_msgs_tr$percvs_v001_tr$message_id' --outcome_table percvs_v001_tr --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_sbert_w_claims_lr_gft100_hs_ridgereg.metrics --csv
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.651, f1: 0.594, auc: 0.651 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+
+# sbert only w claims (0.620)
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -g message_id -f 'feat$SBERTadrbv1_claims_tr$percvs_v001_tr$message_id' 'feat$SBERTadrbv1_msgs_tr$percvs_v001_tr$message_id' --outcome_table percvs_v001_tr --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/sbert_w_claims_lr_gft100_hs_ridgereg.metrics --csv
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.629, f1: 0.545, auc: 0.620 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+
+### etc + gft 100:
+# luar+sbert w claims (0.648)
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -g message_id -f 'feat$LUAR_claims_tr$percvs_v001_tr$message_id' 'feat$LUAR_msgs_tr$percvs_v001_tr$message_id' 'feat$SBERTadrbv1_claims_tr$percvs_v001_tr$message_id' 'feat$SBERTadrbv1_msgs_tr$percvs_v001_tr$message_id' --outcome_table percvs_v001_tr --outcomes persuaded --nfold_test_classifiers --model etc --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_sbert_w_claims_etc_gft100.metrics --csv
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.623, f1: 0.392, auc: 0.649 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+
+# luar only w claims (0.645)
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -g message_id -f 'feat$LUAR_claims_tr$percvs_v001_tr$message_id' 'feat$LUAR_msgs_tr$percvs_v001_tr$message_id' --outcome_table percvs_v001_tr --outcomes persuaded --nfold_test_classifiers --model etc --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/luar_w_claims_etc_gft100.metrics --csv
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.630, f1: 0.428, auc: 0.647 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
+
+
+# sbert only w claims (0.605)
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -g message_id -f 'feat$SBERTadrbv1_claims_tr$percvs_v001_tr$message_id' 'feat$SBERTadrbv1_msgs_tr$percvs_v001_tr$message_id' --outcome_table percvs_v001_tr --outcomes persuaded --nfold_test_classifiers --model etc --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/dlatk_classification_metrics/sbert_w_claims_etc_gft100.metrics --csv
+[persuaded]
+   NO CONTROLS
+     + LANG: acc: 0.620, f1: 0.383, auc: 0.608 (p_vs_controls = 1.0000)
+   (mfc_acc: 0.621)
