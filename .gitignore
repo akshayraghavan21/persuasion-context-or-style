@@ -2,3 +2,4 @@ output/
 data/*csv
 src/__pycache__
 src/utils/classifyPredictor.py
+data/pos*jsonl

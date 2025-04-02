@@ -283,3 +283,8 @@ luar+sbert w claims (0.648)
 luar only w claims (0.645)
 sbert only wo claims (0.609)
 sbert only w claims (0.605)
+
+
+
+## Sentence Tokenize
+./dlatkInterface.py -d persuasion -t percvs_v001_tr -c message_id --add_sent_per_row

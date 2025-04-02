@@ -1,0 +1,148 @@
+## Stratify Whole Dataset Into Train, Test Splits on claim group and outcome label
+# python stratifygroup_wholedataset_generate_kfolds.py --input_file "../../data/pos_random_neg_20250303_dump_v001_to_percvs_v002.json" --output_train_file "../../data/pos_random_neg_20250303_dump_v001_to_percvs_v002_train_grpstrat_80pct.jsonl" --output_held_out_test_file "../../data/pos_random_neg_20250303_dump_v001_to_percvs_v002_test_grpstrat_20pct.jsonl" --old_label_col_name "outcome_label" --new_label_col_name "persuaded"
+<Run stratifygroup_wholedataset_generate_kfolds_20250303.ipynb>
+## Train/Val In Time Feat Embeddings
+python generate_embeddings_csv_for_dlatk.py --input_file "../../data/pos_random_neg_20250303_dump_v001_to_percvs_v002_train_grpstrat_80pct.jsonl" --output_file "../../data/percvs_v002_luar_feat_message_train.csv" --model_type "luar" --model_name "rrivera1849/LUAR-MUD" --tokenizer_name "rrivera1849/LUAR-MUD" --text_col_name "message" --embeddings_group_id_col "message_id"
+python generate_embeddings_csv_for_dlatk.py --input_file "../../data/pos_random_neg_20250303_dump_v001_to_percvs_v002_train_grpstrat_80pct.jsonl" --output_file "../../data/percvs_v002_sbertadrbv1_feat_message_train.csv" --model_type "sbert" --model_name "all-distilroberta-v1" --text_col_name "message" --embeddings_group_id_col "message_id"
+
+python generate_embeddings_csv_for_dlatk.py --input_file "../../data/pos_random_neg_20250303_dump_v001_to_percvs_v002_train_grpstrat_80pct.jsonl" --output_file "../../data/percvs_v002_luar_feat_claim_train.csv" --model_type "luar" --model_name "rrivera1849/LUAR-MUD" --tokenizer_name "rrivera1849/LUAR-MUD" --text_col_name "claim" --embeddings_group_id_col "message_id"
+python generate_embeddings_csv_for_dlatk.py --input_file "../../data/pos_random_neg_20250303_dump_v001_to_percvs_v002_train_grpstrat_80pct.jsonl" --output_file "../../data/percvs_v002_sbertadrbv1_feat_claim_train.csv" --model_type "sbert" --model_name "all-distilroberta-v1" --text_col_name "claim" --embeddings_group_id_col "message_id"
+
+## Test In Time Feat Embeddings
+python generate_embeddings_csv_for_dlatk.py --input_file "../../data/pos_random_neg_20250303_dump_v001_to_percvs_v002_testintime_grpstrat_20pct.jsonl" --output_file "../../data/percvs_v002_luar_feat_message_testintime.csv" --model_type "luar" --model_name "rrivera1849/LUAR-MUD" --tokenizer_name "rrivera1849/LUAR-MUD" --text_col_name "message" --embeddings_group_id_col "message_id"
+python generate_embeddings_csv_for_dlatk.py --input_file "../../data/pos_random_neg_20250303_dump_v001_to_percvs_v002_testintime_grpstrat_20pct.jsonl" --output_file "../../data/percvs_v002_sbertadrbv1_feat_message_testintime.csv" --model_type "sbert" --model_name "all-distilroberta-v1" --text_col_name "message" --embeddings_group_id_col "message_id"
+
+python generate_embeddings_csv_for_dlatk.py --input_file "../../data/pos_random_neg_20250303_dump_v001_to_percvs_v002_testintime_grpstrat_20pct.jsonl" --output_file "../../data/percvs_v002_luar_feat_claim_testintime.csv" --model_type "luar" --model_name "rrivera1849/LUAR-MUD" --tokenizer_name "rrivera1849/LUAR-MUD" --text_col_name "claim" --embeddings_group_id_col "message_id"
+python generate_embeddings_csv_for_dlatk.py --input_file "../../data/pos_random_neg_20250303_dump_v001_to_percvs_v002_testintime_grpstrat_20pct.jsonl" --output_file "../../data/percvs_v002_sbertadrbv1_feat_claim_testintime.csv" --model_type "sbert" --model_name "all-distilroberta-v1" --text_col_name "claim" --embeddings_group_id_col "message_id"
+
+## Test Out Time Feat Embeddings
+python generate_embeddings_csv_for_dlatk.py --input_file "../../data/pos_random_neg_20250303_dump_v001_to_percvs_v002_testouttime_grpstrat_20pct.jsonl" --output_file "../../data/percvs_v002_luar_feat_message_testouttime.csv" --model_type "luar" --model_name "rrivera1849/LUAR-MUD" --tokenizer_name "rrivera1849/LUAR-MUD" --text_col_name "message" --embeddings_group_id_col "message_id"
+python generate_embeddings_csv_for_dlatk.py --input_file "../../data/pos_random_neg_20250303_dump_v001_to_percvs_v002_testouttime_grpstrat_20pct.jsonl" --output_file "../../data/percvs_v002_sbertadrbv1_feat_message_testouttime.csv" --model_type "sbert" --model_name "all-distilroberta-v1" --text_col_name "message" --embeddings_group_id_col "message_id"
+
+python generate_embeddings_csv_for_dlatk.py --input_file "../../data/pos_random_neg_20250303_dump_v001_to_percvs_v002_testouttime_grpstrat_20pct.jsonl" --output_file "../../data/percvs_v002_luar_feat_claim_testouttime.csv" --model_type "luar" --model_name "rrivera1849/LUAR-MUD" --tokenizer_name "rrivera1849/LUAR-MUD" --text_col_name "claim" --embeddings_group_id_col "message_id"
+python generate_embeddings_csv_for_dlatk.py --input_file "../../data/pos_random_neg_20250303_dump_v001_to_percvs_v002_testouttime_grpstrat_20pct.jsonl" --output_file "../../data/percvs_v002_sbertadrbv1_feat_claim_testouttime.csv" --model_type "sbert" --model_name "all-distilroberta-v1" --text_col_name "claim" --embeddings_group_id_col "message_id"
+
+### To create feat tables
+python load_embeddings_csv_to_feat_table_dlatk.py --database_name "persuasion" --table_name 'feat$luarmsgs$percvs_v002_tr$message_id' --input_file "../../data/percvs_v002_luar_feat_message_train.csv" --insert_table_batch_size 10000
+python load_embeddings_csv_to_feat_table_dlatk.py --database_name "persuasion" --table_name 'feat$sbertadrbv1msgs$percvs_v002_tr$message_id' --input_file "../../data/percvs_v002_sbertadrbv1_feat_message_train.csv" --insert_table_batch_size 10000
+python load_embeddings_csv_to_feat_table_dlatk.py --database_name "persuasion" --table_name 'feat$laurclaims$percvs_v002_tr$message_id' --input_file "../../data/percvs_v002_luar_feat_claim_train.csv" --insert_table_batch_size 10000
+python load_embeddings_csv_to_feat_table_dlatk.py --database_name "persuasion" --table_name 'feat$sbertadrbv1claims$percvs_v002_tr$message_id' --input_file "../../data/percvs_v002_sbertadrbv1_feat_claim_train.csv" --insert_table_batch_size 10000
+
+# python load_embeddings_csv_to_feat_table_dlatk.py --database_name "persuasion" --table_name 'feat$luarmsgs$percvs_v002_teit$message_id' --input_file "../../data/percvs_v002_luar_feat_message_testintime.csv"
+# python load_embeddings_csv_to_feat_table_dlatk.py --database_name "persuasion" --table_name 'feat$sbertadrbv1msgs$percvs_v002_teit$message_id' --input_file "../../data/percvs_v002_sbertadrbv1_feat_message_testintime.csv"
+# python load_embeddings_csv_to_feat_table_dlatk.py --database_name "persuasion" --table_name 'feat$laurclaims$percvs_v002_teit$message_id' --input_file "../../data/percvs_v002_luar_feat_claim_testintime.csv"
+# python load_embeddings_csv_to_feat_table_dlatk.py --database_name "persuasion" --table_name 'feat$sbertadrbv1claims$percvs_v002_teit$message_id' --input_file "../../data/percvs_v002_sbertadrbv1_feat_claim_testintime.csv"
+
+# python load_embeddings_csv_to_feat_table_dlatk.py --database_name "persuasion" --table_name 'feat$luarmsgs$percvs_v002_teot$message_id' --input_file "../../data/percvs_v002_luar_feat_message_testouttime.csv"
+# python load_embeddings_csv_to_feat_table_dlatk.py --database_name "persuasion" --table_name 'feat$sbertadrbv1msgs$percvs_v002_teot$message_id' --input_file "../../data/percvs_v002_sbertadrbv1_feat_message_testouttime.csv"
+# python load_embeddings_csv_to_feat_table_dlatk.py --database_name "persuasion" --table_name 'feat$laurclaims$percvs_v002_teot$message_id' --input_file "../../data/percvs_v002_luar_feat_claim_testouttime.csv"
+# python load_embeddings_csv_to_feat_table_dlatk.py --database_name "persuasion" --table_name 'feat$sbertadrbv1claims$percvs_v002_teot$message_id' --input_file "../../data/percvs_v002_sbertadrbv1_feat_claim_testouttime.csv"
+
+### To create main table
+python load_dataset_json_to_message_table_dlatk.py --database_name "persuasion" --table_name "percvs_v002_tr" --input_file "../../data/pos_random_neg_20250303_dump_v001_to_percvs_v002_train_grpstrat_80pct.jsonl" --dataset_claim_id_col "claim_id" --dataset_claim_col "claim" --format_type "cmv_v002"
+
+## ZScore normalize Feat Tables
+-- LUAR MSGS
+DROP TABLE IF EXISTS `persuasion`.`feat$luarmsgszn$percvs_v002_tr$message_id`; 
+CREATE TABLE `persuasion`.`feat$luarmsgszn$percvs_v002_tr$message_id` LIKE `persuasion`.`feat$luarmsgs$percvs_v002_tr$message_id`;
+DROP TEMPORARY TABLE IF EXISTS feat_stats_luarmsgs;
+CREATE TEMPORARY TABLE feat_stats_luarmsgs AS
+SELECT feat, AVG(value) AS mean, STDDEV_POP(value) AS stddev
+FROM `persuasion`.`feat$luarmsgs$percvs_v002_tr$message_id`
+GROUP BY feat;
+ALTER TABLE feat_stats_luarmsgs ADD INDEX (feat);
+INSERT INTO `persuasion`.`feat$luarmsgszn$percvs_v002_tr$message_id` (group_id, feat, value, group_norm)
+SELECT t.group_id, t.feat,
+       (t.value - s.mean) / NULLIF(s.stddev, 0),
+       (t.value - s.mean) / NULLIF(s.stddev, 0)
+FROM `persuasion`.`feat$luarmsgs$percvs_v002_tr$message_id` t
+JOIN feat_stats_luarmsgs s ON t.feat = s.feat;
+
+
+-- SBERT MSGS
+DROP TABLE IF EXISTS `persuasion`.`feat$sbertadrbv1msgszn$percvs_v002_tr$message_id`; 
+CREATE TABLE `persuasion`.`feat$sbertadrbv1msgszn$percvs_v002_tr$message_id` LIKE `persuasion`.`feat$sbertadrbv1msgs$percvs_v002_tr$message_id`;
+DROP TEMPORARY TABLE IF EXISTS feat_stats_sbertmsgs;
+CREATE TEMPORARY TABLE feat_stats_sbertmsgs AS
+SELECT feat, AVG(value) AS mean, STDDEV_POP(value) AS stddev
+FROM `persuasion`.`feat$sbertadrbv1msgs$percvs_v002_tr$message_id`
+GROUP BY feat;
+ALTER TABLE feat_stats_sbertmsgs ADD INDEX (feat);
+INSERT INTO `persuasion`.`feat$sbertadrbv1msgszn$percvs_v002_tr$message_id` (group_id, feat, value, group_norm)
+SELECT t.group_id, t.feat,
+       (t.value - s.mean) / NULLIF(s.stddev, 0),
+       (t.value - s.mean) / NULLIF(s.stddev, 0)
+FROM `persuasion`.`feat$sbertadrbv1msgs$percvs_v002_tr$message_id` t
+JOIN feat_stats_sbertmsgs s ON t.feat = s.feat;
+
+
+-- LAUR CLAIMS
+DROP TABLE IF EXISTS `persuasion`.`feat$luarclaimszn$percvs_v002_tr$message_id`; 
+CREATE TABLE `persuasion`.`feat$luarclaimszn$percvs_v002_tr$message_id` LIKE `persuasion`.`feat$laurclaims$percvs_v002_tr$message_id`;
+DROP TEMPORARY TABLE IF EXISTS feat_stats_laurclaims;
+CREATE TEMPORARY TABLE feat_stats_laurclaims AS
+SELECT feat, AVG(value) AS mean, STDDEV_POP(value) AS stddev
+FROM `persuasion`.`feat$laurclaims$percvs_v002_tr$message_id`
+GROUP BY feat;
+ALTER TABLE feat_stats_laurclaims ADD INDEX (feat);
+INSERT INTO `persuasion`.`feat$luarclaimszn$percvs_v002_tr$message_id` (group_id, feat, value, group_norm)
+SELECT t.group_id, t.feat,
+       (t.value - s.mean) / NULLIF(s.stddev, 0),
+       (t.value - s.mean) / NULLIF(s.stddev, 0)
+FROM `persuasion`.`feat$laurclaims$percvs_v002_tr$message_id` t
+JOIN feat_stats_laurclaims s ON t.feat = s.feat;
+
+
+-- SBERT CLAIMS
+DROP TABLE IF EXISTS `persuasion`.`feat$sbertadrbv1claimszn$percvs_v002_tr$message_id`;
+CREATE TABLE `persuasion`.`feat$sbertadrbv1claimszn$percvs_v002_tr$message_id` LIKE `persuasion`.`feat$sbertadrbv1claims$percvs_v002_tr$message_id`;
+DROP TEMPORARY TABLE IF EXISTS feat_stats_sbertclaims;
+CREATE TEMPORARY TABLE feat_stats_sbertclaims AS
+SELECT feat, AVG(value) AS mean, STDDEV_POP(value) AS stddev
+FROM `persuasion`.`feat$sbertadrbv1claims$percvs_v002_tr$message_id`
+GROUP BY feat;
+ALTER TABLE feat_stats_sbertclaims ADD INDEX (feat);
+INSERT INTO `persuasion`.`feat$sbertadrbv1claimszn$percvs_v002_tr$message_id` (group_id, feat, value, group_norm)
+SELECT t.group_id, t.feat,
+       (t.value - s.mean) / NULLIF(s.stddev, 0),
+       (t.value - s.mean) / NULLIF(s.stddev, 0)
+FROM `persuasion`.`feat$sbertadrbv1claims$percvs_v002_tr$message_id` t
+JOIN feat_stats_sbertclaims s ON t.feat = s.feat;
+
+
+### Generate RFA values from claims feat table and load to new rfa feat table
+python generate_rfa_feat_from_emb_feat_table_dlatk.py --database_name "persuasion" --input_table_name 'feat$LUAR_claims_tr$percvs_v001_tr$message_id' --output_table_name 'feat$LUAR_claims_rfa_pca_tr$percvs_v001_tr$message_id' --dimensionality_reduction_method 'pca' --rfa_output_dimension 3
+python generate_rfa_feat_from_emb_feat_table_dlatk.py --database_name "persuasion" --input_table_name 'feat$sbertadrbv1_claims_tr$percvs_v001_tr$message_id' --output_table_name 'feat$sbertadrbv1_claims_rfa_pca_tr$percvs_v001_tr$message_id' --dimensionality_reduction_method 'pca' --rfa_output_dimension 3
+
+### PCA Reduce Claims Features
+# Creates feat$dr_pca_luarpcaclaimszn$percvs_v002_tr$message_id
+python3.8 ./dlatkInterface.py -d persuasion -t percvs_v002_tr -c message_id -f 'feat$luarclaimszn$percvs_v002_tr$message_id' --fit_reducer --group_freq_thresh 0 --model pca --transform_to_feats 'luarpcaclaimszn' --n_components 3
+
+# Creates feat$dr_pca_sbertadrbv1pcaclaimszn$percvs_v002_tr$message_id
+python3.8 ./dlatkInterface.py -d persuasion -t percvs_v002_tr -c message_id -f 'feat$sbertadrbv1claimszn$percvs_v002_tr$message_id' --fit_reducer --group_freq_thresh 0 --model pca --transform_to_feats 'sbertadrbv1pcaclaimszn' --n_components 3
+
+Create 1gram 
+./dlatkInterface.py -d persuasion -t percvs_v002_tr -g message_id --add_ngrams
+
+RFA:
+python3.8 dlatkInterface.py -d persuasion -t percvs_v002_tr -c message_id -f [LANGUAGE_FEATURES_TABLE] --outcome_table [OUTCOMES_TABLE] [CLAIM_TABLE] --group_freq_thresh 100 --outcomes persuaded --output_name  --nfold_test_regression --factor_adaptation --res_control --control PCA_Language_1 PCA_Language_2 PCA_Language_3 --adaptation_factor PCA_Language_1 PCA_Language_2 PCA_Language_3 --model lr --folds 5 --fold_column folds_col --load_embeddings_csv_to_feat_table_dlatk
+
+
+LR:
+./dlatkInterface.py -d persuasion -t percvs_v002_tr -g message_id -f 'feat$luarmsgszn$percvs_v002_tr$message_id'  --outcome_table percvs_v002_tr --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/percvs_v002_tr_lr/luar_lr_gft100_metrics --csv
+./dlatkInterface.py -d persuasion -t percvs_v002_tr -g message_id -f 'feat$sbertadrbv1msgszn$percvs_v002_tr$message_id'  --outcome_table percvs_v002_tr --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/percvs_v002_tr_lr/sbertadrbv1_lr_gft100_metrics --csv
+./dlatkInterface.py -d persuasion -t percvs_v002_tr -g message_id -f 'feat$luarmsgszn$percvs_v002_tr$message_id' 'feat$sbertadrbv1msgszn$percvs_v002_tr$message_id'  --outcome_table percvs_v002_tr --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/percvs_v002_tr_lr/luar_sbertadrbv1_lr_gft100_metrics --csv
+./dlatkInterface.py -d persuasion -t percvs_v002_tr -g message_id -f 'feat$luarclaimszn$percvs_v002_tr$message_id' 'feat$luarmsgszn$percvs_v002_tr$message_id'  --outcome_table percvs_v002_tr --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/percvs_v002_tr_lr/luar_claimszn_lr_gft100_metrics --csv
+./dlatkInterface.py -d persuasion -t percvs_v003_tr -g message_id -f 'feat$sbertadrbv1claimszn$percvs_v002_tr$message_id' 'feat$sbertadrbv1msgszn$percvs_v002_tr$message_id'  --outcome_table percvs_v002_tr --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/percvs_v002_tr_lr/sbertadrbv1_claimszn_lr_gft100_metrics --csv
+./dlatkInterface.py -d persuasion -t percvs_v002_tr -g message_id -f 'feat$luarclaimszn$percvs_v002_tr$message_id' 'feat$luarmsgszn$percvs_v002_tr$message_id' 'feat$sbertadrbv1claimszn$percvs_v002_tr$message_id' 'feat$sbertadrbv1msgszn$percvs_v002_tr$message_id'  --outcome_table percvs_v002_tr --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/percvs_v002_tr_lr/luar_sbertadrbv1_claimszn_lr_gft100_metrics --csv
+
+ETC:
+./dlatkInterface.py -d persuasion -t percvs_v002_tr -g message_id -f 'feat$luarmsgszn$percvs_v002_tr$message_id'  --outcome_table percvs_v002_tr --outcomes persuaded --nfold_test_classifiers --model etc --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/percvs_v002_tr_etc/luar_etc_gft100_metrics --csv
+./dlatkInterface.py -d persuasion -t percvs_v002_tr -g message_id -f 'feat$sbertadrbv1msgszn$percvs_v002_tr$message_id'  --outcome_table percvs_v002_tr --outcomes persuaded --nfold_test_classifiers --model etc --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/percvs_v002_tr_etc/sbertadrbv1_etc_gft100_metrics --csv
+./dlatkInterface.py -d persuasion -t percvs_v002_tr -g message_id -f 'feat$luarmsgszn$percvs_v002_tr$message_id' 'feat$sbertadrbv1msgszn$percvs_v002_tr$message_id'  --outcome_table percvs_v002_tr --outcomes persuaded --nfold_test_classifiers --model etc --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/percvs_v002_tr_etc/luar_sbertadrbv1_etc_gft100_metrics --csv
+echo done
+
+./dlatkInterface.py -d persuasion -t percvs_v002_tr -g message_id -f 'feat$luarclaimszn$percvs_v002_tr$message_id' 'feat$luarmsgszn$percvs_v002_tr$message_id'  --outcome_table percvs_v002_tr --outcomes persuaded --nfold_test_classifiers --model etc --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/percvs_v002_tr_etc/luar_claimszn_etc_gft100_metrics --csv
+./dlatkInterface.py -d persuasion -t percvs_v002_tr -g message_id -f 'feat$sbertadrbv1claimszn$percvs_v002_tr$message_id' 'feat$sbertadrbv1msgszn$percvs_v002_tr$message_id'  --outcome_table percvs_v002_tr --outcomes persuaded --nfold_test_classifiers --model etc --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/percvs_v002_tr_etc/sbertadrbv1_claimszn_etc_gft100_metrics --csv
+./dlatkInterface.py -d persuasion -t percvs_v002_tr -g message_id -f 'feat$luarclaimszn$percvs_v002_tr$message_id' 'feat$luarmsgszn$percvs_v002_tr$message_id' 'feat$sbertadrbv1claimszn$percvs_v002_tr$message_id' 'feat$sbertadrbv1msgszn$percvs_v002_tr$message_id'  --outcome_table percvs_v002_tr --outcomes persuaded --nfold_test_classifiers --model etc --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/percvs_v002_tr_etc/luar_sbertadrbv1_claimszn_etc_gft100_metrics --csv
+echo done

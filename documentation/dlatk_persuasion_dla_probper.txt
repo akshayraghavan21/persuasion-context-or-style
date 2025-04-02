@@ -1,0 +1,27 @@
+## Sentence Tokenize
+python3.8 ./dlatkInterface.py -d persuasion -t percvs_v002_tr -c message_id --add_sent_per_row
+-- Created the table: percvs_v002_tr_sent
+
+Uses: /chronos_data/araghavan/dlatk_sentencetransformers/dlatk, conda env: dlatk_py39 [created from Aaron's env]
+## generate embeddings for these sentences using sbert
+python3.9 ./dlatkInterface.py -d persuasion -t percvs_v002_tr_sent -c message_id --add_sent_emb_feat --emb_model sentence-transformers/all-distilroberta-v1
+-- Created the table: feat$all_di_v1_meL6con$percvs_v002_tr_sent$message_id
+
+## Create ngrams 
+./dlatkInterface.py -d persuasion -t percvs_v002_tr_sent -g message_id --add_ngrams
+
+## create lr sbert only msgs model [save it]
+(/cronus_data/conda_envs/dlatk_py36) araghavan@cronus:/chronos_data/araghavan/dlatk_sentencetransformers/dlatk$ python3.8 ./dlatkInterface.py -d persuasion -t percvs_v002_tr -g message_id -f 'feat$sbertadrbv1msgszn$percvs_v002_tr$message_id'  --outcome_table percvs_v002_tr --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/percvs_v002_tr_lr/sbertadrbv1_lr_gft100_metrics_dla_probper --csv --save_model --picklefile /chronos_data/araghavan/persuasion-context-or-style/output/dla_probper_lr/sbertadrbv1_msgs_lr_dla_probper_20250327_v001.pickle
+
+## create etc sbert only msgs model [save it]
+python3.8 ./dlatkInterface.py -d persuasion -t percvs_v002_tr -g message_id -f 'feat$sbertadrbv1msgszn$percvs_v002_tr$message_id'  --outcome_table percvs_v002_tr --outcomes persuaded --nfold_test_classifiers --model etc --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/percvs_v002_tr_etc/sbertadrbv1_etc_gft100_metrics_dla_probper --csv --save_model --picklefile /chronos_data/araghavan/persuasion-context-or-style/output/dla_probper_etc/sbertadrbv1_msgs_etc_dla_probper_20250327_v001.pickle
+
+## create lr luar only msgs model [save it]
+python3.8 ./dlatkInterface.py -d persuasion -t percvs_v002_tr -g message_id -f 'feat$luarmsgszn$percvs_v002_tr$message_id'  --outcome_table percvs_v002_tr --outcomes persuaded --nfold_test_classifiers --model lr --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/percvs_v002_tr_lr/luar_lr_gft100_metrics_dla_probper --csv --save_model --picklefile /chronos_data/araghavan/persuasion-context-or-style/output/dla_probper_lr/luar_msgs_lr_dla_probper_20250327_v001.pickle
+
+## create etc luar only msgs model [save it]
+./dlatkInterface.py -d persuasion -t percvs_v002_tr -g message_id -f 'feat$luarmsgszn$percvs_v002_tr$message_id'  --outcome_table percvs_v002_tr --outcomes persuaded --nfold_test_classifiers --model etc --folds 5 --fold_column folds_col --group_freq_thresh 100 --output /chronos_data/araghavan/persuasion-context-or-style/output/percvs_v002_tr_etc/luar_etc_gft100_metrics_dla_probper --csv --save_model --picklefile /chronos_data/araghavan/persuasion-context-or-style/output/dla_probper_etc/luar_msgs_etc_dla_probper_20250327_v001.pickle
+
+## Genreate prob per using the pretrained model
+# ~/dlatkInterface.py -d persuasion -t percvs_v002_tr_sent -g message_id -f 'feat$all_di_v1_meL6con$percvs_v002_tr_sent$message_id' --load_model --picklefile /chronos_data/araghavan/persuasion-context-or-style/output/dla_probper_lr/sbertadrbv1_msgs_lr_dla_probper_20250327_v001.pickle --predict_regression_to_outcome_table deleteMe
+./dlatkInterface.py -d persuasion -t percvs_v002_tr_sent -g message_id -f 'feat$all_di_v1_meL6con$percvs_v002_tr_sent$message_id' --outcome_table percvs_v002_tr_sent --outcomes persuaded --load_model --picklefile /chronos_data/araghavan/persuasion-context-or-style/output/dla_probper_lr/sbertadrbv1_msgs_lr_dla_probper_20250327_v001.pickle --predict_classifiers_to_feats deleteMe

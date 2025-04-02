@@ -30,6 +30,8 @@ parser.add_argument("--op_feat_col_name", type=str, default="feat", help="Output
 parser.add_argument("--op_value_col_name", type=str, default="value", help="Output column Name: Value")
 parser.add_argument("--op_group_norm_col_name", type=str, default="group_norm", help="Output column Name: Group Norm")
 
+parser.add_argument("--insert_table_batch_size", type=int, default=1000, help="Number of Rows to insert at once in batches")
+
 args = parser.parse_args()
 print(vars(args))
 
@@ -86,7 +88,7 @@ print(f"Preparing to load to table: {args.database_name}.{args.table_name} the d
 # conn.commit()
 
 # Define a batch size for insertions
-batch_size = 1000
+batch_size = args.insert_table_batch_size if args.insert_table_batch_size else 1000
 n_rows = len(data_to_insert)
 
 # Insert the data in batches with a tqdm progress bar
